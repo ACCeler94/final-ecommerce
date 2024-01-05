@@ -1,6 +1,5 @@
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ProductsController } from './products/products.controller';
 import { ProductsModule } from './products/products.module';
 import {
   Module,
@@ -13,7 +12,7 @@ import * as cors from 'cors';
 
 @Module({
   imports: [ProductsModule, PrismaModule],
-  controllers: [AppController, ProductsController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule implements NestModule {
