@@ -18,6 +18,9 @@ lerna-debug.log*
 /coverage
 /.nyc_output
 
+# Secrets
+.env
+
 # IDEs and editors
 /.idea
 .project
