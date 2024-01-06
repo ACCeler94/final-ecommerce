@@ -8,10 +8,12 @@ import {
   RequestMethod,
 } from '@nestjs/common';
 import { PrismaModule } from './prisma/prisma.module';
+import { OrdersModule } from './orders/orders.module';
+import { UsersModule } from './users/users.module';
 import * as cors from 'cors';
 
 @Module({
-  imports: [ProductsModule, PrismaModule],
+  imports: [ProductsModule, PrismaModule, OrdersModule, UsersModule],
   controllers: [AppController],
   providers: [AppService],
 })
