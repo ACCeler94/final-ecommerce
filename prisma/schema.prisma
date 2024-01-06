@@ -13,6 +13,8 @@ model Product {
   name  String
   sex   String
   price Int
+
+  orders ProductOnOrder[]
 }
 
 model User {
@@ -38,5 +40,15 @@ model Order {
 
   createdAt DateTime @default(now())
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user     User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Products ProductOnOrder[]
+}
+
+model ProductOnOrder {
+  order     Order   @relation(fields: [orderId], references: [id])
+  orderId   String
+  Product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  @@id([orderId, productId])
 }
