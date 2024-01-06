@@ -18,8 +18,12 @@ export class UsersController {
   }
 
   @Get('/:id')
-  getUserById(@Param('id', new ParseUUIDPipe()) id: 'string') {
-    return this.usersService.getUserById(id);
+  async getUserById(@Param('id', new ParseUUIDPipe()) id: 'string') {
+    const user = await this.usersService.getUserById(id);
+    if (!user) {
+      throw new NotFoundException('User not found.');
+    }
+    return user;
   }
 
   // [TODO] Add auth guard to allow only self deletion

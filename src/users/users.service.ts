@@ -10,7 +10,7 @@ export class UsersService {
     return this.prismaService.user.findMany();
   }
 
-  public getUserById(id): Promise<User> {
+  public getUserById(id: User['id']): Promise<User> {
     return this.prismaService.user.findUnique({
       where: { id },
       include: { orders: true },
