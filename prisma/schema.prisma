@@ -22,7 +22,7 @@ model User {
   email    String    @unique
   password Password? // password is optional as it can be added later
   name     String
-  adress   String
+  address  String
 
   orders Order[]
 }
