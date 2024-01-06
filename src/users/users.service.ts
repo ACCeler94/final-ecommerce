@@ -11,7 +11,10 @@ export class UsersService {
   }
 
   public getUserById(id): Promise<User> {
-    return this.prismaService.user.findUnique({ where: { id } });
+    return this.prismaService.user.findUnique({
+      where: { id },
+      include: { orders: true },
+    });
   }
 
   public async createUser(userData: Omit<User, 'id'>): Promise<User> {

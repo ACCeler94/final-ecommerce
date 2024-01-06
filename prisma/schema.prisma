@@ -24,7 +24,7 @@ model User {
   name     String
   adress   String
 
-  Order Order[]
+  orders Order[]
 }
 
 model Password {
