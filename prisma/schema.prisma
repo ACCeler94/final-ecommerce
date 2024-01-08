@@ -49,6 +49,7 @@ model ProductOnOrder {
   orderId   String
   Product   Product @relation(fields: [productId], references: [id])
   productId String
+  quantity  Int     @default(1)
 
   @@id([orderId, productId])
 }
