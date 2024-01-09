@@ -53,3 +53,10 @@ model ProductOnOrder {
 
   @@id([orderId, productId])
 }
+
+model Session {
+  id        String   @id
+  sid       String   @unique
+  data      String   @db.MediumText
+  expiresAt DateTime
+}

@@ -7,20 +7,26 @@ import {
   Param,
   ParseUUIDPipe,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import validateProductId from 'src/utils/validateProductId';
 import { CreateOrderDto } from './dtos/CreateOrder.dto';
+import { AuthenticatedGuard } from 'src/auth/authenticated.guard';
 
 @Controller('orders')
 export class OrdersController {
   constructor(private ordersService: OrdersService) {}
 
+  //[TODO] check if user is admin to access this data
+  @UseGuards(AuthenticatedGuard)
   @Get('/')
   getOrders() {
     return this.ordersService.getAllOrders();
   }
 
+  // [TODO] check if user is an author or admin to access this data
+  @UseGuards(AuthenticatedGuard)
   @Get('/:id')
   async getOrderById(@Param('id', new ParseUUIDPipe()) id: 'string') {
     const order = await this.ordersService.getOrderById(id);
@@ -30,8 +36,8 @@ export class OrdersController {
     return order;
   }
 
-  // [TODO] Add auth guards to allow only registered users to create an order
   // [TODO] Change endpoint to get userId from req.user.id
+  @UseGuards(AuthenticatedGuard)
   @Post('/')
   async createOrder(@Body() orderData: CreateOrderDto) {
     const { userId, products } = orderData;
