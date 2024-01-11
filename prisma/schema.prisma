@@ -8,11 +8,13 @@ datasource db {
 }
 
 model Product {
-  id    String @id @default(uuid())
-  brand String
-  name  String
-  sex   String
-  price Int
+  id          String @id @default(uuid())
+  brand       String
+  name        String
+  sex         String
+  price       Int
+  photo       String
+  description String @db.VarChar(800)
 
   orders ProductOnOrder[]
 }
