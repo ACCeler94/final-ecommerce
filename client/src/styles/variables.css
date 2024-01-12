@@ -1,0 +1,18 @@
+:root{
+  /* Typography */
+  --logo-font: 'Dancing Script', cursive;
+  --main-font:'Montserrat', sans-serif;
+
+  --logo-font-size: 40px;
+
+  --main-font-bold: 700;
+  --main-font-semi-bold: 600;
+
+
+  /* Colors */
+  --main-bg-color: #f5f4f1;
+  --nav-bg-color: #0b0a0a;
+
+  --main-font-color: #212427;
+  --logo-font-color:  #f5f4f1;
+}
