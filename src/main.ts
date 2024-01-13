@@ -20,6 +20,10 @@ async function bootstrap() {
   app.use(passport.initialize());
   app.use(passport.session());
 
+  if (process.env.NODE_ENV !== 'production') {
+    app.enableCors();
+  }
+
   await app.enableShutdownHooks();
   await app.listen(3000);
 }
