@@ -6,7 +6,7 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
   return (
-    <div className={styles.navbar}>
+    <nav className={styles.navbar}>
       <Container>
         <div className={styles.navbarContentWrapper}>
           <div className={styles.logo}>
@@ -25,7 +25,7 @@ const Navbar = () => {
           </div>
         </div>
       </Container>
-    </div>
+    </nav>
   );
 };
 
