@@ -1,0 +1,36 @@
+.productCard {
+
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: 50% 85%;
+  border-radius: 5px;
+}
+
+.productCard h2 {
+  margin: 0;
+}
+
+.productCard .productInfoWrapper {
+  margin: 15px;
+}
+
+.productCard h2 {
+  font-size: 1.3em;
+}
+
+.productCard h3 {
+  margin-top: 0;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.1em;
+  opacity: 0.7;
+  margin-bottom: 5px;
+}
+
+.productCard h4 {
+  margin-top: 10px;
+}

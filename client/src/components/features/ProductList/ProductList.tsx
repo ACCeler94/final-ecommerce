@@ -3,6 +3,7 @@ import { RootState, useAppDispatch } from '../../../store/store';
 import { useEffect } from 'react';
 import { fetchAllProducts } from './productListSlice';
 import ProductCard from '../ProductCard/ProductCard';
+import styles from './ProductList.module.css';
 
 const ProductList = () => {
   const dispatch = useAppDispatch();
@@ -23,7 +24,7 @@ const ProductList = () => {
   }
 
   return (
-    <section className="product-list">
+    <section className={styles.productList}>
       <ul>
         {products.map((product) => {
           return (
