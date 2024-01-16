@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { fetchAllProducts } from './productListSlice';
 import ProductCard from '../ProductCard/ProductCard';
 import styles from './ProductList.module.css';
+import ErrorPage from '../../common/Error/Error';
 
 const ProductList = () => {
   const dispatch = useAppDispatch();
@@ -15,12 +16,7 @@ const ProductList = () => {
   }, [dispatch]);
 
   if (error) {
-    return (
-      <div>
-        <h2>Error</h2>
-        <p>{error.message}</p>
-      </div>
-    );
+    return <ErrorPage error={error} />;
   }
 
   return (
