@@ -1,0 +1,9 @@
+.errorWrapper {
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+  background-color: var(--card-bg-color);
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
