@@ -1,4 +1,4 @@
-import Container from '../../common/Container';
+import Container from '../../common/Container/Container';
 import ProductList from '../../features/ProductList/ProductList';
 
 const Home = () => {
