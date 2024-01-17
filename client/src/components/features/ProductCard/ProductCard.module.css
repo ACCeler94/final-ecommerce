@@ -1,6 +1,9 @@
 .productCard {
   position: relative;
   height: 100%;
+  background-color: var(--card-bg-color);
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .productCard a {
@@ -56,11 +59,12 @@
 
 .cartButtonsWrapper {
   position: absolute;
-  visibility: hidden;
-  height: 0px;
-  width: 0px;
   opacity: 0;
   transition: opacity ease-out 300ms;
+  min-height: 50px;
+  pointer-events: none;
+  margin-top: -80px;
+  z-index: 0;
 }
 
 .cartButtonsWrapper input {
@@ -88,16 +92,15 @@ input[type=number] {
 
 /* Animation to show .cartButtonsWrapper */
 .productCard:hover .productInfoWrapper {
-  margin-top: -40%;
   background-color: var(--card-bg-color-transparent);
-  margin-bottom: 15%;
+  margin-top: -90px;
+  margin-bottom: 90px;
 }
 
 .productCard:hover .cartButtonsWrapper {
-  visibility: visible;
-  height: inherit;
   width: 100%;
   opacity: 1;
-  transition-delay: 150ms;
+  z-index: 1;
+  transition-delay: 50ms;
 }
 

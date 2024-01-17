@@ -1,5 +1,10 @@
+html {
+  height: 100%;
+}
+
 body {
   background-color: var(--main-bg-color);
   font-family: var(--main-font);
   color: var(--main-font-color);
+  min-height: 100%;
 }
