@@ -30,7 +30,7 @@ const ProductList = ({ category }: ProductListProps) => {
     }
   }, [category, products]);
 
-  // return error page if error occured
+  // return error page if error occurred
   if (error) {
     return <ErrorPage error={error} />;
   }

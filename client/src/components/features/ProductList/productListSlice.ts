@@ -18,7 +18,6 @@ type State = {
   products: Product[];
   status: Statuses;
   error: null | SerializedError;
-  filteredProducts: Product[];
   currentProduct: null | Product;
 };
 
@@ -28,7 +27,6 @@ const initialState: State = {
   products: [],
   status: Statuses.Idle,
   error: null,
-  filteredProducts: [],
   currentProduct: null,
 };
 
