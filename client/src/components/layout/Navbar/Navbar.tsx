@@ -13,10 +13,10 @@ const Navbar = () => {
             <Link to="/">Sartorial Selections </Link>
           </div>
           <div className={styles.navLinksWrapper}>
-            <Link to={'/female'} className={styles.navLink}>
+            <Link to={'/category/female'} className={styles.navLink}>
               Female
             </Link>
-            <Link to={'/male'} className={styles.navLink}>
+            <Link to={'/category/male'} className={styles.navLink}>
               Male
             </Link>
             <Link to={'/cart'} className={styles.cartIcon}>
