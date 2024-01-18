@@ -4,6 +4,7 @@ import Home from './components/pages/Home/Home';
 import './App.css';
 import Footer from './components/layout/Footer/Footer';
 import CategoryPage from './components/pages/CategoryPage/CategoryPage';
+import SingleProductPage from './components/pages/SingleProductPage/SingleProductPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           path="/category/male"
           element={<CategoryPage category="Male" />}
         />
+        <Route path="/product/:productId" element={<SingleProductPage />} />
       </Routes>
       <Footer />
     </>
