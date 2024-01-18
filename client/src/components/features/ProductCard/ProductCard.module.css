@@ -21,15 +21,13 @@
 
 .productCard h2 {
   margin: 0;
+  font-size: 1.3em;
 }
 
 .productCard .productInfoWrapper {
   padding: 15px;
 }
 
-.productCard h2 {
-  font-size: 1.3em;
-}
 
 .productCard h3 {
   margin-top: 0;
@@ -62,7 +60,6 @@
   opacity: 0;
   transition: opacity ease-out 300ms;
   min-height: 50px;
-  pointer-events: none;
   margin-top: -80px;
   z-index: 0;
 }
@@ -71,6 +68,7 @@
   padding: 10px;
   font-size: 1.05em;
   margin: 0 20px;
+  text-align: center;
 }
 
 .cartButtonsWrapper .cartButton {
