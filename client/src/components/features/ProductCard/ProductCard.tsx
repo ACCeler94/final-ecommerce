@@ -4,9 +4,12 @@ import Product from '../../../types/Product';
 import styles from './ProductCard.module.css';
 import { useState } from 'react';
 import Button from '../../common/Button/Button';
+import { useAppDispatch } from '../../../store/store';
+import { addToCart } from '../Cart/CartSlice';
 
 const ProductCard = (productData: Product) => {
   const [productQuantity, setProductQuantity] = useState<number | string>(1);
+  const dispatch = useAppDispatch();
 
   const handleQuantityChange = (value: string) => {
     if (value === '') {
@@ -17,6 +20,10 @@ const ProductCard = (productData: Product) => {
       else if (numValue > 99) setProductQuantity(99);
       else setProductQuantity(numValue);
     }
+  };
+
+  const addToCartHandler = () => {
+    dispatch(addToCart({ quantity: productQuantity, product: productData }));
   };
 
   return (
@@ -44,7 +51,7 @@ const ProductCard = (productData: Product) => {
           value={productQuantity}
           onChange={(e) => handleQuantityChange(e.target.value)}
         />
-        <Button buttonText="ADD TO CART" buttonHandler={() => {}} />
+        <Button buttonText="ADD TO CART" buttonHandler={addToCartHandler} />
       </div>
     </div>
   );

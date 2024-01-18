@@ -3,14 +3,17 @@ import productListReducer, {
   ProductListState,
 } from '../components/features/ProductList/productListSlice';
 import { useDispatch } from 'react-redux';
+import cartReducer, { CartState } from '../components/features/Cart/CartSlice';
 
 export type RootState = {
   products: ProductListState;
+  cart: CartState;
 };
 
 const store = configureStore({
   reducer: {
     products: productListReducer,
+    cart: cartReducer,
   },
 });
 
