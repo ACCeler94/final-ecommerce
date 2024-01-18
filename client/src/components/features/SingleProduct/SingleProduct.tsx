@@ -30,7 +30,7 @@ const SingleProduct = () => {
     };
   }, [productId, dispatch]);
 
-  const handleQuantityChange = (value: string) => {
+  const handleQuantityInput = (value: string) => {
     if (value === '') {
       setProductQuantity(value);
     } else {
@@ -48,32 +48,37 @@ const SingleProduct = () => {
   if (currentProduct)
     return (
       <div className={styles.singleProductWrapper}>
-        <div className={styles.productNameWrapper}>
-          <h2 className="product-name">{currentProduct?.name}</h2>
-          <h3 className="product-brand">{currentProduct?.brand}</h3>
-        </div>
         <div className={styles.productContent}>
           <div className={styles.imageWrapper}>
             <img
-              src={`${IMAGES_URL}/${currentProduct?.photo}`}
+              src={`${IMAGES_URL}/${currentProduct.photo}`}
               alt="product-main-photo"
             />
           </div>
-          <div>
-            <p>{currentProduct?.description}</p>
+          <div className={styles.productInfoContainer}>
+            <div className={styles.productInfo}>
+              <div className={styles.productNameWrapper}>
+                <h2 className="product-name">{currentProduct.name}</h2>
+                <h3 className="product-brand">{currentProduct.brand}</h3>
+              </div>
+              <p>{currentProduct.description}</p>
+            </div>
+            <div className={styles.cartButtonsWrapper}>
+              <div className={styles.productPrice}>
+                Price: <h4>${currentProduct.price}</h4>
+              </div>
+              <input
+                type="number"
+                id="product-quantity"
+                name="product-quantity"
+                min="0"
+                max="99"
+                value={productQuantity}
+                onChange={(e) => handleQuantityInput(e.target.value)}
+              />
+              <Button buttonText="ADD TO CART" buttonHandler={() => {}} />
+            </div>
           </div>
-        </div>
-        <div className={styles.cartButtonsWrapper}>
-          <input
-            type="number"
-            id="product-quantity"
-            name="product-quantity"
-            min="0"
-            max="99"
-            value={productQuantity}
-            onChange={(e) => handleQuantityChange(e.target.value)}
-          />
-          <Button buttonText="ADD TO CART" buttonHandler={() => {}} />
         </div>
       </div>
     );

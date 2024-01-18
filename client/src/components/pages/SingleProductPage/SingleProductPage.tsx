@@ -1,9 +1,12 @@
+import Container from '../../common/Container/Container';
 import SingleProduct from '../../features/SingleProduct/SingleProduct';
 
 const SingleProductPage = () => {
   return (
     <section className="single-product">
-      <SingleProduct />
+      <Container>
+        <SingleProduct />
+      </Container>
     </section>
   );
 };
