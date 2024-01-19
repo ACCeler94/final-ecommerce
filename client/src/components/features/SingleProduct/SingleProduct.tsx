@@ -69,7 +69,7 @@ const SingleProduct = () => {
               </div>
               <input
                 type="number"
-                id="product-quantity"
+                id={`quantity-${currentProduct.id}}`}
                 name="product-quantity"
                 min="0"
                 max="99"
