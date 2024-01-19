@@ -48,7 +48,7 @@ export const fetchById = createAsyncThunk(
 );
 
 export const productListSlice = createSlice({
-  name: 'productList',
+  name: 'products',
   initialState: initialState,
   reducers: {
     resetCurrentProduct: (state) => {

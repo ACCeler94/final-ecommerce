@@ -3,11 +3,11 @@ import SingleProduct from '../../features/SingleProduct/SingleProduct';
 
 const SingleProductPage = () => {
   return (
-    <section className="single-product">
+    <main className="single-product">
       <Container>
         <SingleProduct />
       </Container>
-    </section>
+    </main>
   );
 };
 
