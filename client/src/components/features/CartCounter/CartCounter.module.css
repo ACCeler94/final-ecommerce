@@ -1,0 +1,11 @@
+.cartCounter {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 25px;
+  background-color: var(--main-bg-color);
+  color: var(--main-font-color);
+  font-size: 0.7em;
+}

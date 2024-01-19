@@ -3,6 +3,7 @@ import Container from '../../common/Container/Container';
 import styles from './Navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import CartCounter from '../../features/CartCounter/CartCounter';
 
 const Navbar = () => {
   return (
@@ -21,6 +22,7 @@ const Navbar = () => {
             </Link>
             <Link to={'/cart'} className={styles.cartIcon}>
               <FontAwesomeIcon icon={faCartShopping} />
+              <CartCounter />
             </Link>
           </div>
         </div>
