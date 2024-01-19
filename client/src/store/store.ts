@@ -3,7 +3,7 @@ import productListReducer, {
   ProductListState,
 } from '../components/features/ProductList/productListSlice';
 import { useDispatch } from 'react-redux';
-import cartReducer, { CartState } from '../components/features/Cart/CartSlice';
+import cartReducer, { CartState } from '../components/features/Cart/cartSlice';
 
 export type RootState = {
   products: ProductListState;
