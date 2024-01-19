@@ -44,7 +44,7 @@ const ProductCard = (productData: Product) => {
       <div className={styles.cartButtonsWrapper}>
         <input
           type="number"
-          id="product-quantity"
+          id={`quantity-${productData.id}`}
           name="product-quantity"
           min="0"
           max="99"
