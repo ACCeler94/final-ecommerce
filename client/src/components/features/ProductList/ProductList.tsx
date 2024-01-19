@@ -13,7 +13,9 @@ interface ProductListProps {
 
 const ProductList = ({ category }: ProductListProps) => {
   const dispatch = useAppDispatch();
-  const products = useSelector((state: RootState) => state.products.products);
+  const products = useSelector(
+    (state: RootState) => state.products.productList,
+  );
   const error = useSelector((state: RootState) => state.products.error);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 

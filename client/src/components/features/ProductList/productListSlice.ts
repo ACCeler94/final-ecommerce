@@ -15,7 +15,7 @@ enum Statuses {
 }
 
 type State = {
-  products: Product[];
+  productList: Product[];
   status: Statuses;
   error: null | SerializedError;
   currentProduct: null | Product;
@@ -24,7 +24,7 @@ type State = {
 export type ProductListState = State;
 
 const initialState: State = {
-  products: [],
+  productList: [],
   status: Statuses.Idle,
   error: null,
   currentProduct: null,
@@ -68,7 +68,7 @@ export const productListSlice = createSlice({
       fetchAllProducts.fulfilled,
       (state, action: PayloadAction<Product[]>) => {
         state.status = Statuses.Success;
-        state.products = action.payload;
+        state.productList = action.payload;
       },
     );
     builder.addCase(fetchAllProducts.rejected, (state, action) => {
