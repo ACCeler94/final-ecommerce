@@ -26,7 +26,7 @@ model User {
   name     String
   address  String
 
-  orders Order[]
+  //orders Order[]
 }
 
 model Password {
@@ -36,14 +36,20 @@ model Password {
   userId         String @unique
 }
 
+// For now Users will not be created, user data for order will be provided as userData
 model Order {
-  id     String @id @default(uuid())
-  userId String
+  id       String @id @default(uuid())
+  //userId String
+  userData String
 
   createdAt DateTime @default(now())
 
-  user     User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  //user     User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   Products ProductOnOrder[]
+  //User     User?            @relation(fields: [userId], references: [id])
+  //userId   String?
+  //User     User?            @relation(fields: [userId], references: [id])
+  //userId   String?
 }
 
 model ProductOnOrder {
@@ -52,6 +58,7 @@ model ProductOnOrder {
   Product   Product @relation(fields: [productId], references: [id])
   productId String
   quantity  Int     @default(1)
+  comment   String?
 
   @@id([orderId, productId])
 }
