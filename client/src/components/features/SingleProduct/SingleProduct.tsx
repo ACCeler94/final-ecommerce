@@ -10,6 +10,7 @@ import styles from './SingleProduct.module.css';
 import { IMAGES_URL } from '../../../API/config';
 import Button from '../../common/Button/Button';
 import ErrorPage from '../../common/Error/Error';
+import { addToCart } from '../Cart/cartSlice';
 
 // [TODO] Add spinner while loading
 const SingleProduct = () => {
@@ -39,6 +40,10 @@ const SingleProduct = () => {
       else if (numValue > 99) setProductQuantity(99);
       else setProductQuantity(numValue);
     }
+  };
+
+  const addToCartHandler = () => {
+    dispatch(addToCart({ quantity: productQuantity, product: currentProduct }));
   };
 
   if (error) {
@@ -76,7 +81,10 @@ const SingleProduct = () => {
                 value={productQuantity}
                 onChange={(e) => handleQuantityInput(e.target.value)}
               />
-              <Button buttonText="ADD TO CART" buttonHandler={() => {}} />
+              <Button
+                buttonText="ADD TO CART"
+                buttonHandler={addToCartHandler}
+              />
             </div>
           </div>
         </div>
