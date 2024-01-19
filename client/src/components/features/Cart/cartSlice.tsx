@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import Product from '../../../types/Product';
 
 export interface CartState {
-  cart: { quantity: number; product: Product }[];
+  shoppingCart: { quantity: number; product: Product }[];
 }
 
 const initialState: CartState = {
-  cart: [],
+  shoppingCart: [],
 };
 
 export const cartSlice = createSlice({
@@ -14,22 +14,22 @@ export const cartSlice = createSlice({
   initialState: initialState,
   reducers: {
     addToCart: (state, action) => {
-      const alreadyInCart = state.cart.find(
+      const alreadyInCart = state.shoppingCart.find(
         (elem) => elem.product.id === action.payload.product.id,
       ); // check if the product is already in the cart
       if (alreadyInCart) {
         alreadyInCart.quantity += action.payload.quantity; // increase by chosen quantity if the item is already in the cart
       } else {
-        state.cart.push(action.payload);
+        state.shoppingCart.push(action.payload);
       }
     },
     removeFromCart: (state, action) => {
-      state.cart = state.cart.filter(
+      state.shoppingCart = state.shoppingCart.filter(
         (elem) => elem.product.id !== action.payload.product.id,
       );
     },
     changeProductQuantity: (state, action) => {
-      const elemToChange = state.cart.find(
+      const elemToChange = state.shoppingCart.find(
         (elem) => elem.product.id === action.payload.product.id,
       );
       if (elemToChange) elemToChange.quantity = action.payload.quantity;
