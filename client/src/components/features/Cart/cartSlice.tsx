@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import Product from '../../../types/Product';
 
 export interface CartState {
-  shoppingCart: { quantity: number; product: Product }[];
+  shoppingCart: { quantity: number; product: Product; comment: string }[];
 }
 
 const initialState: CartState = {
@@ -34,9 +34,19 @@ export const cartSlice = createSlice({
       );
       if (elemToChange) elemToChange.quantity = action.payload.quantity;
     },
+    addProductComment: (state, action) => {
+      const elemToChange = state.shoppingCart.find(
+        (elem) => elem.product.id === action.payload.product.id,
+      );
+      if (elemToChange) elemToChange.comment = action.payload.comment;
+    },
   },
 });
 
-export const { addToCart, removeFromCart, changeProductQuantity } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  changeProductQuantity,
+  addProductComment,
+} = cartSlice.actions;
 export default cartSlice.reducer;
