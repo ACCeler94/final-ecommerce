@@ -9,6 +9,11 @@ body {
   min-height: 100%;
 }
 
-:root {
+#root {
   min-height: 100%;
+  position: relative;
+}
+
+main {
+  padding-bottom: 7.5%;
 }

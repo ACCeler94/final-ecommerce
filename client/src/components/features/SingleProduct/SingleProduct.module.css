@@ -1,8 +1,8 @@
 .singleProductWrapper {
   background-color: var(--card-bg-color);
-  margin-top: 5%;
+  margin: 5% 0;
   padding: 2.5%;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 
@@ -19,9 +19,9 @@
 }
 
 .imageWrapper img {
-  width: 100%;
-  min-height: 500px;
+  min-height: 350px;
   object-fit: cover;
+  max-height: 500px;
 }
 
 .productNameWrapper {

@@ -5,7 +5,7 @@ import styles from './ProductCard.module.css';
 import { useState } from 'react';
 import Button from '../../common/Button/Button';
 import { useAppDispatch } from '../../../store/store';
-import { addToCart } from '../Cart/CartSlice';
+import { addToCart } from '../Cart/cartSlice';
 
 const ProductCard = (productData: Product) => {
   const [productQuantity, setProductQuantity] = useState<number | string>(1);
