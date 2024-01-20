@@ -4,6 +4,6 @@
   border: none;
   border-radius: 5px;
   padding: 15px 25px;
-  font-weight: 600;
+  font-weight: var(--main-font-semi-bold);
   cursor: pointer;
 }

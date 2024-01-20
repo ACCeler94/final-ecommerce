@@ -32,7 +32,7 @@
 .productCard h3 {
   margin-top: 0;
   font-style: italic;
-  font-weight: 600;
+  font-weight: var(--main-font-semi-bold);
   font-size: 1.1em;
   opacity: 0.7;
   margin-bottom: 5px;

@@ -28,7 +28,7 @@
 }
 
 .cartProductForm_quantity .itemPrice {
-  font-weight: 600;
+  font-weight: var(--main-font-semi-bold);
   margin-left: 15px;
 }
 
