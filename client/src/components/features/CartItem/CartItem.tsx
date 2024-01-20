@@ -5,6 +5,7 @@ import { useAppDispatch } from '../../../store/store';
 import {
   addProductComment,
   changeProductQuantity,
+  recalculateTotalPrice,
   removeFromCart,
 } from '../Cart/cartSlice';
 import { IMAGES_URL } from '../../../API/config';
@@ -31,6 +32,7 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
       dispatch(
         changeProductQuantity({ product, quantity: itemQuantityNumber }),
       );
+      dispatch(recalculateTotalPrice());
     } else {
       setItemQuantity(quantity.toString());
     }
@@ -83,7 +85,10 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
       </div>
       <FontAwesomeIcon
         icon={faTrash}
-        onClick={() => dispatch(removeFromCart({ product }))}
+        onClick={() => {
+          dispatch(removeFromCart({ product }));
+          dispatch(recalculateTotalPrice());
+        }}
         style={{ cursor: 'pointer' }}
       />
     </div>

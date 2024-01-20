@@ -3,10 +3,12 @@ import Product from '../../../types/Product';
 
 export interface CartState {
   shoppingCart: { quantity: number; product: Product; comment: string }[];
+  totalPrice: number | null;
 }
 
 const initialState: CartState = {
   shoppingCart: [],
+  totalPrice: null,
 };
 
 export const cartSlice = createSlice({
@@ -40,6 +42,12 @@ export const cartSlice = createSlice({
       );
       if (elemToChange) elemToChange.comment = action.payload.comment;
     },
+    recalculateTotalPrice: (state) => {
+      state.totalPrice = state.shoppingCart.reduce(
+        (total, item) => total + item.product.price * item.quantity,
+        0,
+      );
+    },
   },
 });
 
@@ -48,5 +56,6 @@ export const {
   removeFromCart,
   changeProductQuantity,
   addProductComment,
+  recalculateTotalPrice,
 } = cartSlice.actions;
 export default cartSlice.reducer;

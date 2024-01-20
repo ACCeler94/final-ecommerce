@@ -4,21 +4,11 @@ import CartItem from '../CartItem/CartItem';
 import styles from './Cart.module.css';
 import Button from '../../common/Button/Button';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 
 const Cart = () => {
   const cart = useSelector((state: RootState) => state.cart.shoppingCart);
   const navigate = useNavigate();
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  useEffect(() => {
-    let total = 0;
-    cart.forEach((cartElem) => {
-      const itemTotal = cartElem.quantity * cartElem.product.price;
-      total += itemTotal;
-    });
-    setTotalPrice(total);
-  }, [cart]);
+  const summedPrice = useSelector((state: RootState) => state.cart.totalPrice);
 
   if (cart.length === 0) {
     return (
@@ -41,7 +31,7 @@ const Cart = () => {
         })}
       </ul>
       <section className={styles.cartSummary}>
-        <p>Total price: ${totalPrice}</p>
+        <p>Total price: ${summedPrice}</p>
         <Button
           buttonText="Checkout"
           buttonHandler={() => navigate('checkout')}
