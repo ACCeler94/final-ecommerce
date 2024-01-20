@@ -32,7 +32,7 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
         changeProductQuantity({ product, quantity: itemQuantityNumber }),
       );
     } else {
-      setItemQuantity('1');
+      setItemQuantity(quantity.toString());
     }
   };
 
