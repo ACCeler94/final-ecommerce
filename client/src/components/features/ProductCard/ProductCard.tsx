@@ -16,7 +16,7 @@ const ProductCard = (productData: Product) => {
       setProductQuantity(value);
     } else {
       const numValue = Number(value);
-      if (numValue < 0) setProductQuantity(0);
+      if (numValue <= 0) setProductQuantity(1);
       else if (numValue > 99) setProductQuantity(99);
       else setProductQuantity(numValue);
     }
@@ -46,7 +46,7 @@ const ProductCard = (productData: Product) => {
           type="number"
           id={`quantity-${productData.id}`}
           name="product-quantity"
-          min="0"
+          min="1"
           max="99"
           value={productQuantity}
           onChange={(e) => handleQuantityChange(e.target.value)}

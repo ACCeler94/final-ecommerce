@@ -27,6 +27,11 @@
   text-align: center;
 }
 
+.cartProductForm_quantity .itemPrice {
+  font-weight: 600;
+  margin-left: 15px;
+}
+
 
 .cartProductForm_comment textarea {
   margin: 5px 0;

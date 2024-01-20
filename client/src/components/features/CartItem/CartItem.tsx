@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Product from '../../../types/Product';
 import Button from '../../common/Button/Button';
 import { useAppDispatch } from '../../../store/store';
@@ -18,13 +18,27 @@ interface CartItemProps {
 }
 
 const CartItem = ({ product, quantity }: CartItemProps) => {
-  const [itemQuantity, setItemQuantity] = useState(quantity);
+  const [itemQuantity, setItemQuantity] = useState(quantity.toString());
   const [itemComment, setItemComment] = useState('');
+  const [itemTotalPrice, setItemTotalPrice] = useState(
+    quantity * product.price,
+  );
   const dispatch = useAppDispatch();
 
   const handleQuantityChange = () => {
-    dispatch(changeProductQuantity({ product, quantity: itemQuantity }));
+    const itemQuantityNumber = Number(itemQuantity);
+    if (itemQuantityNumber > 0) {
+      dispatch(
+        changeProductQuantity({ product, quantity: itemQuantityNumber }),
+      );
+    } else {
+      setItemQuantity('1');
+    }
   };
+
+  useEffect(() => {
+    setItemTotalPrice(quantity * product.price);
+  }, [quantity, product]);
 
   return (
     <div className={styles.cartProduct}>
@@ -41,9 +55,12 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
             <input
               id={product.id}
               value={itemQuantity}
-              onChange={(e) => setItemQuantity(Number(e.target.value))}
+              onChange={(e) => setItemQuantity(e.target.value)}
               onBlur={handleQuantityChange}
             />
+            <span
+              className={styles.itemPrice}
+            >{`Price: $${itemTotalPrice}`}</span>
           </div>
           <div className={styles.cartProductForm_comment}>
             <textarea
