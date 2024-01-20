@@ -40,13 +40,13 @@ const Cart = () => {
           );
         })}
       </ul>
-      <div className={styles.cartSummary}>
+      <section className={styles.cartSummary}>
         <p>Total price: ${totalPrice}</p>
         <Button
           buttonText="Checkout"
           buttonHandler={() => navigate('checkout')}
         />
-      </div>
+      </section>
     </div>
   );
 };

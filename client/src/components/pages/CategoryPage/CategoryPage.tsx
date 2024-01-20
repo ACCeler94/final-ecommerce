@@ -7,7 +7,7 @@ interface CategoryPageProps {
 
 const CategoryPage = ({ category }: CategoryPageProps) => {
   return (
-    <main>
+    <main className="category">
       <Container>
         <h1>{category} Products</h1>
         <ProductList category={category} />
