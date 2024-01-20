@@ -19,7 +19,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="cart-product-list">
+    <div className={styles.cartProductList}>
       <ul>
         {cart.map((cartObj) => {
           return (
