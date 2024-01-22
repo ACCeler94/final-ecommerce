@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Order } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { CreateOrderDto } from './dtos/CreateOrder.dto';
 
 @Injectable()
 export class OrdersService {
@@ -17,8 +18,9 @@ export class OrdersService {
     });
   }
 
-  public async createOrder(userData, products): Promise<Order> | null {
+  public async createOrder(orderData: CreateOrderDto): Promise<Order> | null {
     try {
+      const { userData, products } = orderData;
       const createdOrder = await this.prismaService.order.create({
         data: {
           name: userData.name,
@@ -27,13 +29,16 @@ export class OrdersService {
         },
       });
 
-      for (const product of products) {
+      for (const productsElem of products) {
+        const productData: any = {
+          orderId: createdOrder.id,
+          productId: productsElem.product.id,
+          quantity: productsElem.quantity,
+          comment: productsElem.comment,
+        };
+
         await this.prismaService.productOnOrder.create({
-          data: {
-            orderId: createdOrder.id,
-            productId: product.id,
-            quantity: product.quantity,
-          },
+          data: productData,
         });
       }
 

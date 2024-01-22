@@ -57,14 +57,14 @@ export class OrdersController {
   @Post('/')
   async createOrder(@Body() orderData: CreateOrderDto) {
     const { userData, products } = orderData;
-    for (const product of products) {
+    for (const productsElem of products) {
       try {
-        await validateProductId(product.id); // check if given product ids have a record in database
+        await validateProductId(productsElem.product.id); // check if given product ids have a record in database
       } catch (error) {
         throw new BadRequestException(`Bad request ${error}`);
       }
     }
     //const userId = req.user.id;
-    return await this.ordersService.createOrder(userData, products);
+    return await this.ordersService.createOrder(orderData);
   }
 }
