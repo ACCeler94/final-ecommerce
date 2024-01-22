@@ -13,6 +13,7 @@ export class OrdersService {
   public getOrderById(id: Order['id']): Promise<Order> {
     return this.prismaService.order.findUnique({
       where: { id },
+      include: { Products: true },
     });
   }
 
