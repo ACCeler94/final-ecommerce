@@ -52,7 +52,7 @@ const ProductCard = (productData: Product) => {
           value={productQuantity}
           onChange={(e) => handleQuantityChange(e.target.value)}
         />
-        <Button buttonText="ADD TO CART" buttonHandler={addToCartHandler} />
+        <Button buttonText="Add to cart" buttonHandler={addToCartHandler} />
       </div>
     </div>
   );
