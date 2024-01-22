@@ -36,7 +36,7 @@ export class OrdersController {
     return order;
   }
 
-  // [TODO] Change endpoint to get userId from req.user.id
+  /* // [TODO] Change endpoint to get userId from req.user.id
   @UseGuards(AuthenticatedGuard)
   @Post('/')
   async createOrder(@Body() orderData: CreateOrderDto) {
@@ -50,5 +50,19 @@ export class OrdersController {
     }
     //const userId = req.user.id;
     return await this.ordersService.createOrder(userId, products);
+  } */
+
+  @Post('/')
+  async createOrder(@Body() orderData: CreateOrderDto) {
+    const { userData, products } = orderData;
+    for (const product of products) {
+      try {
+        await validateProductId(product.id); // check if given product ids have a record in database
+      } catch (error) {
+        throw new BadRequestException(`Bad request ${error}`);
+      }
+    }
+    //const userId = req.user.id;
+    return await this.ordersService.createOrder(userData, products);
   }
 }
