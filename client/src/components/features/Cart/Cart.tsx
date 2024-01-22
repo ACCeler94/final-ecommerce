@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const Cart = () => {
   const cart = useSelector((state: RootState) => state.cart.shoppingCart);
   const navigate = useNavigate();
-  const summedPrice = useSelector((state: RootState) => state.cart.totalPrice);
+  const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
 
   if (cart.length === 0) {
     return (
@@ -31,7 +31,7 @@ const Cart = () => {
         })}
       </ul>
       <section className={styles.cartSummary}>
-        <p>Total price: ${summedPrice}</p>
+        <p>Total price: ${totalPrice}</p>
         <Button
           buttonText="Checkout"
           buttonHandler={() => navigate('checkout')}
