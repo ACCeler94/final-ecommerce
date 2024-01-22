@@ -57,6 +57,12 @@ const Checkout = () => {
                 <span className={styles.subtotal}>
                   Subtotal price: ${cartObj.quantity * cartObj.product.price}
                 </span>
+                {cartObj.comment ? (
+                  <p>
+                    Additional comment:
+                    <span className={styles.comment}>{cartObj.comment}</span>
+                  </p>
+                ) : null}
               </li>
             );
           })}

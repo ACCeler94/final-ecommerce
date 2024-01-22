@@ -73,12 +73,17 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
               onChange={(e) => setItemComment(e.target.value)}
               rows={3}
               cols={25}
+              maxLength={150}
             />
           </div>
           <Button
             buttonText="Save"
             buttonHandler={() => {
-              dispatch(addProductComment({ product, comment: itemComment }));
+              if (itemComment.length > 150) {
+                alert('Comment is too long! Use max 150 characters.');
+              } else {
+                dispatch(addProductComment({ product, comment: itemComment }));
+              }
             }}
           />
         </form>

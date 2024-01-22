@@ -4,8 +4,13 @@
 }
 
 .itemSummary .subtotal {
-  margin-left: 20px;
+  margin: 0 20px;
   font-weight: var(--main-font-semi-bold);
+}
+
+.itemSummary .comment {
+  font-weight: var(--main-font-semi-bold);
+  margin-left: 5px;
 }
 
 .priceSummary {
