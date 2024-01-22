@@ -21,7 +21,9 @@ export class OrdersService {
     try {
       const createdOrder = await this.prismaService.order.create({
         data: {
-          userData,
+          name: userData.name,
+          email: userData.email,
+          address: userData.address,
         },
       });
 

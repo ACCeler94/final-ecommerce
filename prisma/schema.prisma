@@ -38,9 +38,11 @@ model Password {
 
 // For now Users will not be created, user data for order will be provided as userData
 model Order {
-  id       String @id @default(uuid())
+  id      String @id @default(uuid())
   //userId String
-  userData String
+  name    String
+  email   String
+  address String
 
   createdAt DateTime @default(now())
 

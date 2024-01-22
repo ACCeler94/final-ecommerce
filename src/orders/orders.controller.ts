@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   BadRequestException,
   Body,
@@ -19,14 +20,14 @@ export class OrdersController {
   constructor(private ordersService: OrdersService) {}
 
   //[TODO] check if user is admin to access this data
-  @UseGuards(AuthenticatedGuard)
+  //@UseGuards(AuthenticatedGuard)
   @Get('/')
   getOrders() {
     return this.ordersService.getAllOrders();
   }
 
   // [TODO] check if user is an author or admin to access this data
-  @UseGuards(AuthenticatedGuard)
+  //@UseGuards(AuthenticatedGuard)
   @Get('/:id')
   async getOrderById(@Param('id', new ParseUUIDPipe()) id: 'string') {
     const order = await this.ordersService.getOrderById(id);
