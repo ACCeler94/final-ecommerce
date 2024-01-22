@@ -6,6 +6,7 @@ import Footer from './components/layout/Footer/Footer';
 import CategoryPage from './components/pages/CategoryPage/CategoryPage';
 import SingleProductPage from './components/pages/SingleProductPage/SingleProductPage';
 import CartPage from './components/pages/CartPage/CartPage';
+import CheckoutPage from './components/pages/CheckoutPage/CheckoutPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/cart/checkout" element={<CheckoutPage />} />
         <Route
           path="/category/female"
           element={<CategoryPage category="Female" />}
