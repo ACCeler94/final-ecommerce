@@ -1,0 +1,41 @@
+
+.itemSummary {
+  margin: 50px 0;
+}
+
+.itemSummary .subtotal {
+  margin-left: 20px;
+  font-weight: var(--main-font-semi-bold);
+}
+
+.priceSummary {
+  border-top: 2px solid rgba(0, 0, 0, 0.25);
+  padding-left: 40px;
+}
+
+
+.userDataForm {
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.userDataForm label {
+  margin-top: 10px;
+  font-weight: var(--main-font-semi-bold);
+}
+
+.userDataForm input {
+  padding: 10px;
+}
+
+.userDataForm textarea {
+  resize: none;
+}
+
+.userDataForm button {
+  margin-top: 10px;
+  max-width: fit-content;
+}
