@@ -36,7 +36,8 @@ export class OrdersController {
     return order;
   }
 
-  /* // [TODO] Change endpoint to get userId from req.user.id
+  /*  [TODO] change back controller and service to get User from db instead of getting userData as string after registration functionality is implemented
+  // [TODO] Change endpoint to get userId from req.user.id
   @UseGuards(AuthenticatedGuard)
   @Post('/')
   async createOrder(@Body() orderData: CreateOrderDto) {
