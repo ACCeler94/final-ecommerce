@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Button from '../../common/Button/Button';
 import Order from '../../../types/Order';
-import productsAPI from '../../../API/productsApi';
+import ordersAPI from '../../../API/ordersApi';
 
 const Checkout = () => {
   const cart = useSelector((state: RootState) => state.cart.shoppingCart);
@@ -31,7 +31,7 @@ const Checkout = () => {
         userData: { name, email, address },
         products: cart,
       };
-      productsAPI
+      ordersAPI
         .placeOrder(orderObj)
         .then((res) => {
           console.log(res);
