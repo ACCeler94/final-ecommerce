@@ -9,6 +9,7 @@ type ProductOnOrder = {
 type Order = {
   products: ProductOnOrder[];
   userData: { name: string; email: string; address: string };
+  orderTotal: number;
 };
 
 export default Order;

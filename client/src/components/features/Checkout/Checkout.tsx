@@ -27,18 +27,21 @@ const Checkout = () => {
     if (!name || !email || !address) {
       alert('Please fill all required fields!');
     } else {
-      const orderObj: Order = {
-        userData: { name, email, address },
-        products: cart,
-      };
-      ordersAPI
-        .placeOrder(orderObj)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      if (totalPrice) {
+        const orderObj: Order = {
+          userData: { name, email, address },
+          products: cart,
+          orderTotal: totalPrice,
+        };
+        ordersAPI
+          .placeOrder(orderObj)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     }
   };
 

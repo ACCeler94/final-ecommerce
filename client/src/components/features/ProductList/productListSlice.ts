@@ -7,7 +7,7 @@ import {
 import productsAPI from '../../../API/productsApi';
 import Product from '../../../types/Product';
 
-enum Statuses {
+export enum Statuses {
   Idle = 'idle',
   Pending = 'pending',
   Success = 'success',
