@@ -1,16 +1,18 @@
 import { useSelector } from 'react-redux';
 import styles from './Checkout.module.css';
-import { RootState } from '../../../store/store';
+import { RootState, useAppDispatch } from '../../../store/store';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Button from '../../common/Button/Button';
 import Order from '../../../types/Order';
 import ordersAPI from '../../../API/ordersApi';
+import { recalculateTotalPrice } from '../Cart/cartSlice';
 
 const Checkout = () => {
   const cart = useSelector((state: RootState) => state.cart.shoppingCart);
   const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -21,6 +23,11 @@ const Checkout = () => {
       navigate('/');
     }
   }, [navigate, cart]);
+
+  // recalculate totalPrice if the component mounts to make sure it is up to date
+  useEffect(() => {
+    dispatch(recalculateTotalPrice());
+  }, [dispatch]);
 
   const orderSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
