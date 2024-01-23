@@ -13,6 +13,8 @@ import { IMAGES_URL } from '../../../API/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import styles from './CartItem.module.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface CartItemProps {
   product: Product;
@@ -26,6 +28,18 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
     quantity * product.price,
   );
   const dispatch = useAppDispatch();
+
+  const showToast = () =>
+    toast.success('Comment saved.', {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: 'colored',
+    });
 
   const handleQuantityChange = () => {
     const itemQuantityNumber = Number(itemQuantity);
@@ -92,6 +106,7 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
               } else {
                 dispatch(addProductComment({ product, comment: itemComment }));
                 dispatch(storeCart());
+                showToast();
               }
             }}
           />

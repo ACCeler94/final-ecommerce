@@ -10,6 +10,7 @@ import CheckoutPage from './components/pages/CheckoutPage/CheckoutPage';
 import { useAppDispatch } from './store/store';
 import { useEffect } from 'react';
 import { loadCart } from './components/features/Cart/cartSlice';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -21,6 +22,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<CartPage />} />

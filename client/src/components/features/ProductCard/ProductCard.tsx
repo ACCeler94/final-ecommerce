@@ -6,6 +6,8 @@ import { useState } from 'react';
 import Button from '../../common/Button/Button';
 import { useAppDispatch } from '../../../store/store';
 import { addToCart, recalculateTotalPrice, storeCart } from '../Cart/cartSlice';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductCard = (productData: Product) => {
   const [productQuantity, setProductQuantity] = useState<number | string>(1);
@@ -22,10 +24,23 @@ const ProductCard = (productData: Product) => {
     }
   };
 
+  const showToast = () =>
+    toast.success('Item added to cart', {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: 'colored',
+    });
+
   const addToCartHandler = () => {
     dispatch(addToCart({ quantity: productQuantity, product: productData }));
     dispatch(recalculateTotalPrice());
     dispatch(storeCart());
+    showToast();
   };
 
   return (

@@ -11,6 +11,8 @@ import {
   resetCart,
   resetCartInStorage,
 } from '../Cart/cartSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Checkout = () => {
   const cart = useSelector((state: RootState) => state.cart.shoppingCart);
@@ -33,6 +35,18 @@ const Checkout = () => {
     dispatch(recalculateTotalPrice());
   }, [dispatch]);
 
+  const showToast = () =>
+    toast.success('Item added to cart', {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: 'colored',
+    });
+
   const orderSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name || !email || !address) {
@@ -50,6 +64,7 @@ const Checkout = () => {
             console.log(res);
             dispatch(resetCart()); // reset cart on success
             dispatch(resetCartInStorage()); // reset cart in storage on success
+            showToast();
           })
           .catch((err) => {
             console.log(err);
@@ -60,6 +75,7 @@ const Checkout = () => {
 
   return (
     <div className="checkout-wrapper">
+      <ToastContainer />
       <section className={styles.orderSummary}>
         <ul>
           {cart.map((cartObj) => {

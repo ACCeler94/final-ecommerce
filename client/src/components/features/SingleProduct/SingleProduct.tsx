@@ -11,6 +11,8 @@ import { IMAGES_URL } from '../../../API/config';
 import Button from '../../common/Button/Button';
 import ErrorPage from '../../common/Error/Error';
 import { addToCart, recalculateTotalPrice, storeCart } from '../Cart/cartSlice';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // [TODO] Add spinner while loading
 const SingleProduct = () => {
@@ -31,6 +33,18 @@ const SingleProduct = () => {
     };
   }, [productId, dispatch]);
 
+  const showToast = () =>
+    toast.success('Item added to cart.', {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: 'colored',
+    });
+
   const handleQuantityInput = (value: string) => {
     if (value === '') {
       setProductQuantity(value);
@@ -46,6 +60,7 @@ const SingleProduct = () => {
     dispatch(addToCart({ quantity: productQuantity, product: currentProduct }));
     dispatch(recalculateTotalPrice());
     dispatch(storeCart());
+    showToast();
   };
 
   if (error) {
