@@ -13,6 +13,7 @@ import {
 } from '../Cart/cartSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ErrorPage from '../../common/Error/Error';
 
 const Checkout = () => {
   const cart = useSelector((state: RootState) => state.cart.shoppingCart);
@@ -39,13 +40,21 @@ const Checkout = () => {
     toast.success('Item added to cart', {
       position: 'top-center',
       autoClose: 2000,
-      hideProgressBar: true,
+      hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: false,
       draggable: false,
       progress: undefined,
       theme: 'colored',
     });
+
+  const redirectOnSuccess = () => {
+    setTimeout(() => {
+      navigate('/');
+      dispatch(resetCart()); // reset cart on success
+      dispatch(resetCartInStorage()); // reset cart in storage on success
+    }, 2000);
+  };
 
   const orderSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -62,12 +71,11 @@ const Checkout = () => {
           .placeOrder(orderObj)
           .then((res) => {
             console.log(res);
-            dispatch(resetCart()); // reset cart on success
-            dispatch(resetCartInStorage()); // reset cart in storage on success
             showToast();
+            redirectOnSuccess();
           })
           .catch((err) => {
-            console.log(err);
+            return <ErrorPage error={err} />;
           });
       }
     }
