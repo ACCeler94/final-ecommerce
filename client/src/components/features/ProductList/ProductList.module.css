@@ -14,3 +14,22 @@
 .productList li {
   padding-bottom: 75px;
 }
+
+
+@media only screen and (max-width: 992px) {
+  .productList ul {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .productList ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .productList ul {
+    grid-template-columns: 1fr;
+  }
+}

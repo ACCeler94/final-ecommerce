@@ -46,3 +46,10 @@
 .navLinksWrapper .cartIcon {
   margin-left: 20px;
 }
+
+
+@media only screen and (max-width: 768px) {
+  .navbarContentWrapper .logo{
+    font-size: var(--logo-font-size-mobile);
+  }
+}
