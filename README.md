@@ -28,3 +28,5 @@ It is a culmination of my FullStack Web Development Kodilla course. It shows int
 - User login and user creation
 - Functionality to place orders for signed in users and for guests
 - Session management
+- Search Bar
+- Product variations (sizes, colors etc.)
