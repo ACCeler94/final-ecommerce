@@ -44,3 +44,10 @@
   margin-top: 10px;
   max-width: fit-content;
 }
+
+
+@media only screen and (max-width: 992px) {
+  .checkoutFormWrapper{
+    padding-bottom: 100px;
+  }
+}

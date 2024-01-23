@@ -72,7 +72,7 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
       <div className={styles.cartProductFormWrapper}>
         <h3 className="cart-product-info">{product.name}</h3>
         <form
-          className="cart-product-form"
+          className={styles.cartProductForm}
           onSubmit={(e) => e.preventDefault()}
         >
           <div className={styles.cartProductForm_quantity}>
