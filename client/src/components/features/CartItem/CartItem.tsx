@@ -7,6 +7,7 @@ import {
   changeProductQuantity,
   recalculateTotalPrice,
   removeFromCart,
+  storeCart,
 } from '../Cart/cartSlice';
 import { IMAGES_URL } from '../../../API/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -33,9 +34,16 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
         changeProductQuantity({ product, quantity: itemQuantityNumber }),
       );
       dispatch(recalculateTotalPrice());
+      dispatch(storeCart());
     } else {
       setItemQuantity(quantity.toString());
     }
+  };
+
+  const removeItemHandler = () => {
+    dispatch(removeFromCart({ product }));
+    dispatch(recalculateTotalPrice());
+    dispatch(storeCart());
   };
 
   useEffect(() => {
@@ -83,6 +91,7 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
                 alert('Comment is too long! Use max 150 characters.');
               } else {
                 dispatch(addProductComment({ product, comment: itemComment }));
+                dispatch(storeCart());
               }
             }}
           />
@@ -90,10 +99,7 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
       </div>
       <FontAwesomeIcon
         icon={faTrash}
-        onClick={() => {
-          dispatch(removeFromCart({ product }));
-          dispatch(recalculateTotalPrice());
-        }}
+        onClick={removeItemHandler}
         style={{ cursor: 'pointer' }}
       />
     </div>

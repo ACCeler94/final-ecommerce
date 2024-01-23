@@ -10,7 +10,7 @@ import styles from './SingleProduct.module.css';
 import { IMAGES_URL } from '../../../API/config';
 import Button from '../../common/Button/Button';
 import ErrorPage from '../../common/Error/Error';
-import { addToCart, recalculateTotalPrice } from '../Cart/cartSlice';
+import { addToCart, recalculateTotalPrice, storeCart } from '../Cart/cartSlice';
 
 // [TODO] Add spinner while loading
 const SingleProduct = () => {
@@ -45,6 +45,7 @@ const SingleProduct = () => {
   const addToCartHandler = () => {
     dispatch(addToCart({ quantity: productQuantity, product: currentProduct }));
     dispatch(recalculateTotalPrice());
+    dispatch(storeCart());
   };
 
   if (error) {

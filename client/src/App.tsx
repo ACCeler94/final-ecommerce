@@ -7,8 +7,17 @@ import CategoryPage from './components/pages/CategoryPage/CategoryPage';
 import SingleProductPage from './components/pages/SingleProductPage/SingleProductPage';
 import CartPage from './components/pages/CartPage/CartPage';
 import CheckoutPage from './components/pages/CheckoutPage/CheckoutPage';
+import { useAppDispatch } from './store/store';
+import { useEffect } from 'react';
+import { loadCart } from './components/features/Cart/cartSlice';
 
 function App() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(loadCart());
+  }, [dispatch]);
+
   return (
     <>
       <Navbar />

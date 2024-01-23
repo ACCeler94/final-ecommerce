@@ -5,7 +5,7 @@ import styles from './ProductCard.module.css';
 import { useState } from 'react';
 import Button from '../../common/Button/Button';
 import { useAppDispatch } from '../../../store/store';
-import { addToCart, recalculateTotalPrice } from '../Cart/cartSlice';
+import { addToCart, recalculateTotalPrice, storeCart } from '../Cart/cartSlice';
 
 const ProductCard = (productData: Product) => {
   const [productQuantity, setProductQuantity] = useState<number | string>(1);
@@ -25,6 +25,7 @@ const ProductCard = (productData: Product) => {
   const addToCartHandler = () => {
     dispatch(addToCart({ quantity: productQuantity, product: productData }));
     dispatch(recalculateTotalPrice());
+    dispatch(storeCart());
   };
 
   return (

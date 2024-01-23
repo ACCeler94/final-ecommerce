@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import Product from '../../../types/Product';
 
 export interface CartState {
@@ -10,6 +10,26 @@ const initialState: CartState = {
   shoppingCart: [],
   totalPrice: null,
 };
+
+export const storeCart = createAsyncThunk(
+  'cart/storeInStorage',
+  async (_, { getState }) => {
+    const { cart } = getState() as { cart: CartState };
+    localStorage.setItem('shoppingCart', JSON.stringify(cart.shoppingCart));
+  },
+);
+
+export const loadCart = createAsyncThunk('cart/loadFromStorage', async () => {
+  const shoppingCart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+  return { shoppingCart };
+});
+
+export const resetCartInStorage = createAsyncThunk(
+  'cart/removeFromStorage',
+  async () => {
+    localStorage.removeItem('shoppingCart');
+  },
+);
 
 export const cartSlice = createSlice({
   name: 'cart',
@@ -48,6 +68,30 @@ export const cartSlice = createSlice({
         0,
       );
     },
+    resetCart: (state) => {
+      state.shoppingCart = [];
+    },
+  },
+  extraReducers(builder) {
+    builder.addCase(storeCart.fulfilled, () => {
+      console.log('Shopping cart saved.');
+    });
+    builder.addCase(storeCart.rejected, (state, action) => {
+      console.error(action.error.message);
+    });
+    builder.addCase(
+      loadCart.fulfilled,
+      (
+        state,
+        action: PayloadAction<{ shoppingCart: CartState['shoppingCart'] }>,
+      ) => {
+        state.shoppingCart = action.payload.shoppingCart;
+      },
+    );
+    builder.addCase(loadCart.rejected, (state, action) => {
+      state.shoppingCart = [];
+      console.log(action.error.message);
+    });
   },
 });
 
@@ -57,5 +101,6 @@ export const {
   changeProductQuantity,
   addProductComment,
   recalculateTotalPrice,
+  resetCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;

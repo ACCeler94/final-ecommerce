@@ -6,7 +6,11 @@ import { useEffect, useState } from 'react';
 import Button from '../../common/Button/Button';
 import Order from '../../../types/Order';
 import ordersAPI from '../../../API/ordersApi';
-import { recalculateTotalPrice } from '../Cart/cartSlice';
+import {
+  recalculateTotalPrice,
+  resetCart,
+  resetCartInStorage,
+} from '../Cart/cartSlice';
 
 const Checkout = () => {
   const cart = useSelector((state: RootState) => state.cart.shoppingCart);
@@ -44,6 +48,8 @@ const Checkout = () => {
           .placeOrder(orderObj)
           .then((res) => {
             console.log(res);
+            dispatch(resetCart()); // reset cart on success
+            dispatch(resetCartInStorage()); // reset cart in storage on success
           })
           .catch((err) => {
             console.log(err);
