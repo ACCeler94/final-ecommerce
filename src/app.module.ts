@@ -24,8 +24,13 @@ import { join } from 'path';
     AuthModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', '../public'),
+      serveRoot: '/photos',
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', '../client', 'dist'),
     }),
   ],
+
   controllers: [AppController],
   providers: [AppService],
 })

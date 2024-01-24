@@ -76,7 +76,7 @@ export const cartSlice = createSlice({
     builder.addCase(storeCart.fulfilled, () => {
       console.log('Shopping cart saved.');
     });
-    builder.addCase(storeCart.rejected, (state, action) => {
+    builder.addCase(storeCart.rejected, (_state, action) => {
       console.error(action.error.message);
     });
     builder.addCase(
