@@ -37,7 +37,7 @@ const Checkout = () => {
   }, [dispatch]);
 
   const showToast = () =>
-    toast.success('Item added to cart', {
+    toast.success('Order successfully placed. You will be redirected.', {
       position: 'top-center',
       autoClose: 2000,
       hideProgressBar: false,
