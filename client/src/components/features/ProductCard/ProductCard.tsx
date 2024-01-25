@@ -8,21 +8,11 @@ import { useAppDispatch } from '../../../store/store';
 import { addToCart, recalculateTotalPrice, storeCart } from '../Cart/cartSlice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import QuantityField from '../../common/QuantityField/QuantityField';
 
 const ProductCard = (productData: Product) => {
   const [productQuantity, setProductQuantity] = useState<number | string>(1);
   const dispatch = useAppDispatch();
-
-  const handleQuantityChange = (value: string) => {
-    if (value === '') {
-      setProductQuantity(value);
-    } else {
-      const numValue = Number(value);
-      if (numValue <= 0) setProductQuantity(1);
-      else if (numValue > 99) setProductQuantity(99);
-      else setProductQuantity(numValue);
-    }
-  };
 
   const showToast = () =>
     toast.success('Item added to cart', {
@@ -59,14 +49,10 @@ const ProductCard = (productData: Product) => {
         </div>
       </Link>
       <div className={styles.cartButtonsWrapper}>
-        <input
-          type="number"
-          id={`quantity-${productData.id}`}
-          name="product-quantity"
-          min="1"
-          max="99"
-          value={productQuantity}
-          onChange={(e) => handleQuantityChange(e.target.value)}
+        <QuantityField
+          productId={productData.id}
+          changeQuantity={(value: number | string) => setProductQuantity(value)}
+          quantity={productQuantity}
         />
         <Button buttonText="Add to cart" buttonHandler={addToCartHandler} />
       </div>
