@@ -1,1 +1,0 @@
-{"version":3,"file":"productsApi.js","sourceRoot":"","sources":["../../../../client/src/API/productsApi.ts"],"names":[],"mappings":";;AAAA,iCAA0B;AAC1B,qCAAmC;AAEnC,MAAM,WAAW,GAAG;IAElB,QAAQ,EAAE,GAAG,EAAE,CAAC,eAAK,CAAC,GAAG,CAAC,GAAG,gBAAO,WAAW,CAAC;IAChD,SAAS,EAAE,CAAC,EAAU,EAAE,EAAE,CAAC,eAAK,CAAC,GAAG,CAAC,GAAG,gBAAO,aAAa,EAAE,EAAE,CAAC;CAClE,CAAC;AAEF,kBAAe,WAAW,CAAC"}

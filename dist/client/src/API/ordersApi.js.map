@@ -1,1 +1,0 @@
-{"version":3,"file":"ordersApi.js","sourceRoot":"","sources":["../../../../client/src/API/ordersApi.ts"],"names":[],"mappings":";;AAAA,iCAA0B;AAE1B,qCAAmC;AAEnC,MAAM,SAAS,GAAG;IAEhB,UAAU,EAAE,CAAC,SAAgB,EAAE,EAAE,CAAC,eAAK,CAAC,IAAI,CAAC,GAAG,gBAAO,SAAS,EAAE,SAAS,CAAC;CAC7E,CAAC;AAEF,kBAAe,SAAS,CAAC"}
