@@ -69,13 +69,6 @@
   z-index: 0;
 }
 
-.cartButtonsWrapper input {
-  padding: 10px;
-  font-size: 1.05em;
-  text-align: center;
-  max-width: 10%;
-}
-
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
