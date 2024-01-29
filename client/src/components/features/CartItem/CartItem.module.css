@@ -2,7 +2,8 @@
   display: flex;
 }
 
-.cartProduct_ImageWrapper img {
+
+.cartProductImageWrapper img {
   width: 125px;
   height: 100%;
   object-fit: cover;
@@ -15,25 +16,30 @@
 
 .cartProductFormWrapper h3 {
   margin: 0;
+  font-size: 1.3em;
 }
 
-.cartProductForm_quantity {
+.cartProductFormWrapper form > button {
+  margin-left: 0;
+}
+
+.cartProductFormQuantity {
   margin: 10px 0;
 }
 
-.cartProductForm_quantity input {
-  height: 2em;
-  width: 2em;
-  text-align: center;
+.quantityFieldContainer {
+  width: fit-content;
+  margin-left: -15px;
 }
 
-.cartProductForm_quantity .itemPrice {
+
+.cartProductFormQuantity .itemPrice {
   font-weight: var(--main-font-semi-bold);
-  margin-left: 15px;
+  font-size: 1.1em;
 }
 
 
-.cartProductForm_comment textarea {
+.cartProductFormComment textarea {
   margin: 5px 0;
   padding: 10px;
   resize: none;

@@ -47,16 +47,14 @@
     margin-top: 10%;
   }
 
-  .cartButtonsWrapper input {
-    padding: 10px;
-    font-size: 1.05em;
-    margin-right: 20px;
-    text-align: center;
-    max-width: 50px;
+  .quantityFieldContainer {
+    display: flex;
+    align-items: baseline;
   }
 
   .productPrice {
     font-size: 1.05em;
+    padding-left: 15px;
   }
 
   .productPrice h4 {

@@ -15,6 +15,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import styles from './CartItem.module.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import QuantityField from '../../common/QuantityField/QuantityField';
 
 interface CartItemProps {
   product: Product;
@@ -22,7 +23,7 @@ interface CartItemProps {
 }
 
 const CartItem = ({ product, quantity }: CartItemProps) => {
-  const [itemQuantity, setItemQuantity] = useState(quantity.toString());
+  const [itemQuantity, setItemQuantity] = useState<number | string>(quantity);
   const [itemComment, setItemComment] = useState('');
   const [itemTotalPrice, setItemTotalPrice] = useState(
     quantity * product.price,
@@ -41,19 +42,6 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
       theme: 'colored',
     });
 
-  const handleQuantityChange = () => {
-    const itemQuantityNumber = Number(itemQuantity);
-    if (itemQuantityNumber > 0) {
-      dispatch(
-        changeProductQuantity({ product, quantity: itemQuantityNumber }),
-      );
-      dispatch(recalculateTotalPrice());
-      dispatch(storeCart());
-    } else {
-      setItemQuantity(quantity.toString());
-    }
-  };
-
   const removeItemHandler = () => {
     dispatch(removeFromCart({ product }));
     dispatch(recalculateTotalPrice());
@@ -64,9 +52,15 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
     setItemTotalPrice(quantity * product.price);
   }, [quantity, product]);
 
+  // since changes in the cart need to be saved immediately if the given quantity is number - dispatch action to change quantity in the cart
+  useEffect(() => {
+    if (itemQuantity && typeof itemQuantity === 'number')
+      dispatch(changeProductQuantity({ quantity: itemQuantity, product }));
+  }, [dispatch, itemQuantity, product]);
+
   return (
     <div className={styles.cartProduct}>
-      <div className={styles.cartProduct_ImageWrapper}>
+      <div className={styles.cartProductImageWrapper}>
         <img src={`${IMAGES_URL}/${product.photo}`} />
       </div>
       <div className={styles.cartProductFormWrapper}>
@@ -75,18 +69,21 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
           className={styles.cartProductForm}
           onSubmit={(e) => e.preventDefault()}
         >
-          <div className={styles.cartProductForm_quantity}>
-            <input
-              id={product.id}
-              value={itemQuantity}
-              onChange={(e) => setItemQuantity(e.target.value)}
-              onBlur={handleQuantityChange}
-            />
+          <div className={styles.cartProductFormQuantity}>
+            <div className={styles.quantityFieldContainer}>
+              <QuantityField
+                productId={product.id}
+                quantity={itemQuantity}
+                changeQuantity={(value: number | string) =>
+                  setItemQuantity(value)
+                }
+              />
+            </div>
             <span
               className={styles.itemPrice}
             >{`Price: $${itemTotalPrice}`}</span>
           </div>
-          <div className={styles.cartProductForm_comment}>
+          <div className={styles.cartProductFormComment}>
             <textarea
               id={`comment-item-${product.id}`}
               placeholder="Add comment to the item..."

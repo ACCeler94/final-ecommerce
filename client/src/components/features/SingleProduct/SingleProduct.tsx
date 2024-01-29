@@ -13,6 +13,7 @@ import ErrorPage from '../../common/Error/Error';
 import { addToCart, recalculateTotalPrice, storeCart } from '../Cart/cartSlice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import QuantityField from '../../common/QuantityField/QuantityField';
 
 // [TODO] Add spinner while loading
 const SingleProduct = () => {
@@ -44,17 +45,6 @@ const SingleProduct = () => {
       progress: undefined,
       theme: 'colored',
     });
-
-  const handleQuantityInput = (value: string) => {
-    if (value === '') {
-      setProductQuantity(value);
-    } else {
-      const numValue = Number(value);
-      if (numValue <= 0) setProductQuantity(1);
-      else if (numValue > 99) setProductQuantity(99);
-      else setProductQuantity(numValue);
-    }
-  };
 
   const addToCartHandler = () => {
     dispatch(addToCart({ quantity: productQuantity, product: currentProduct }));
@@ -89,19 +79,19 @@ const SingleProduct = () => {
               <div className={styles.productPrice}>
                 Price: <h4>${currentProduct.price}</h4>
               </div>
-              <input
-                type="number"
-                id={`quantity-${currentProduct.id}}`}
-                name="product-quantity"
-                min="1"
-                max="99"
-                value={productQuantity}
-                onChange={(e) => handleQuantityInput(e.target.value)}
-              />
-              <Button
-                buttonText="ADD TO CART"
-                buttonHandler={addToCartHandler}
-              />
+              <div className={styles.quantityFieldContainer}>
+                <QuantityField
+                  quantity={productQuantity}
+                  changeQuantity={(value: number | string) =>
+                    setProductQuantity(value)
+                  }
+                  productId={productId ? productId : ''}
+                />
+                <Button
+                  buttonText="ADD TO CART"
+                  buttonHandler={addToCartHandler}
+                />
+              </div>
             </div>
           </div>
         </div>

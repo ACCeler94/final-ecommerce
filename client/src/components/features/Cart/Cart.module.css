@@ -23,6 +23,10 @@
   font-weight: var(--main-font-bold);
 }
 
+.cartSummary button {
+  margin: 0;
+}
+
 @media only screen and (max-width: 992px) {
   .cartProductList {
     padding-bottom: 100px;
@@ -31,6 +35,10 @@
 
 @media only screen and (max-width: 576px) {
   .cartProductList ul {
+    padding: 0;
+  }
+
+  .cartSummary {
     padding: 0;
   }
 }
