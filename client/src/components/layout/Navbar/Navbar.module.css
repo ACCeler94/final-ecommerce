@@ -54,3 +54,12 @@
     font-size: var(--logo-font-size-mobile);
   }
 }
+
+@media only screen and (max-width: 576px) {
+  .navbar {
+    height: 100px;
+  }
+  .navLinksWrapper {
+    display: flex;
+  }
+}
