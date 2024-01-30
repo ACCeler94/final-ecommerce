@@ -42,8 +42,10 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const alreadyInCart = state.shoppingCart.find(
-        (elem) => elem.product.id === action.payload.product.id,
-      ); // check if the product is already in the cart
+        (elem) =>
+          elem.product.id === action.payload.product.id &&
+          elem.size === action.payload.size,
+      ); // check if the product is already in the cart - including the same size
       if (alreadyInCart) {
         alreadyInCart.quantity += action.payload.quantity; // increase by chosen quantity if the item is already in the cart
       } else {
