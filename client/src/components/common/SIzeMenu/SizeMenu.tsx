@@ -1,9 +1,9 @@
-interface sizeMenuProps {
+interface SizeMenuProps {
   changeHandler: (size: string) => void;
   sizes: string;
 }
 
-const sizeMenu = ({ changeHandler, sizes }: sizeMenuProps) => {
+const SizeMenu = ({ changeHandler, sizes }: SizeMenuProps) => {
   const sizesArr = sizes.split(', ');
 
   return (
@@ -15,4 +15,4 @@ const sizeMenu = ({ changeHandler, sizes }: sizeMenuProps) => {
   );
 };
 
-export default sizeMenu;
+export default SizeMenu;
