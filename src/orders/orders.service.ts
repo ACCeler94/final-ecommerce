@@ -36,6 +36,7 @@ export class OrdersService {
           productId: productsElem.product.id,
           quantity: productsElem.quantity,
           comment: productsElem.comment,
+          size: productsElem.size,
         };
 
         await this.prismaService.productOnOrder.create({

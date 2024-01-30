@@ -4,7 +4,12 @@ import { IsArray, IsNotEmpty, IsNumber } from 'class-validator';
 export class CreateOrderDto {
   @IsArray()
   @IsNotEmpty()
-  products: { product: Product; quantity: number; comment?: string }[];
+  products: {
+    product: Product;
+    quantity: number;
+    comment?: string;
+    size: string;
+  }[];
 
   /* @IsString()
   @IsNotEmpty()

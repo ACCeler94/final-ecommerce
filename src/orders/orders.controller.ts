@@ -56,7 +56,7 @@ export class OrdersController {
 
   @Post('/')
   async createOrder(@Body() orderData: CreateOrderDto) {
-    const { userData, products, orderTotal } = orderData;
+    const { products } = orderData;
     for (const productsElem of products) {
       try {
         await validateProductId(productsElem.product.id); // check if given product ids have a record in database
