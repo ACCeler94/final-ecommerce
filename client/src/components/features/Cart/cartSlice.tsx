@@ -2,7 +2,12 @@ import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import Product from '../../../types/Product';
 
 export interface CartState {
-  shoppingCart: { quantity: number; product: Product; comment: string }[];
+  shoppingCart: {
+    quantity: number;
+    product: Product;
+    comment: string;
+    size: string;
+  }[];
   totalPrice: number | null;
 }
 
@@ -70,6 +75,12 @@ export const cartSlice = createSlice({
     },
     resetCart: (state) => {
       state.shoppingCart = [];
+    },
+    changeProductSize: (state, action) => {
+      const elemToChange = state.shoppingCart.find(
+        (elem) => elem.product.id === action.payload.product.id,
+      );
+      if (elemToChange) elemToChange.size = action.payload.size;
     },
   },
   extraReducers(builder) {

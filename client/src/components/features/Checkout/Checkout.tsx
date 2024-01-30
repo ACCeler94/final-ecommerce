@@ -69,8 +69,7 @@ const Checkout = () => {
         };
         ordersAPI
           .placeOrder(orderObj)
-          .then((res) => {
-            console.log(res);
+          .then(() => {
             showToast();
             redirectOnSuccess();
           })

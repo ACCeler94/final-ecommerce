@@ -4,6 +4,7 @@ type ProductOnOrder = {
   product: Product;
   quantity: number;
   comment: string;
+  size: string;
 };
 
 type Order = {
