@@ -15,6 +15,7 @@ model Product {
   price       Int
   photo       String
   description String @db.VarChar(800)
+  sizes       String
 
   orders ProductOnOrder[]
 }

@@ -6,6 +6,7 @@ type Product = {
   price: number;
   photo: string;
   description: string;
+  sizes: string;
 };
 
 export default Product;
