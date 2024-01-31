@@ -14,6 +14,7 @@ import { addToCart, recalculateTotalPrice, storeCart } from '../Cart/cartSlice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import QuantityField from '../../common/QuantityField/QuantityField';
+import SizeMenu from '../../common/SIzeMenu/SizeMenu';
 
 // [TODO] Add spinner while loading
 const SingleProduct = () => {
@@ -24,6 +25,7 @@ const SingleProduct = () => {
   );
   const error = useSelector((state: RootState) => state.products.error);
   const [productQuantity, setProductQuantity] = useState<number | string>(1);
+  const [productSize, setProductSize] = useState<string>('');
 
   useEffect(() => {
     if (productId) {
@@ -47,7 +49,13 @@ const SingleProduct = () => {
     });
 
   const addToCartHandler = () => {
-    dispatch(addToCart({ quantity: productQuantity, product: currentProduct }));
+    dispatch(
+      addToCart({
+        quantity: productQuantity,
+        product: currentProduct,
+        size: productSize,
+      }),
+    );
     dispatch(recalculateTotalPrice());
     dispatch(storeCart());
     showToast();
@@ -76,8 +84,16 @@ const SingleProduct = () => {
               <p>{currentProduct.description}</p>
             </div>
             <div className={styles.cartButtonsWrapper}>
-              <div className={styles.productPrice}>
-                Price: <h4>${currentProduct.price}</h4>
+              <div className={styles.productPriceAndSize}>
+                <div className={styles.priceWrapper}>
+                  Price: <h4>${currentProduct.price}</h4>
+                </div>
+                <span className={styles.sizeLabel}>Size:</span>
+                <SizeMenu
+                  sizes={currentProduct.sizes}
+                  changeHandler={(size) => setProductSize(size)}
+                  productId={currentProduct.id}
+                />
               </div>
               <div className={styles.quantityFieldContainer}>
                 <QuantityField

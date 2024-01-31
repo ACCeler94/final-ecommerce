@@ -9,9 +9,11 @@ import { addToCart, recalculateTotalPrice, storeCart } from '../Cart/cartSlice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import QuantityField from '../../common/QuantityField/QuantityField';
+import SizeMenu from '../../common/SIzeMenu/SizeMenu';
 
 const ProductCard = (productData: Product) => {
   const [productQuantity, setProductQuantity] = useState<number | string>(1);
+  const [productSize, setProductSize] = useState<string>('');
   const dispatch = useAppDispatch();
 
   const showToast = () =>
@@ -27,7 +29,13 @@ const ProductCard = (productData: Product) => {
     });
 
   const addToCartHandler = () => {
-    dispatch(addToCart({ quantity: productQuantity, product: productData }));
+    dispatch(
+      addToCart({
+        quantity: productQuantity,
+        product: productData,
+        size: productSize,
+      }),
+    );
     dispatch(recalculateTotalPrice());
     dispatch(storeCart());
     showToast();
@@ -49,6 +57,11 @@ const ProductCard = (productData: Product) => {
         </div>
       </Link>
       <div className={styles.cartButtonsWrapper}>
+        <SizeMenu
+          sizes={productData.sizes}
+          changeHandler={(size) => setProductSize(size)}
+          productId={productData.id}
+        />
         <QuantityField
           productId={productData.id}
           changeQuantity={(value: number | string) => setProductQuantity(value)}
