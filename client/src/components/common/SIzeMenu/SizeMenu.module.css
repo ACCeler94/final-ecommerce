@@ -1,0 +1,12 @@
+.sizeSelect {
+  background-color: var(--card-bg-color);
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 5px;
+  border: 2px solid var(--button-black-bg-color);
+  font-weight: 600;
+}
+
+select:focus {
+  outline: none;
+}

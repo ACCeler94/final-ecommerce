@@ -7,11 +7,10 @@
 
 .quantityWrapper input {
   padding: 10px;
-  font-size: 1.15em;
   text-align: center;
-  height: 2.5em;
   box-sizing: border-box;
   max-width: 60px;
+  font-size: 1.1em;
 }
 
 .quantityButton {
