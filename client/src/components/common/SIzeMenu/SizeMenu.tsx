@@ -2,20 +2,25 @@ import styles from './SizeMenu.module.css';
 
 interface SizeMenuProps {
   changeHandler: (size: string) => void;
-  sizes: string;
+  sizes: string[];
   productId: string;
+  selectedValue: string;
 }
 
-const SizeMenu = ({ changeHandler, sizes, productId }: SizeMenuProps) => {
-  const sizesArr = sizes.split(', ');
-
+const SizeMenu = ({
+  changeHandler,
+  sizes,
+  productId,
+  selectedValue,
+}: SizeMenuProps) => {
   return (
     <select
       id={`size-select-${productId}`}
       className={styles.sizeSelect}
       onChange={(e) => changeHandler(e.target.value)}
+      value={selectedValue}
     >
-      {sizesArr.map((size) => {
+      {sizes.map((size) => {
         return (
           <option value={size} key={size}>
             {size.toUpperCase()}

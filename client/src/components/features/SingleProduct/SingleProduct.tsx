@@ -14,7 +14,8 @@ import { addToCart, recalculateTotalPrice, storeCart } from '../Cart/cartSlice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import QuantityField from '../../common/QuantityField/QuantityField';
-import SizeMenu from '../../common/SIzeMenu/SizeMenu';
+import SizeMenu from '../../common/SizeMenu/SizeMenu';
+import { nanoid } from 'nanoid';
 
 // [TODO] Add spinner while loading
 const SingleProduct = () => {
@@ -24,6 +25,9 @@ const SingleProduct = () => {
     (state: RootState) => state.products.currentProduct,
   );
   const error = useSelector((state: RootState) => state.products.error);
+
+  const sizesArr = currentProduct ? currentProduct.sizes.split(', ') : [];
+
   const [productQuantity, setProductQuantity] = useState<number | string>(1);
   const [productSize, setProductSize] = useState<string>('');
 
@@ -51,6 +55,7 @@ const SingleProduct = () => {
   const addToCartHandler = () => {
     dispatch(
       addToCart({
+        cartItemId: nanoid(),
         quantity: productQuantity,
         product: currentProduct,
         size: productSize,
@@ -90,9 +95,10 @@ const SingleProduct = () => {
                 </div>
                 <span className={styles.sizeLabel}>Size:</span>
                 <SizeMenu
-                  sizes={currentProduct.sizes}
+                  sizes={sizesArr}
                   changeHandler={(size) => setProductSize(size)}
                   productId={currentProduct.id}
+                  selectedValue={productSize}
                 />
               </div>
               <div className={styles.quantityFieldContainer}>

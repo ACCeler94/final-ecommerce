@@ -5,6 +5,7 @@ import { useAppDispatch } from '../../../store/store';
 import {
   addProductComment,
   changeProductQuantity,
+  changeProductSize,
   recalculateTotalPrice,
   removeFromCart,
   storeCart,
@@ -16,19 +17,23 @@ import styles from './CartItem.module.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import QuantityField from '../../common/QuantityField/QuantityField';
+import SizeMenu from '../../common/SizeMenu/SizeMenu';
 
 interface CartItemProps {
   product: Product;
   quantity: number;
+  size: string;
 }
 
-const CartItem = ({ product, quantity }: CartItemProps) => {
+const CartItem = ({ product, quantity, size }: CartItemProps) => {
   const [itemQuantity, setItemQuantity] = useState<number | string>(quantity);
   const [itemComment, setItemComment] = useState('');
   const [itemTotalPrice, setItemTotalPrice] = useState(
     quantity * product.price,
   );
+  const [productSize, setProductSize] = useState<string>(size);
   const dispatch = useAppDispatch();
+  const sizesArr = product.sizes.split(', ');
 
   const showToast = () =>
     toast.success('Comment saved.', {
@@ -43,7 +48,7 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
     });
 
   const removeItemHandler = () => {
-    dispatch(removeFromCart({ product }));
+    dispatch(removeFromCart({ product, size }));
     dispatch(recalculateTotalPrice());
     dispatch(storeCart());
   };
@@ -58,6 +63,12 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
       dispatch(changeProductQuantity({ quantity: itemQuantity, product }));
   }, [dispatch, itemQuantity, product]);
 
+  useEffect(() => {
+    dispatch(
+      changeProductSize({ product, prevSize: size, newSize: productSize }),
+    );
+  }, [productSize, dispatch, size, product]);
+
   return (
     <div className={styles.cartProduct}>
       <div className={styles.cartProductImageWrapper}>
@@ -70,6 +81,12 @@ const CartItem = ({ product, quantity }: CartItemProps) => {
           onSubmit={(e) => e.preventDefault()}
         >
           <div className={styles.cartProductFormQuantity}>
+            <SizeMenu
+              productId={product.id}
+              sizes={sizesArr}
+              changeHandler={(size) => setProductSize(size)}
+              selectedValue={productSize}
+            />
             <div className={styles.quantityFieldContainer}>
               <QuantityField
                 productId={product.id}
