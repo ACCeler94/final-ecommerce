@@ -1,5 +1,4 @@
 import styles from './SizeMenu.module.css';
-import { nanoid } from 'nanoid';
 
 interface SizeMenuProps {
   changeHandler: (size: string) => void;
@@ -18,7 +17,7 @@ const SizeMenu = ({ changeHandler, sizes, productId }: SizeMenuProps) => {
     >
       {sizesArr.map((size) => {
         return (
-          <option value={size} key={nanoid()}>
+          <option value={size} key={size}>
             {size.toUpperCase()}
           </option>
         );
