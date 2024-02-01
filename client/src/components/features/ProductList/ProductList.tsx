@@ -17,7 +17,7 @@ const ProductList = ({ category }: ProductListProps) => {
     (state: RootState) => state.products.productList,
   );
   const error = useSelector((state: RootState) => state.products.error);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [productsToShow, setProductsToShow] = useState<Product[]>([]);
 
   useEffect(() => {
     dispatch(fetchAllProducts());
@@ -28,8 +28,8 @@ const ProductList = ({ category }: ProductListProps) => {
       const filteredByCategory = products.filter(
         (product) => product.sex === category.toLowerCase(),
       );
-      setFilteredProducts(filteredByCategory);
-    }
+      setProductsToShow(filteredByCategory);
+    } else setProductsToShow(products);
   }, [category, products]);
 
   // return error page if error occurred
@@ -37,28 +37,10 @@ const ProductList = ({ category }: ProductListProps) => {
     return <ErrorPage error={error} />;
   }
 
-  // return categorized products
-  if (category) {
-    return (
-      <section className={styles.productList}>
-        <ul>
-          {filteredProducts.map((product) => {
-            return (
-              <li key={product.id}>
-                <ProductCard {...product} />
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-    );
-  }
-
-  // default return
   return (
     <section className={styles.productList}>
       <ul>
-        {products.map((product) => {
+        {productsToShow.map((product) => {
           return (
             <li key={product.id}>
               <ProductCard {...product} />
