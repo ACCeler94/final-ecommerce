@@ -77,10 +77,7 @@
 }
 
 .sizeAndQuantityWrapper select {
-  width: 70px;
-  align-self: center;
   background-color: var(--card-bg-color-transparent);
-  height: 2.5em;
 }
 
 

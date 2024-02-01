@@ -54,14 +54,16 @@
 
   .productPriceAndSize {
     font-size: 1.05em;
-    padding-left: 10px;
     margin-bottom: 15px;
   }
 
   .productPriceAndSize h4 {
     display: inline-block;
     margin-left: 5px;
+  }
 
+  .productPriceAndSize select {
+    background-color: var(--card-bg-color);
   }
 
   .sizeLabel {

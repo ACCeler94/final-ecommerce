@@ -29,13 +29,16 @@
 
 .quantityFieldContainer {
   width: fit-content;
-  margin-left: -10px;
 }
 
 
 .cartProductFormQuantity .itemPrice {
   font-weight: var(--main-font-semi-bold);
   font-size: 1.1em;
+}
+
+.cartProductFormQuantity select {
+  background-color: var(--main-bg-color);
 }
 
 
