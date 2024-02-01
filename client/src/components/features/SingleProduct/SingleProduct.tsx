@@ -110,7 +110,7 @@ const SingleProduct = () => {
                   productId={productId ? productId : ''}
                 />
                 <Button
-                  buttonText="ADD TO CART"
+                  buttonText="Add to Cart"
                   buttonHandler={addToCartHandler}
                 />
               </div>

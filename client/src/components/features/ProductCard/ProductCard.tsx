@@ -76,7 +76,7 @@ const ProductCard = (productData: Product) => {
             quantity={productQuantity}
           />
         </div>
-        <Button buttonText="Add to cart" buttonHandler={addToCartHandler} />
+        <Button buttonText="Add to Cart" buttonHandler={addToCartHandler} />
       </div>
     </div>
   );
