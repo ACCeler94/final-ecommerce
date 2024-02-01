@@ -6,6 +6,7 @@ import Button from '../../common/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { recalculateTotalPrice } from './cartSlice';
+import { nanoid } from 'nanoid';
 
 const Cart = () => {
   const cart = useSelector((state: RootState) => state.cart.shoppingCart);
@@ -13,10 +14,10 @@ const Cart = () => {
   const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
   const dispatch = useAppDispatch();
 
-  // recalculate totalPrice if the component mounts to make sure it is up to date
+  // recalculate totalPrice on mount and cart change
   useEffect(() => {
     dispatch(recalculateTotalPrice());
-  }, [dispatch]);
+  }, [dispatch, cart]);
 
   if (cart.length === 0) {
     return (
@@ -32,8 +33,8 @@ const Cart = () => {
       <ul>
         {cart.map((cartObj) => {
           return (
-            <li key={cartObj.product.id} className={styles.cartItemWrapper}>
-              <CartItem {...cartObj} />
+            <li key={nanoid()} className={styles.cartItemWrapper}>
+              <CartItem key={nanoid()} {...cartObj} />
             </li>
           );
         })}

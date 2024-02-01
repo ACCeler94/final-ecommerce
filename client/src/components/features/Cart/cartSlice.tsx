@@ -7,6 +7,7 @@ export interface CartState {
     product: Product;
     comment: string;
     size: string;
+    cartItemId: string;
   }[];
   totalPrice: number | null;
 }
@@ -54,18 +55,18 @@ export const cartSlice = createSlice({
     },
     removeFromCart: (state, action) => {
       state.shoppingCart = state.shoppingCart.filter(
-        (elem) => elem.product.id !== action.payload.product.id,
+        (elem) => elem.cartItemId !== action.payload.cartItemId,
       );
     },
     changeProductQuantity: (state, action) => {
       const elemToChange = state.shoppingCart.find(
-        (elem) => elem.product.id === action.payload.product.id,
+        (elem) => elem.cartItemId === action.payload.cartItemId,
       );
       if (elemToChange) elemToChange.quantity = action.payload.quantity;
     },
     addProductComment: (state, action) => {
       const elemToChange = state.shoppingCart.find(
-        (elem) => elem.product.id === action.payload.product.id,
+        (elem) => elem.cartItemId === action.payload.cartItemId,
       );
       if (elemToChange) elemToChange.comment = action.payload.comment;
     },
@@ -80,9 +81,9 @@ export const cartSlice = createSlice({
     },
     changeProductSize: (state, action) => {
       const elemToChange = state.shoppingCart.find(
-        (elem) => elem.product.id === action.payload.product.id,
+        (elem) => elem.cartItemId === action.payload.cartItemId,
       );
-      if (elemToChange) elemToChange.size = action.payload.size;
+      if (elemToChange) elemToChange.size = action.payload.newSize;
     },
   },
   extraReducers(builder) {
@@ -115,5 +116,6 @@ export const {
   addProductComment,
   recalculateTotalPrice,
   resetCart,
+  changeProductSize,
 } = cartSlice.actions;
 export default cartSlice.reducer;

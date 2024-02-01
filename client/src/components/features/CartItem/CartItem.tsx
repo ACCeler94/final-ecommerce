@@ -23,9 +23,10 @@ interface CartItemProps {
   product: Product;
   quantity: number;
   size: string;
+  cartItemId: string;
 }
 
-const CartItem = ({ product, quantity, size }: CartItemProps) => {
+const CartItem = ({ product, quantity, size, cartItemId }: CartItemProps) => {
   const [itemQuantity, setItemQuantity] = useState<number | string>(quantity);
   const [itemComment, setItemComment] = useState('');
   const [itemTotalPrice, setItemTotalPrice] = useState(
@@ -48,7 +49,7 @@ const CartItem = ({ product, quantity, size }: CartItemProps) => {
     });
 
   const removeItemHandler = () => {
-    dispatch(removeFromCart({ product, size }));
+    dispatch(removeFromCart({ cartItemId }));
     dispatch(recalculateTotalPrice());
     dispatch(storeCart());
   };
@@ -60,14 +61,12 @@ const CartItem = ({ product, quantity, size }: CartItemProps) => {
   // since changes in the cart need to be saved immediately if the given quantity is number - dispatch action to change quantity in the cart
   useEffect(() => {
     if (itemQuantity && typeof itemQuantity === 'number')
-      dispatch(changeProductQuantity({ quantity: itemQuantity, product }));
-  }, [dispatch, itemQuantity, product]);
+      dispatch(changeProductQuantity({ quantity: itemQuantity, cartItemId }));
+  }, [dispatch, itemQuantity, cartItemId]);
 
   useEffect(() => {
-    dispatch(
-      changeProductSize({ product, prevSize: size, newSize: productSize }),
-    );
-  }, [productSize, dispatch, size, product]);
+    dispatch(changeProductSize({ cartItemId, newSize: productSize }));
+  }, [dispatch, productSize, cartItemId]);
 
   return (
     <div className={styles.cartProduct}>
@@ -118,7 +117,9 @@ const CartItem = ({ product, quantity, size }: CartItemProps) => {
               if (itemComment.length > 150) {
                 alert('Comment is too long! Use max 150 characters.');
               } else {
-                dispatch(addProductComment({ product, comment: itemComment }));
+                dispatch(
+                  addProductComment({ cartItemId, comment: itemComment }),
+                );
                 dispatch(storeCart());
                 showToast();
               }
