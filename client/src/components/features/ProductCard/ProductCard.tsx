@@ -61,17 +61,21 @@ const ProductCard = (productData: Product) => {
         </div>
       </Link>
       <div className={styles.cartButtonsWrapper}>
-        <SizeMenu
-          sizes={sizesArr}
-          changeHandler={(size) => setProductSize(size)}
-          productId={productData.id}
-          selectedValue={productSize}
-        />
-        <QuantityField
-          productId={productData.id}
-          changeQuantity={(value: number | string) => setProductQuantity(value)}
-          quantity={productQuantity}
-        />
+        <div className={styles.sizeAndQuantityWrapper}>
+          <SizeMenu
+            sizes={sizesArr}
+            changeHandler={(size) => setProductSize(size)}
+            productId={productData.id}
+            selectedValue={productSize}
+          />
+          <QuantityField
+            productId={productData.id}
+            changeQuantity={(value: number | string) =>
+              setProductQuantity(value)
+            }
+            quantity={productQuantity}
+          />
+        </div>
         <Button buttonText="Add to cart" buttonHandler={addToCartHandler} />
       </div>
     </div>

@@ -69,11 +69,18 @@
   z-index: 0;
 }
 
-.cartButtonsWrapper select {
+.sizeAndQuantityWrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.sizeAndQuantityWrapper select {
   width: 70px;
   align-self: center;
-  margin-top: -12.5%;
   background-color: var(--card-bg-color-transparent);
+  height: 2.5em;
 }
 
 
@@ -110,7 +117,6 @@ input[type=number] {
     z-index: 1;
     position: relative;
     margin-top: 0;
-    margin-bottom: 30px;
   }
 
   .productInfoWrapper {

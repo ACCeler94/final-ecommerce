@@ -11,6 +11,7 @@
   box-sizing: border-box;
   max-width: 60px;
   font-size: 1.1em;
+  margin: 0 10px;
 }
 
 .quantityButton {
@@ -20,7 +21,6 @@
   border-radius: 5px;
   font-weight: var(--main-font-semi-bold);
   cursor: pointer;
-  margin: 0 10px;
   height: 2.5em;
   width: 2.5em;
 }
