@@ -89,16 +89,27 @@ const Checkout = () => {
             return (
               <li key={cartObj.product.id} className={styles.itemSummary}>
                 <h3 className="cart-product-name">{cartObj.product.name}</h3>
-                <span>Quantity: {cartObj.quantity}</span>
-                <span className={styles.subtotal}>
-                  Subtotal price: ${cartObj.quantity * cartObj.product.price}
-                </span>
+                <p>
+                  Size:{' '}
+                  <span className={styles.summaryValue}>
+                    {cartObj.size.toUpperCase()}
+                  </span>
+                </p>
+                <p>
+                  Quantity:{' '}
+                  <span className={styles.summaryValue}>
+                    {cartObj.quantity}
+                  </span>
+                </p>
                 {cartObj.comment ? (
                   <p>
-                    Additional comment:
+                    Additional comment:{' '}
                     <span className={styles.comment}>{cartObj.comment}</span>
                   </p>
                 ) : null}
+                <p className={styles.subtotal}>
+                  Subtotal price: ${cartObj.quantity * cartObj.product.price}
+                </p>
               </li>
             );
           })}
@@ -118,7 +129,6 @@ const Checkout = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-
           <label htmlFor="email">Email address*</label>
           <input
             type="email"
@@ -128,7 +138,6 @@ const Checkout = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-
           <label htmlFor="address">Shipping address*</label>
           <textarea
             name="address"
@@ -138,7 +147,6 @@ const Checkout = () => {
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
-
           {/* Submit handler is assigned to a form, button is getting type submit by default */}
           <Button buttonText="Place Order" buttonHandler={() => {}} />
         </form>
