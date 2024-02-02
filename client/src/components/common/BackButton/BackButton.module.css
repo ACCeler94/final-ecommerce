@@ -1,0 +1,7 @@
+.backButton {
+  cursor: pointer;
+  font-size: 1.35em;
+  margin-top: 35px;
+  display: flex;
+  align-items: center;
+}
