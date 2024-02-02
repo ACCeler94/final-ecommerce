@@ -32,10 +32,12 @@ const SingleProduct = () => {
   const [productSize, setProductSize] = useState<string>('');
 
   useEffect(() => {
+    const controller = new AbortController();
     if (productId) {
       dispatch(fetchById(productId));
     }
     return () => {
+      controller.abort(); // abort fetch request if the component unmounts before it is finished
       dispatch(resetCurrentProduct()); // reset currentProduct when the component unmounts
     };
   }, [productId, dispatch]);

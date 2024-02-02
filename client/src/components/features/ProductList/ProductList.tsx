@@ -20,7 +20,10 @@ const ProductList = ({ category }: ProductListProps) => {
   const [productsToShow, setProductsToShow] = useState<Product[]>([]);
 
   useEffect(() => {
+    const controller = new AbortController();
     dispatch(fetchAllProducts());
+
+    return () => controller.abort(); // abort fetch request if the component unmounts before it is finished
   }, [dispatch]);
 
   useEffect(() => {
