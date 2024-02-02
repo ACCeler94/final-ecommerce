@@ -6,6 +6,7 @@ import ProductCard from '../ProductCard/ProductCard';
 import styles from './ProductList.module.css';
 import ErrorPage from '../../common/Error/Error';
 import Product from '../../../types/Product';
+import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
 
 interface ProductListProps {
   category?: string;
@@ -17,6 +18,7 @@ const ProductList = ({ category }: ProductListProps) => {
     (state: RootState) => state.products.productList,
   );
   const error = useSelector((state: RootState) => state.products.error);
+  const status = useSelector((state: RootState) => state.products.status);
   const [productsToShow, setProductsToShow] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -38,6 +40,14 @@ const ProductList = ({ category }: ProductListProps) => {
   // return error page if error occurred
   if (error) {
     return <ErrorPage error={error} />;
+  }
+
+  if (status === 'pending') {
+    return (
+      <section className={styles.productList}>
+        <LoadingSpinner />
+      </section>
+    );
   }
 
   return (

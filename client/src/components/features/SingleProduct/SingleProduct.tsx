@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import QuantityField from '../../common/QuantityField/QuantityField';
 import SizeMenu from '../../common/SizeMenu/SizeMenu';
 import { nanoid } from 'nanoid';
+import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
 
 // [TODO] Add spinner while loading
 const SingleProduct = () => {
@@ -25,6 +26,7 @@ const SingleProduct = () => {
     (state: RootState) => state.products.currentProduct,
   );
   const error = useSelector((state: RootState) => state.products.error);
+  const status = useSelector((state: RootState) => state.products.status);
 
   const sizesArr = currentProduct ? currentProduct.sizes.split(', ') : [];
 
@@ -72,9 +74,17 @@ const SingleProduct = () => {
     return <ErrorPage error={error} />;
   }
 
+  if (status === 'pending') {
+    return (
+      <section>
+        <LoadingSpinner />
+      </section>
+    );
+  }
+
   if (currentProduct)
     return (
-      <div className={styles.singleProductWrapper}>
+      <section className={styles.singleProductWrapper}>
         <div className={styles.productContent}>
           <div className={styles.imageWrapper}>
             <img
@@ -119,7 +129,7 @@ const SingleProduct = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     );
 };
 
