@@ -82,6 +82,35 @@
     }
   }
 
+  @media only screen and (min-width: 815px) and (max-width: 992px) {
+
+    .cartButtonsWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .productPriceAndSize {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0;
+    }
+
+    .sizeLabel {
+      margin-left: 15px;
+    }
+  }
+
+  @media only screen and (max-width: 815px) {
+    .quantityFieldContainer {
+      justify-content: space-between;
+    }
+
+    .quantityFieldContainer button {
+      margin: 0;
+    }
+  }
+
   @media only screen and (max-width: 576px) {
     .singleProductWrapper {
       margin: 50px -5%;
