@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import { loadCart } from './components/features/Cart/cartSlice';
 import { ToastContainer } from 'react-toastify';
 import NotFound from './components/pages/NotFound/NotFound';
+import SignInPage from './components/pages/SignInPage/SignInPage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -37,6 +38,7 @@ function App() {
           element={<CategoryPage category="Male" />}
         />
         <Route path="/product/:productId" element={<SingleProductPage />} />
+        <Route path="/account/sign-in" element={<SignInPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
