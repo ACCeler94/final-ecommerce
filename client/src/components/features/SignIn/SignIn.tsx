@@ -30,7 +30,7 @@ const SignIn = () => {
             onChange={(e) => setUserPassword(e.target.value)}
             required
           />
-          <Button buttonHandler={() => {}} buttonText="Sign In" />
+          <Button buttonText="Sign In" />
         </form>
         <p>
           No account? <Link to="/account/register">Register</Link>

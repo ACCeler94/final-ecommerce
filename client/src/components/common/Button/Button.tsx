@@ -1,7 +1,7 @@
 import styles from './Button.module.css';
 
 interface ButtonProps {
-  buttonHandler: () => void;
+  buttonHandler?: () => void;
   buttonText: string;
 }
 

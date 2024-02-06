@@ -148,7 +148,7 @@ const Checkout = () => {
             onChange={(e) => setAddress(e.target.value)}
           />
           {/* Submit handler is assigned to a form, button is getting type submit by default */}
-          <Button buttonText="Place Order" buttonHandler={() => {}} />
+          <Button buttonText="Place Order" />
         </form>
       </section>
     </div>
