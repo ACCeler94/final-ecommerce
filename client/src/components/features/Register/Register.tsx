@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useCallback, useEffect, useState } from 'react';
 import styles from './Register.module.css';
 import { useMultistepForm } from '../../../utils/useMultistepForm';
 import Button from '../../common/Button/Button';
@@ -31,12 +31,21 @@ const INITIAL_DATA: registerFormData = {
 
 function Register() {
   const [data, setData] = useState(INITIAL_DATA);
-  const [passMatch, setPassMatch] = useState(false);
+  const [isPassValid, setIsPassValid] = useState(true);
+
+  const validatePassword = useCallback(() => {
+    const passRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (
+      data.password.match(passRegex) &&
+      data.password === data.confirmPassword
+    )
+      return true;
+    else return false;
+  }, [data.password, data.confirmPassword]);
 
   useEffect(() => {
-    // check if passwords match to display warning and stop submit
-    setPassMatch(data.password === data.confirmPassword);
-  }, [data.password, data.confirmPassword]);
+    setIsPassValid(validatePassword());
+  }, [validatePassword]);
 
   const updateFields = (fields: Partial<registerFormData>) => {
     setData((prev) => {
@@ -50,7 +59,7 @@ function Register() {
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (!passMatch) return; // return nothing if passwords do not match
+    if (!validatePassword()) return; // return nothing if passwords do not match
 
     if (!isLastStep) return next();
     alert('Successful Account Creation');
@@ -61,8 +70,10 @@ function Register() {
       <h1>Register</h1>
       <form onSubmit={onSubmit} className={styles.registerForm}>
         {step}
-        {!passMatch && (
-          <span className={styles.dangerText}>Passwords do not match!</span>
+        {!isPassValid && (
+          <span className={styles.dangerText}>
+            Passwords do not match or have invalid format!
+          </span>
         )}
         {!isFirstStep && (
           <button type="button" onClick={back}>

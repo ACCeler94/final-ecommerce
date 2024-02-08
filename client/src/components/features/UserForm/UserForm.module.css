@@ -1,0 +1,15 @@
+.info {
+  opacity: 0.75;
+  font-size: 0.85em;
+}
+
+.inputWithFaIcon {
+  position: relative;
+}
+
+.inputWithFaIcon .faEye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}

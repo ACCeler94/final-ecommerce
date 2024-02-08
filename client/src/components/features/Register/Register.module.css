@@ -24,7 +24,8 @@
 }
 
 .registerForm input {
-  padding: 10px;
+  padding: 10px 0;
+  width: 100%;
 }
 
 .registerForm button {
