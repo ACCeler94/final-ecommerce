@@ -13,7 +13,7 @@ import { loadCart } from './components/features/Cart/cartSlice';
 import { ToastContainer } from 'react-toastify';
 import NotFound from './components/pages/NotFound/NotFound';
 import SignInPage from './components/pages/SignInPage/SignInPage';
-import Register from './components/features/Register/Register';
+import RegisterPage from './components/pages/RegisterPage/RegisterPage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -40,7 +40,7 @@ function App() {
         />
         <Route path="/product/:productId" element={<SingleProductPage />} />
         <Route path="/account/sign-in" element={<SignInPage />} />
-        <Route path="/account/register" element={<Register />} />
+        <Route path="/account/register" element={<RegisterPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
