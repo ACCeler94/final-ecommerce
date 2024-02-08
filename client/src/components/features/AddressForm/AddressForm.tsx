@@ -18,6 +18,7 @@ const AddressForm = ({
 }: AddressFormProps) => {
   return (
     <>
+      <label>Street</label>
       <input
         autoFocus
         required

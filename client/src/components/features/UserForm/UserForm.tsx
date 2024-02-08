@@ -16,27 +16,33 @@ const UserForm = ({
 }: UserFormProps) => {
   return (
     <>
-      <label>Email</label>
+      <label htmlFor="email">Email</label>
       <input
         autoFocus
         required
         type="email"
         value={email}
         onChange={(e) => updateFields({ email: e.target.value })}
+        id="email"
+        name="email"
       />
-      <label>Password</label>
+      <label htmlFor="password">Password</label>
       <input
         required
         type="password"
         value={password}
         onChange={(e) => updateFields({ password: e.target.value })}
+        name="password"
+        id="password"
       />
-      <label>Confirm Password</label>
+      <label htmlFor="confirm-password">Confirm Password</label>
       <input
         required
         type="password"
         value={confirmPassword}
         onChange={(e) => updateFields({ confirmPassword: e.target.value })}
+        name="password"
+        id="confirm-password"
       />
     </>
   );
