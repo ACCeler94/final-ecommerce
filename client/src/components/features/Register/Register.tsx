@@ -75,12 +75,14 @@ function Register() {
             Passwords do not match or have invalid format!
           </span>
         )}
-        {!isFirstStep && (
-          <button type="button" onClick={back}>
-            Back
-          </button>
-        )}
-        <Button buttonText={isLastStep ? 'Finish' : 'Next'} />
+        <div className={styles.buttonsWrapper}>
+          {!isFirstStep && (
+            <div className={styles.backButtonWrapper}>
+              <Button type="button" buttonHandler={back} buttonText="Back" />
+            </div>
+          )}
+          <Button buttonText={isLastStep ? 'Finish' : 'Next'} />
+        </div>
       </form>
     </div>
   );

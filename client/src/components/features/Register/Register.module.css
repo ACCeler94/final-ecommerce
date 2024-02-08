@@ -3,7 +3,7 @@
   padding: 25px 75px;
   border: 2px solid rgba(0, 0, 0, 0.15);
   border-radius: 15px;
-  max-width: fit-content;
+  max-width: 35%;
 }
 
 .formWrapper h1 {
@@ -26,6 +26,7 @@
 .registerForm input {
   padding: 10px 0;
   width: 100%;
+  padding-left: 5px;
 }
 
 .registerForm button {
@@ -36,4 +37,16 @@
 .dangerText {
   color: var(--error-text-color);
   font-size: 0.85em;
+}
+
+.buttonsWrapper {
+  display: flex;
+}
+
+.backButtonWrapper {
+  margin-right: 10%;
+}
+
+.backButtonWrapper button {
+  background-color: var(--button-grey-bg-color);
 }
