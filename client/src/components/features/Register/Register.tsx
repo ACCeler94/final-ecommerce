@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import styles from './Register.module.css';
 import { useMultistepForm } from '../../../utils/useMultistepForm';
 import Button from '../../common/Button/Button';
@@ -31,6 +31,13 @@ const INITIAL_DATA: registerFormData = {
 
 function Register() {
   const [data, setData] = useState(INITIAL_DATA);
+  const [passMatch, setPassMatch] = useState(false);
+
+  useEffect(() => {
+    // check if passwords match to display warning and stop submit
+    setPassMatch(data.password === data.confirmPassword);
+  }, [data.password, data.confirmPassword]);
+
   const updateFields = (fields: Partial<registerFormData>) => {
     setData((prev) => {
       return { ...prev, ...fields };
@@ -43,14 +50,20 @@ function Register() {
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
+    if (!passMatch) return; // return nothing if passwords do not match
+
     if (!isLastStep) return next();
     alert('Successful Account Creation');
   };
 
   return (
     <div className={styles.formWrapper}>
-      <form onSubmit={onSubmit}>
+      <h1>Register</h1>
+      <form onSubmit={onSubmit} className={styles.registerForm}>
         {step}
+        {!passMatch && (
+          <span className={styles.dangerText}>Passwords do not match!</span>
+        )}
         {!isFirstStep && (
           <button type="button" onClick={back}>
             Back

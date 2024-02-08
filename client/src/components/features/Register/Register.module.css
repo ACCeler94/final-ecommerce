@@ -1,0 +1,38 @@
+.formWrapper {
+  margin: 1% auto;
+  padding: 25px 75px;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  max-width: fit-content;
+}
+
+.formWrapper h1 {
+  font-size: 1.75em;
+}
+
+.registerForm{
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.registerForm label {
+  margin-top: 10px;
+  font-weight: var(--main-font-semi-bold);
+}
+
+.registerForm input {
+  padding: 10px;
+}
+
+.registerForm button {
+  max-width: fit-content;
+  margin: 10px 0;
+}
+
+.dangerText {
+  color: var(--error-text-color);
+  font-size: 0.85em;
+}
