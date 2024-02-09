@@ -25,7 +25,9 @@ model User {
   email    String    @unique
   password Password? // password is optional as it can be added later
   name     String
-  address  String
+  street   String
+  zip      String
+  city     String
 
   //orders Order[]
 }
@@ -39,12 +41,14 @@ model Password {
 
 // For now Users will not be created, user data for order will be provided as userData
 model Order {
-  id         String @id @default(uuid())
+  id             String @id @default(uuid())
   //userId String
-  name       String
-  email      String
-  address    String
-  orderTotal Int
+  name           String
+  email          String
+  shippingStreet String
+  shippingZip    String
+  shippingCity   String
+  orderTotal     Int
 
   createdAt DateTime @default(now())
 

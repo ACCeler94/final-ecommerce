@@ -122,7 +122,9 @@ function getUsers() {
       id: 'd8f4c9a2-7b7e-4f5e-9c6d-1d7d7d3c8a7f',
       email: 'johndoe@example.com',
       name: 'John Doe',
-      address: '123 Main St, Anytown USA',
+      street: '123 Main St',
+      zip: '10001',
+      city: 'NYC',
     },
   ];
 }
