@@ -12,6 +12,7 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
+  // [TODO] Add admin guard to allow only admin to get info about users
   @Get('/')
   getAllUsers() {
     return this.usersService.getUsers();
