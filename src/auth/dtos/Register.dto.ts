@@ -23,5 +23,13 @@ export class RegisterDTO {
 
   @IsNotEmpty()
   @IsString()
-  address: string;
+  street: string;
+
+  @IsNotEmpty()
+  @IsString()
+  city: string;
+
+  @IsNotEmpty()
+  @IsString()
+  zip: string;
 }

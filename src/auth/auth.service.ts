@@ -11,7 +11,9 @@ export class AuthService {
     const userData = {
       email: registrationData.email,
       name: registrationData.name,
-      address: registrationData.address,
+      street: registrationData.street,
+      city: registrationData.city,
+      zip: registrationData.zip,
     };
     return this.usersService.createUser(userData, hashedPassword);
   }
