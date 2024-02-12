@@ -6,7 +6,7 @@ import { useState } from 'react';
 type UserData = {
   email: string;
   password: string;
-  confirmPassword: string;
+  repeatPassword: string;
 };
 
 type UserFormProps = UserData & {
@@ -16,11 +16,11 @@ type UserFormProps = UserData & {
 const UserForm = ({
   email,
   password,
-  confirmPassword,
+  repeatPassword,
   updateFields,
 }: UserFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
   return (
     <>
@@ -59,18 +59,18 @@ const UserForm = ({
       <div className={styles.inputWithFaIcon}>
         <input
           required
-          type={showConfirmPassword ? 'text' : 'password'}
-          value={confirmPassword}
-          onChange={(e) => updateFields({ confirmPassword: e.target.value })}
+          type={showRepeatPassword ? 'text' : 'password'}
+          value={repeatPassword}
+          onChange={(e) => updateFields({ repeatPassword: e.target.value })}
           name="password"
           id="confirm-password"
           pattern={password}
           title="Passwords do not match"
         />
         <FontAwesomeIcon
-          icon={showConfirmPassword ? faEyeSlash : faEye}
+          icon={showRepeatPassword ? faEyeSlash : faEye}
           className={styles.faEye}
-          onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+          onClick={() => setShowRepeatPassword(!showRepeatPassword)}
         />
       </div>
     </>
