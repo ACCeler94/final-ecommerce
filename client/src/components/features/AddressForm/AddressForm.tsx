@@ -1,4 +1,5 @@
 type AddressData = {
+  name: string;
   street: string;
   city: string;
   state: string;
@@ -10,6 +11,7 @@ type AddressFormProps = AddressData & {
 };
 
 const AddressForm = ({
+  name,
   street,
   city,
   state,
@@ -18,34 +20,51 @@ const AddressForm = ({
 }: AddressFormProps) => {
   return (
     <>
-      <label>Street</label>
+      <label htmlFor="name">Name</label>
       <input
         autoFocus
         required
         type="text"
+        value={name}
+        onChange={(e) => updateFields({ street: e.target.value })}
+        name="name"
+        id="name"
+      />
+      <label htmlFor="street">Street</label>
+      <input
+        required
+        type="text"
         value={street}
         onChange={(e) => updateFields({ street: e.target.value })}
+        name="street"
+        id="street"
       />
-      <label>City</label>
+      <label htmlFor="city">City</label>
       <input
         required
         type="text"
         value={city}
         onChange={(e) => updateFields({ city: e.target.value })}
+        name="city"
+        id="city"
       />
-      <label>State</label>
+      <label htmlFor="state">State</label>
       <input
         required
         type="text"
         value={state}
         onChange={(e) => updateFields({ state: e.target.value })}
+        name="state"
+        id="state"
       />
-      <label>Zip</label>
+      <label htmlFor="zip">Zip</label>
       <input
         required
         type="text"
         value={zip}
         onChange={(e) => updateFields({ zip: e.target.value })}
+        name="zip"
+        id="zip"
       />
     </>
   );
