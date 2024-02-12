@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import styles from './SingleProduct.module.css';
 import { IMAGES_URL } from '../../../API/config';
 import Button from '../../common/Button/Button';
-import ErrorPage from '../../common/Error/Error';
+import Error from '../../common/Error/Error';
 import { addToCart, recalculateTotalPrice, storeCart } from '../Cart/cartSlice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -71,7 +71,7 @@ const SingleProduct = () => {
   };
 
   if (error) {
-    return <ErrorPage error={error} />;
+    return <Error error={error} />;
   }
 
   if (status === 'pending') {

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { fetchAllProducts } from './productListSlice';
 import ProductCard from '../ProductCard/ProductCard';
 import styles from './ProductList.module.css';
-import ErrorPage from '../../common/Error/Error';
+import Error from '../../common/Error/Error';
 import Product from '../../../types/Product';
 import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
 
@@ -39,7 +39,7 @@ const ProductList = ({ category }: ProductListProps) => {
 
   // return error page if error occurred
   if (error) {
-    return <ErrorPage error={error} />;
+    return <Error error={error} />;
   }
 
   if (status === 'pending') {

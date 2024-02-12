@@ -13,7 +13,7 @@ import {
 } from '../Cart/cartSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ErrorPage from '../../common/Error/Error';
+import Error from '../../common/Error/Error';
 
 const Checkout = () => {
   const cart = useSelector((state: RootState) => state.cart.shoppingCart);
@@ -74,7 +74,7 @@ const Checkout = () => {
             redirectOnSuccess();
           })
           .catch((err) => {
-            return <ErrorPage error={err} />;
+            return <Error error={err} />;
           });
       }
     }
