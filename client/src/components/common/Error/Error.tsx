@@ -7,7 +7,7 @@ interface ErrorProps {
   error: SerializedError;
 }
 
-const ErrorPage = ({ error }: ErrorProps) => {
+const Error = ({ error }: ErrorProps) => {
   const navigate = useNavigate();
 
   const buttonHandler = () => {
@@ -23,4 +23,4 @@ const ErrorPage = ({ error }: ErrorProps) => {
   );
 };
 
-export default ErrorPage;
+export default Error;
