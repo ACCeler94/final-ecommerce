@@ -4,44 +4,53 @@ import { useMultistepForm } from '../../../utils/useMultistepForm';
 import Button from '../../common/Button/Button';
 import UserForm from '../UserForm/UserForm';
 import AddressForm from '../AddressForm/AddressForm';
+import { RootState, useAppDispatch } from '../../../store/store';
+import { useSelector } from 'react-redux';
+import { register, resetState } from './registerSlice';
+import Error from '../../common/Error/Error';
+import { Statuses } from '../ProductList/productListSlice';
+import RegisterSuccessPage from '../../pages/RegisterSuccessPage/RegisterSuccessPage';
 
 type registerFormData = {
-  firstName: string;
-  lastName: string;
+  name: string;
   street: string;
   city: string;
   state: string;
   zip: string;
   email: string;
   password: string;
-  confirmPassword: string;
+  repeatPassword: string;
 };
 
 const INITIAL_DATA: registerFormData = {
-  firstName: '',
-  lastName: '',
+  name: '',
   street: '',
   city: '',
   state: '',
   zip: '',
   email: '',
   password: '',
-  confirmPassword: '',
+  repeatPassword: '',
 };
 
 function Register() {
   const [data, setData] = useState(INITIAL_DATA);
   const [isPassValid, setIsPassValid] = useState(true);
+  const dispatch = useAppDispatch();
+  const status = useSelector((state: RootState) => state.register.status);
+  const error = useSelector((state: RootState) => state.register.error);
 
   const validatePassword = useCallback(() => {
     const passRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-    if (
-      data.password.match(passRegex) &&
-      data.password === data.confirmPassword
-    )
+    if (data.password.match(passRegex) && data.password === data.repeatPassword)
       return true;
     else return false;
-  }, [data.password, data.confirmPassword]);
+  }, [data.password, data.repeatPassword]);
+
+  useEffect(() => {
+    // reset state when the component mounts in case of previous failure
+    dispatch(resetState());
+  }, [dispatch]);
 
   useEffect(() => {
     setIsPassValid(validatePassword());
@@ -62,8 +71,12 @@ function Register() {
     if (!validatePassword()) return; // return nothing if passwords do not match
 
     if (!isLastStep) return next();
-    alert('Successful Account Creation');
+    dispatch(register(data));
   };
+
+  if (error) return <Error error={error} />;
+
+  if (status === Statuses.Success) return <RegisterSuccessPage />;
 
   return (
     <div className={styles.formWrapper}>

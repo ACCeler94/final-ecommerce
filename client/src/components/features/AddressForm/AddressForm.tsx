@@ -26,7 +26,7 @@ const AddressForm = ({
         required
         type="text"
         value={name}
-        onChange={(e) => updateFields({ street: e.target.value })}
+        onChange={(e) => updateFields({ name: e.target.value })}
         name="name"
         id="name"
       />
