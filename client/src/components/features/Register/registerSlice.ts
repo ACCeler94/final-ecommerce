@@ -4,7 +4,7 @@ import {
   createSlice,
 } from '@reduxjs/toolkit';
 import { Statuses } from '../ProductList/productListSlice';
-import usersAPI from '../../../API/usersApi';
+import authAPI from '../../../API/authApi';
 import User from '../../../types/User';
 
 type State = {
@@ -23,7 +23,7 @@ const initialState: State = {
 export const register = createAsyncThunk(
   'register/createUser',
   async (userData: User) => {
-    const response = await usersAPI.registerUser(userData);
+    const response = await authAPI.registerUser(userData);
     return response.data;
   },
 );
