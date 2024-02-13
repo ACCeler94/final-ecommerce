@@ -20,13 +20,16 @@ export class OrdersService {
 
   public async createOrder(orderData: CreateOrderDto): Promise<Order> | null {
     try {
-      const { userData, products, orderTotal } = orderData;
+      const { userData, products, orderTotal, userId } = orderData;
       const createdOrder = await this.prismaService.order.create({
         data: {
           name: userData.name,
           email: userData.email,
-          address: userData.address,
+          shippingStreet: userData.shippingStreet,
+          shippingCity: userData.shippingCity,
+          shippingZip: userData.shippingZip,
           orderTotal: orderTotal,
+          userId: userId,
         },
       });
 

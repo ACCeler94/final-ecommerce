@@ -23,7 +23,9 @@ const Checkout = () => {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [address, setAddress] = useState('');
+  const [shippingStreet, setShippingStreet] = useState('');
+  const [shippingCity, setShippingCity] = useState('');
+  const [shippingZip, setShippingZip] = useState('');
 
   useEffect(() => {
     if (cart.length === 0) {
@@ -58,14 +60,15 @@ const Checkout = () => {
 
   const orderSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!name || !email || !address) {
+    if (!name || !email || !shippingStreet || !shippingCity || !shippingZip) {
       alert('Please fill all required fields!');
     } else {
       if (totalPrice) {
         const orderObj: Order = {
-          userData: { name, email, address },
+          userData: { name, email, shippingCity, shippingStreet, shippingZip },
           products: cart,
           orderTotal: totalPrice,
+          // [TODO] Add userId here
         };
         ordersAPI
           .placeOrder(orderObj)
@@ -138,14 +141,29 @@ const Checkout = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label htmlFor="address">Shipping address*</label>
-          <textarea
-            name="address"
-            id="address"
-            rows={5}
+          <label htmlFor="shippingStreet">Shipping Street*</label>
+          <input
+            name="shippingStreet"
+            id="shippingStreet"
             required
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            value={shippingStreet}
+            onChange={(e) => setShippingStreet(e.target.value)}
+          />
+          <label htmlFor="shippingCity">Shipping City*</label>
+          <input
+            name="shippingCity"
+            id="shippingCity"
+            required
+            value={shippingCity}
+            onChange={(e) => setShippingCity(e.target.value)}
+          />
+          <label htmlFor="shippingZip">Shipping Zip*</label>
+          <input
+            name="shippingZip"
+            id="shippingZip"
+            required
+            value={shippingZip}
+            onChange={(e) => setShippingZip(e.target.value)}
           />
           {/* Submit handler is assigned to a form, button is getting type submit by default */}
           <Button buttonText="Place Order" />

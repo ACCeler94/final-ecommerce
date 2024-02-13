@@ -1,5 +1,11 @@
 import { Product } from '@prisma/client';
-import { IsArray, IsNotEmpty, IsNumber } from 'class-validator';
+import {
+  IsArray,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  IsUUID,
+} from 'class-validator';
 
 export class CreateOrderDto {
   @IsArray()
@@ -11,13 +17,19 @@ export class CreateOrderDto {
     size: string;
   }[];
 
-  /* @IsString()
+  @IsString()
   @IsNotEmpty()
   @IsUUID()
-  userId: string; */
+  userId: string;
 
   @IsNotEmpty()
-  userData: { name: string; email: string; address: string };
+  userData: {
+    name: string;
+    email: string;
+    shippingStreet: string;
+    shippingCity: string;
+    shippingZip: string;
+  };
 
   @IsNotEmpty()
   @IsNumber()

@@ -9,7 +9,13 @@ type ProductOnOrder = {
 
 type Order = {
   products: ProductOnOrder[];
-  userData: { name: string; email: string; address: string };
+  userData: {
+    name: string;
+    email: string;
+    shippingStreet: string;
+    shippingCity: string;
+    shippingZip: string;
+  };
   orderTotal: number;
 };
 
