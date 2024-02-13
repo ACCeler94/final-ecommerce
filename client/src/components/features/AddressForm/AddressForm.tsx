@@ -2,7 +2,6 @@ type AddressData = {
   name: string;
   street: string;
   city: string;
-  state: string;
   zip: string;
 };
 
@@ -14,7 +13,6 @@ const AddressForm = ({
   name,
   street,
   city,
-  state,
   zip,
   updateFields,
 }: AddressFormProps) => {
@@ -47,15 +45,6 @@ const AddressForm = ({
         onChange={(e) => updateFields({ city: e.target.value })}
         name="city"
         id="city"
-      />
-      <label htmlFor="state">State</label>
-      <input
-        required
-        type="text"
-        value={state}
-        onChange={(e) => updateFields({ state: e.target.value })}
-        name="state"
-        id="state"
       />
       <label htmlFor="zip">Zip</label>
       <input

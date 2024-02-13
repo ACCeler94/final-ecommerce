@@ -15,7 +15,6 @@ type registerFormData = {
   name: string;
   street: string;
   city: string;
-  state: string;
   zip: string;
   email: string;
   password: string;
@@ -26,7 +25,6 @@ const INITIAL_DATA: registerFormData = {
   name: '',
   street: '',
   city: '',
-  state: '',
   zip: '',
   email: '',
   password: '',
