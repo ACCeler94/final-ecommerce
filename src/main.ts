@@ -1,30 +1,21 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
-import * as session from 'express-session';
-import * as passport from 'passport';
+import * as cookieParser from 'cookie-parser';
+import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const configService = app.get(ConfigService);
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.setGlobalPrefix('api');
-
-  // [TODO]Fix saving sessions in database, preferably mysql
-  app.use(
-    session({
-      secret: process.env.SESSION_SECRET,
-      resave: false,
-      saveUninitialized: false,
-    }),
-  );
-  app.use(passport.initialize());
-  app.use(passport.session());
 
   if (process.env.NODE_ENV !== 'production') {
     app.enableCors();
   }
 
+  app.use(cookieParser());
   await app.enableShutdownHooks();
-  await app.listen(3000);
+  await app.listen(configService.get('port'));
 }
 bootstrap();

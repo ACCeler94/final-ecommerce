@@ -14,6 +14,8 @@ import { AuthModule } from './auth/auth.module';
 import * as cors from 'cors';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { ConfigModule } from '@nestjs/config';
+import configuration from 'config/configuration';
 
 @Module({
   imports: [
@@ -28,6 +30,10 @@ import { join } from 'path';
     }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', '../client', 'dist'),
+    }),
+    ConfigModule.forRoot({
+      load: [configuration],
+      isGlobal: true,
     }),
   ],
 
