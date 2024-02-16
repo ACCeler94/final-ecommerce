@@ -28,6 +28,7 @@ export class AuthController {
     res.cookie('auth', tokens, { httpOnly: true });
     res.send({
       message: 'success',
+      userId: req.user.id,
     });
   }
 
