@@ -18,6 +18,11 @@
   margin: 0 auto;
 }
 
+.signInForm .errorText {
+  font-size: 0.8em;
+  color: var(--error-text-color);
+}
+
 .signInForm label {
   margin-top: 10px;
   font-weight: var(--main-font-semi-bold);
