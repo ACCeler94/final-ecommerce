@@ -24,7 +24,7 @@ const SignIn = () => {
         <form className={styles.signInForm} onSubmit={submitHandler}>
           <label htmlFor="login">Login</label>
           <input
-            type="text"
+            type="email"
             id="login"
             name="login"
             value={userLogin}
