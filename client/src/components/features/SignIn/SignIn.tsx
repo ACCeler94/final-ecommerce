@@ -1,21 +1,26 @@
 import { useState } from 'react';
 import styles from './SignIn.module.css';
 import Button from '../../common/Button/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../../store/store';
 import { fetchLogIn } from './SignInSlice';
 import { useSelector } from 'react-redux';
+import { Statuses } from '../ProductList/productListSlice';
 
 const SignIn = () => {
   const [userLogin, setUserLogin] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const dispatch = useAppDispatch();
   const error = useSelector((state: RootState) => state.signIn.error);
+  const status = useSelector((state: RootState) => state.signIn.status);
+  const navigate = useNavigate();
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(fetchLogIn({ email: userLogin, password: userPassword }));
   };
+
+  if (status === Statuses.Success) navigate('my-account');
 
   return (
     <section>

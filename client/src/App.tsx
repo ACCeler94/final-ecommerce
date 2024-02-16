@@ -14,6 +14,7 @@ import { ToastContainer } from 'react-toastify';
 import NotFound from './components/pages/NotFound/NotFound';
 import SignInPage from './components/pages/SignInPage/SignInPage';
 import RegisterPage from './components/pages/RegisterPage/RegisterPage';
+import AccountPage from './components/pages/AccountPage/AccountPage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -39,6 +40,7 @@ function App() {
         <Route path="/account">
           <Route path="sign-in" element={<SignInPage />} />
           <Route path="register" element={<RegisterPage />} />
+          <Route path="my-account" element={<AccountPage />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
