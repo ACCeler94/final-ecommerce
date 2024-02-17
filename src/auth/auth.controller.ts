@@ -24,8 +24,9 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('/login')
   async login(@Request() req, @Response() res) {
+    const maxAge = 12 * 60 * 60 * 1000; // set to 12h, equal to jwt token lifespan
     const tokens = await this.authService.createSession(req.user);
-    res.cookie('auth', tokens, { httpOnly: true });
+    res.cookie('auth', tokens, { httpOnly: true, maxAge });
     res.send({
       message: 'success',
       userId: req.user.id,
