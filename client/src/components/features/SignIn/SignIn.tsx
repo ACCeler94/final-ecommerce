@@ -20,7 +20,7 @@ const SignIn = () => {
     dispatch(fetchLogIn({ email: userLogin, password: userPassword }));
   };
 
-  if (status === Statuses.Success) navigate('my-account');
+  if (status === Statuses.Success) navigate('/account/my-account');
 
   return (
     <section>
