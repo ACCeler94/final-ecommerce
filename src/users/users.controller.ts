@@ -3,10 +3,11 @@ import {
   Delete,
   Get,
   NotFoundException,
-  Param,
-  ParseUUIDPipe,
+  Request,
+  UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('users')
 export class UsersController {
@@ -18,24 +19,25 @@ export class UsersController {
     return this.usersService.getUsers();
   }
 
-  @Get('/:id')
-  async getUserById(@Param('id', new ParseUUIDPipe()) id: 'string') {
-    const user = await this.usersService.getUserById(id);
+  @UseGuards(JwtAuthGuard)
+  @Get('/userData')
+  async getUserById(@Request() req) {
+    const user = await this.usersService.getUserById(req.user.id);
     if (!user) {
       throw new NotFoundException('User not found.');
     }
     return user;
   }
 
-  // [TODO] Add auth guard to allow only self deletion
-  @Delete('/:id')
-  async deleteUser(@Param('id', new ParseUUIDPipe()) id: string) {
-    const user = await this.usersService.getUserById(id);
+  @UseGuards(JwtAuthGuard)
+  @Delete('/delete')
+  async deleteUser(@Request() req) {
+    const user = await this.usersService.getUserById(req.user.id);
     if (!user) {
       throw new NotFoundException('User not found.');
     }
 
-    await this.usersService.deleteUser(id);
+    await this.usersService.deleteUser(req.user.id);
     return { message: 'success' };
   }
 }
