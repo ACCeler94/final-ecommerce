@@ -10,12 +10,16 @@ import registerReducer, {
 import signInReducer, {
   SignInState,
 } from '../components/features/SignIn/SignInSlice';
+import accountReducer, {
+  AccountState,
+} from '../components/features/Account/AccountSlice';
 
 export type RootState = {
   products: ProductListState;
   cart: CartState;
   register: RegisterState;
   signIn: SignInState;
+  account: AccountState;
 };
 
 const store = configureStore({
@@ -24,6 +28,7 @@ const store = configureStore({
     cart: cartReducer,
     register: registerReducer,
     signIn: signInReducer,
+    account: accountReducer,
   },
 });
 
