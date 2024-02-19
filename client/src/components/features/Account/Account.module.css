@@ -1,0 +1,22 @@
+.welcomeAndLogout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.welcomeMsg {
+  font-weight: var(--main-font-normal);
+}
+
+.welcomeAndLogout button {
+  background-color: transparent;
+  color: var(--button-grey-bg-color);
+  border: 2px solid;
+  border-color: var(--button-grey-bg-color);
+}
+
+.accountWrapper {
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  width: 100%;
+  border: 5px;
+}

@@ -8,6 +8,7 @@ type ProductOnOrder = {
 };
 
 type Order = {
+  id?: string;
   products: ProductOnOrder[];
   userData: {
     name: string;
