@@ -35,19 +35,16 @@ function App() {
       <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<CartPage />}>
-          <Route path="checkout" element={<CheckoutPage />} />
-        </Route>
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/cart/checkout" element={<CheckoutPage />} />
         <Route path="/category">
           <Route path="female" element={<CategoryPage category="Female" />} />
           <Route path="male" element={<CategoryPage category="Male" />} />
         </Route>
         <Route path="/product/:productId" element={<SingleProductPage />} />
-        <Route path="/account">
-          <Route path="sign-in" element={<SignInPage />} />
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="my-account" element={<AccountPage />} />
-        </Route>
+        <Route path="/account/sign-in" element={<SignInPage />} />
+        <Route path="/account/register" element={<RegisterPage />} />
+        <Route path="/account/my-account" element={<AccountPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 
