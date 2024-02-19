@@ -24,7 +24,11 @@ const Account = () => {
     return () => controller.abort(); // abort fetch request if the component unmounts before it is finished
   }, [dispatch]);
 
-  if (status === Statuses.Failed || error) navigate('/account/sign-in');
+  useEffect(() => {
+    if (status === Statuses.Failed || error) {
+      navigate('/account/sign-in');
+    }
+  }, [status, error, navigate]);
 
   if (status === Statuses.Pending)
     return (

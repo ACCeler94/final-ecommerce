@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './SignIn.module.css';
 import Button from '../../common/Button/Button';
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,13 +14,18 @@ const SignIn = () => {
   const error = useSelector((state: RootState) => state.signIn.error);
   const status = useSelector((state: RootState) => state.signIn.status);
   const navigate = useNavigate();
+  const userId = useSelector((state: RootState) => state.signIn.userId);
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(fetchLogIn({ email: userLogin, password: userPassword }));
   };
 
-  if (status === Statuses.Success) navigate('/account/my-account');
+  useEffect(() => {
+    if (userId) {
+      navigate('/account/my-account');
+    }
+  }, [userId, navigate]);
 
   return (
     <section>
