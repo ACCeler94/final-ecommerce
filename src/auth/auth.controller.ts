@@ -27,6 +27,19 @@ export class AuthController {
     const maxAge = 12 * 60 * 60 * 1000; // set to 12h, equal to jwt token lifespan
     const tokens = await this.authService.createSession(req.user);
     res.cookie('auth', tokens, { httpOnly: true, maxAge });
+    res.cookie('isLogged', 'true', { maxAge }); // set second cookie only to indicate if the user have a session stored (http only cookie can't be accessed on the client side)
+    res.send({
+      message: 'success',
+      userId: req.user.id,
+    });
+  }
+
+  @UseGuards(JwtAuthGuard) // endpoint the same as login but using jwt tokens for sessions
+  @Post('/logJWT')
+  async logJWT(@Request() req, @Response() res) {
+    const maxAge = 12 * 60 * 60 * 1000; // set to 12h, equal to jwt token lifespan
+    const tokens = await this.authService.createSession(req.user); // renew token after the session is restored
+    res.cookie('auth', tokens, { httpOnly: true, maxAge });
     res.send({
       message: 'success',
       userId: req.user.id,
