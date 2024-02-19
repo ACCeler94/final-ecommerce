@@ -58,19 +58,24 @@ const CartItem = ({ product, quantity, size, cartItemId }: CartItemProps) => {
     setItemTotalPrice(quantity * product.price);
   }, [quantity, product]);
 
-  // since changes in the cart need to be saved immediately if the given quantity is number - dispatch action to change quantity in the cart
   useEffect(() => {
-    if (itemQuantity && typeof itemQuantity === 'number') {
+    if (
+      itemQuantity &&
+      typeof itemQuantity === 'number' &&
+      itemQuantity !== quantity // check for change to prevent unnecessary dispatches
+    ) {
       dispatch(changeProductQuantity({ quantity: itemQuantity, cartItemId }));
       dispatch(storeCart());
     }
-  }, [dispatch, itemQuantity, cartItemId]);
+  }, [dispatch, itemQuantity, cartItemId, quantity]);
 
-  // save changes in cart and store them in local storage as soon as size changes
   useEffect(() => {
-    dispatch(changeProductSize({ cartItemId, newSize: productSize }));
-    dispatch(storeCart());
-  }, [dispatch, productSize, cartItemId]);
+    if (productSize !== size) {
+      // check for change to prevent unnecessary dispatches
+      dispatch(changeProductSize({ cartItemId, newSize: productSize }));
+      dispatch(storeCart());
+    }
+  }, [dispatch, productSize, cartItemId, size]);
 
   return (
     <div className={styles.cartProduct}>

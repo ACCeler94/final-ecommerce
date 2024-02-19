@@ -6,7 +6,6 @@ import Button from '../../common/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { recalculateTotalPrice } from './cartSlice';
-import { nanoid } from 'nanoid';
 
 const Cart = () => {
   const cart = useSelector((state: RootState) => state.cart.shoppingCart);
@@ -31,10 +30,10 @@ const Cart = () => {
   return (
     <div className={styles.cartProductList}>
       <ul>
-        {cart.map((cartObj) => {
+        {cart.map((cartObj, index) => {
           return (
-            <li key={nanoid()} className={styles.cartItemWrapper}>
-              <CartItem key={nanoid()} {...cartObj} />
+            <li key={index} className={styles.cartItemWrapper}>
+              <CartItem key={index} {...cartObj} />
             </li>
           );
         })}
@@ -44,6 +43,7 @@ const Cart = () => {
         <Button
           buttonText="Checkout"
           buttonHandler={() => navigate('checkout')}
+          type="button"
         />
       </section>
     </div>
