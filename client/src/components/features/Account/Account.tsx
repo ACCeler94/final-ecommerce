@@ -8,6 +8,8 @@ import { Statuses } from '../ProductList/productListSlice';
 import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
 import { AccountData } from '../../../types/AccountData';
+import Button from '../../common/Button/Button';
+import OrdersList from '../OrdersList/OrdersList';
 
 const Account = () => {
   const status = useSelector((state: RootState) => state.account.status);
@@ -40,10 +42,15 @@ const Account = () => {
   if (status === Statuses.Success && userData) {
     return (
       <div className="account-info">
-        <h1>Welcome {userData.name}</h1>
-        {
-          //<OrdersList userId={userData.id} />
-        }
+        <div className={styles.welcomeAndLogout}>
+          <h1>
+            <span className={styles.welcomeMsg}>Welcome</span> {userData.name}
+          </h1>
+          <Button buttonText="Log Out" buttonHandler={() => {}} />
+        </div>
+
+        <div className={styles.accountWrapper}></div>
+        {<OrdersList orders={userData.orders} />}
       </div>
     );
   }
