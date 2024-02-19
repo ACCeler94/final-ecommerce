@@ -77,18 +77,10 @@ const signInSlice = createSlice({
       state.status = Statuses.Failed;
       state.error = action.payload;
     });
-    builder.addCase(fetchLogJWT.pending, (state) => {
-      state.error = null;
-      state.status = Statuses.Pending;
-    });
     builder.addCase(fetchLogJWT.fulfilled, (state, action) => {
       // handle only success to not cause errors when trying to log in, no loading state as it is trying to log in in the background
       state.status = Statuses.Success;
       state.userId = action.payload.userId;
-    });
-    builder.addCase(fetchLogJWT.rejected, (state, action) => {
-      state.status = Statuses.Failed;
-      state.error = action.payload;
     });
   },
 });
