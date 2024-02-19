@@ -9,6 +9,7 @@
 
   --main-font-bold: 700;
   --main-font-semi-bold: 600;
+  --main-font-normal: 500;
 
 
   /* Colors */
@@ -20,6 +21,7 @@
   --button-black-bg-color: #0b0a0a;
   --button-black-color: #f5f4f1;
   --button-grey-bg-color: #0b0a0abd;
+  --button-red-color: rgb(244, 67, 54);
 
   --footer-bg-color: #0b0a0a;
   --footer-color: #f5f4f1;
