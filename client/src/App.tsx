@@ -15,9 +15,15 @@ import NotFound from './components/pages/NotFound/NotFound';
 import SignInPage from './components/pages/SignInPage/SignInPage';
 import RegisterPage from './components/pages/RegisterPage/RegisterPage';
 import AccountPage from './components/pages/AccountPage/AccountPage';
+import Cookies from 'js-cookie';
+import { fetchLogJWT } from './components/features/SignIn/SignInSlice';
 
 function App() {
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (Cookies.get('isLogged')) dispatch(fetchLogJWT()); // check if isLogged cookie exists, fetch log in with jwt token if true
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(loadCart());
