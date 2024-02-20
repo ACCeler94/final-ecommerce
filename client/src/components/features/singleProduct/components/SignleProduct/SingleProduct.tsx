@@ -10,7 +10,7 @@ import styles from './SingleProduct.module.css';
 import { IMAGES_URL } from '../../../API/config';
 import Button from '../../common/Button/Button';
 import Error from '../../common/Error/Error';
-import { addToCart, recalculateTotalPrice, storeCart } from '../Cart/cartSlice';
+import { addToCart, recalculateTotalPrice, storeCart } from '../cart/cartSlice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import QuantityField from '../../common/QuantityField/QuantityField';

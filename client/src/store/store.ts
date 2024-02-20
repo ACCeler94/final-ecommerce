@@ -3,10 +3,10 @@ import productListReducer, {
   ProductListState,
 } from '../components/features/ProductList/productListSlice';
 import { useDispatch } from 'react-redux';
-import cartReducer, { CartState } from '../components/features/Cart/cartSlice';
+import cartReducer, { CartState } from '../components/features/cart/cartSlice';
 import registerReducer, {
   RegisterState,
-} from '../components/features/Register/registerSlice';
+} from '../components/features/register/registerSlice';
 import signInReducer, {
   SignInState,
 } from '../components/features/SignIn/SignInSlice';

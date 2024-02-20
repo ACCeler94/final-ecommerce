@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import Product from '../../../types/Product';
-import Button from '../../common/Button/Button';
-import { useAppDispatch } from '../../../store/store';
+import Product from '../../../../../types/Product';
+import Button from '../../../../common/Button/Button';
+import { useAppDispatch } from '../../../../../store/store';
 import {
   addProductComment,
   changeProductQuantity,
@@ -9,15 +9,15 @@ import {
   recalculateTotalPrice,
   removeFromCart,
   storeCart,
-} from '../Cart/cartSlice';
-import { IMAGES_URL } from '../../../API/config';
+} from '../../cartSlice';
+import { IMAGES_URL } from '../../../../../API/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import styles from './CartItem.module.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import QuantityField from '../../common/QuantityField/QuantityField';
-import SizeMenu from '../../common/SizeMenu/SizeMenu';
+import QuantityField from '../../../../common/QuantityField/QuantityField';
+import SizeMenu from '../../../../common/SizeMenu/SizeMenu';
 
 interface CartItemProps {
   product: Product;

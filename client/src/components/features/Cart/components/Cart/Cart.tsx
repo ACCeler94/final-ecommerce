@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../../../store/store';
+import { RootState, useAppDispatch } from '../../../../../store/store';
 import CartItem from '../CartItem/CartItem';
 import styles from './Cart.module.css';
-import Button from '../../common/Button/Button';
+import Button from '../../../../common/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { recalculateTotalPrice } from './cartSlice';
+import { recalculateTotalPrice } from '../../cartSlice';
 
 const Cart = () => {
   const cart = useSelector((state: RootState) => state.cart.shoppingCart);

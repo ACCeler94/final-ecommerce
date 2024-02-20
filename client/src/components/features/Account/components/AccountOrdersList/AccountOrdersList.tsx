@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { AccountData } from '../../../types/AccountData';
-import styles from './OrdersList.module.css';
+import { AccountData } from '../../../../../types/AccountData';
+import styles from './AccountsOrdersList.module.css';
 
 interface OrdersListProps {
   orders: AccountData['orders'] | [];
 }
 
-const OrdersList = ({ orders }: OrdersListProps) => {
+const AccountOrdersList = ({ orders }: OrdersListProps) => {
   const [ordersNumberToShow, setOrdersNumberToShow] = useState(3);
 
   useEffect(() => {
@@ -60,4 +60,4 @@ const OrdersList = ({ orders }: OrdersListProps) => {
   );
 };
 
-export default OrdersList;
+export default AccountOrdersList;

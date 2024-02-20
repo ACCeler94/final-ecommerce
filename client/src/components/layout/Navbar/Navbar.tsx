@@ -3,7 +3,7 @@ import Container from '../../common/Container/Container';
 import styles from './Navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import CartCounter from '../../features/CartCounter/CartCounter';
+import CartCounter from '../../features/cart/components/CartCounter/CartCounter';
 
 const Navbar = () => {
   return (

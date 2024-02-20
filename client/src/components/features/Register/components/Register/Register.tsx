@@ -1,15 +1,15 @@
 import { FormEvent, useCallback, useEffect, useState } from 'react';
 import styles from './Register.module.css';
-import { useMultistepForm } from '../../../utils/useMultistepForm';
-import Button from '../../common/Button/Button';
+import { useMultistepForm } from '../../../../../utils/useMultistepForm';
+import Button from '../../../../common/Button/Button';
 import UserForm from '../UserForm/UserForm';
 import AddressForm from '../AddressForm/AddressForm';
-import { RootState, useAppDispatch } from '../../../store/store';
+import { RootState, useAppDispatch } from '../../../../../store/store';
 import { useSelector } from 'react-redux';
-import { register, resetState } from './registerSlice';
-import Error from '../../common/Error/Error';
-import { Statuses } from '../ProductList/productListSlice';
-import RegisterSuccessPage from '../../pages/RegisterSuccessPage/RegisterSuccessPage';
+import { register, resetState } from '../../registerSlice';
+import Error from '../../../../common/Error/Error';
+import { Statuses } from '../../../ProductList/productListSlice';
+import RegisterSuccessPage from '../../../../pages/RegisterSuccessPage/RegisterSuccessPage';
 
 type registerFormData = {
   name: string;

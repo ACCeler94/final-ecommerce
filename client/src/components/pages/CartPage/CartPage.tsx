@@ -1,6 +1,6 @@
 import BackButton from '../../common/BackButton/BackButton';
 import Container from '../../common/Container/Container';
-import Cart from '../../features/Cart/Cart';
+import Cart from '../../features/cart/components/Cart/Cart';
 
 const CartPage = () => {
   return (

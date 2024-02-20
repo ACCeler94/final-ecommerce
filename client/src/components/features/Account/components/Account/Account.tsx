@@ -1,15 +1,15 @@
 import { useSelector } from 'react-redux';
 import styles from './Account.module.css';
-import { RootState, useAppDispatch } from '../../../store/store';
+import { RootState, useAppDispatch } from '../../../../../store/store';
 import { useState } from 'react';
-import { fetchAccountData } from './AccountSlice';
+import { fetchAccountData } from '../../AccountSlice';
 import { useEffect } from 'react';
-import { Statuses } from '../ProductList/productListSlice';
+import { Statuses } from '../../../ProductList/productListSlice';
 import { useNavigate } from 'react-router-dom';
-import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
-import { AccountData } from '../../../types/AccountData';
-import Button from '../../common/Button/Button';
-import OrdersList from '../OrdersList/OrdersList';
+import LoadingSpinner from '../../../../common/LoadingSpinner/LoadingSpinner';
+import { AccountData } from '../../../../../types/AccountData';
+import Button from '../../../../common/Button/Button';
+import AccountOrdersList from '../AccountOrdersList/AccountOrdersList';
 
 const Account = () => {
   const status = useSelector((state: RootState) => state.account.status);
@@ -50,7 +50,7 @@ const Account = () => {
         </div>
 
         <div className={styles.accountWrapper}></div>
-        {<OrdersList orders={userData.orders} />}
+        {<AccountOrdersList orders={userData.orders} />}
       </div>
     );
   }

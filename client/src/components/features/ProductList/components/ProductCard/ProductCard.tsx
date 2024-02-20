@@ -5,7 +5,7 @@ import styles from './ProductCard.module.css';
 import { useState } from 'react';
 import Button from '../../common/Button/Button';
 import { useAppDispatch } from '../../../store/store';
-import { addToCart, recalculateTotalPrice, storeCart } from '../Cart/cartSlice';
+import { addToCart, recalculateTotalPrice, storeCart } from '../cart/cartSlice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import QuantityField from '../../common/QuantityField/QuantityField';

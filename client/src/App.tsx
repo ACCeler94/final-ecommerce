@@ -9,7 +9,7 @@ import CartPage from './components/pages/CartPage/CartPage';
 import CheckoutPage from './components/pages/CheckoutPage/CheckoutPage';
 import { useAppDispatch } from './store/store';
 import { useEffect } from 'react';
-import { loadCart } from './components/features/Cart/cartSlice';
+import { loadCart } from './components/features/cart/cartSlice';
 import { ToastContainer } from 'react-toastify';
 import NotFound from './components/pages/NotFound/NotFound';
 import SignInPage from './components/pages/SignInPage/SignInPage';

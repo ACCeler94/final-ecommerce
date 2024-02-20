@@ -1,20 +1,20 @@
 import { useSelector } from 'react-redux';
 import styles from './Checkout.module.css';
-import { RootState, useAppDispatch } from '../../../store/store';
+import { RootState, useAppDispatch } from '../../../../../store/store';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import Order from '../../../types/Order';
-import ordersAPI from '../../../API/ordersApi';
+import Order from '../../../../../types/Order';
+import ordersAPI from '../../../../../API/ordersApi';
 import {
   recalculateTotalPrice,
   resetCart,
   resetCartInStorage,
-} from '../Cart/cartSlice';
+} from '../../../cart/cartSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Error from '../../common/Error/Error';
-import { fetchAccountData } from '../Account/AccountSlice';
-import { AccountData } from '../../../types/AccountData';
+import Error from '../../../../common/Error/Error';
+import { fetchAccountData } from '../../../Account/AccountSlice';
+import { AccountData } from '../../../../../types/AccountData';
 import CheckoutForm from '../CheckoutForm/CheckoutForm';
 
 const Checkout = () => {

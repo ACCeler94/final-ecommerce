@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import styles from './CartCounter.module.css';
-import { RootState } from '../../../store/store';
+import { RootState } from '../../../../../store/store';
 import { useMemo } from 'react';
 
 const CartCounter = () => {
