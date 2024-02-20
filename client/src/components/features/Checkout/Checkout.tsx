@@ -3,7 +3,6 @@ import styles from './Checkout.module.css';
 import { RootState, useAppDispatch } from '../../../store/store';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import Button from '../../common/Button/Button';
 import Order from '../../../types/Order';
 import ordersAPI from '../../../API/ordersApi';
 import {
@@ -14,6 +13,9 @@ import {
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Error from '../../common/Error/Error';
+import { fetchAccountData } from '../Account/AccountSlice';
+import { AccountData } from '../../../types/AccountData';
+import CheckoutForm from '../CheckoutForm/CheckoutForm';
 
 const Checkout = () => {
   const cart = useSelector((state: RootState) => state.cart.shoppingCart);
@@ -21,6 +23,7 @@ const Checkout = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
+  const [userData, setUserData] = useState<AccountData>();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [shippingStreet, setShippingStreet] = useState('');
@@ -32,6 +35,26 @@ const Checkout = () => {
       navigate('/');
     }
   }, [navigate, cart]);
+
+  // fetch account data to fill form with default values
+  useEffect(() => {
+    const controller = new AbortController();
+    dispatch(fetchAccountData())
+      .unwrap()
+      .then((data) => setUserData(data)); // set action.payload as userData
+    return () => controller.abort(); // abort fetch request if the component unmounts before it is finished
+  }, [dispatch]);
+
+  // if userData exist, fill the form with values from the database
+  useEffect(() => {
+    if (userData) {
+      setName(userData.name);
+      setEmail(userData.email);
+      setShippingStreet(userData.street);
+      setShippingCity(userData.street);
+      setShippingZip(userData.zip);
+    }
+  }, [userData]);
 
   // recalculate totalPrice if the component mounts to make sure it is up to date
   useEffect(() => {
@@ -68,7 +91,6 @@ const Checkout = () => {
           userData: { name, email, shippingCity, shippingStreet, shippingZip },
           products: cart,
           orderTotal: totalPrice,
-          // [TODO] Add userId here
         };
         ordersAPI
           .placeOrder(orderObj)
@@ -81,6 +103,20 @@ const Checkout = () => {
           });
       }
     }
+  };
+
+  const CheckoutFormProps = {
+    name,
+    setName,
+    email,
+    setEmail,
+    shippingStreet,
+    setShippingStreet,
+    shippingCity,
+    setShippingCity,
+    shippingZip,
+    setShippingZip,
+    orderSubmitHandler,
   };
 
   return (
@@ -121,54 +157,7 @@ const Checkout = () => {
           <h3>Total price: ${totalPrice}</h3>
         </div>
       </section>
-      <section className={styles.checkoutFormWrapper}>
-        <form className={styles.userDataForm} onSubmit={orderSubmitHandler}>
-          <label htmlFor="name">First and last name*</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <label htmlFor="email">Email address*</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label htmlFor="shippingStreet">Shipping Street*</label>
-          <input
-            name="shippingStreet"
-            id="shippingStreet"
-            required
-            value={shippingStreet}
-            onChange={(e) => setShippingStreet(e.target.value)}
-          />
-          <label htmlFor="shippingCity">Shipping City*</label>
-          <input
-            name="shippingCity"
-            id="shippingCity"
-            required
-            value={shippingCity}
-            onChange={(e) => setShippingCity(e.target.value)}
-          />
-          <label htmlFor="shippingZip">Shipping Zip*</label>
-          <input
-            name="shippingZip"
-            id="shippingZip"
-            required
-            value={shippingZip}
-            onChange={(e) => setShippingZip(e.target.value)}
-          />
-          {/* Submit handler is assigned to a form, button is getting type submit by default */}
-          <Button buttonText="Place Order" />
-        </form>
-      </section>
+      <CheckoutForm {...CheckoutFormProps} />
     </div>
   );
 };
