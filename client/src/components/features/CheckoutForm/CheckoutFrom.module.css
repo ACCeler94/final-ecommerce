@@ -1,0 +1,34 @@
+
+.userDataForm {
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.userDataForm label {
+  margin-top: 10px;
+  font-weight: var(--main-font-semi-bold);
+}
+
+.userDataForm input {
+  padding: 10px;
+}
+
+.userDataForm textarea {
+  resize: none;
+}
+
+.userDataForm button {
+  margin-top: 10px;
+  margin-left: 0;
+  max-width: fit-content;
+}
+
+
+@media only screen and (max-width: 992px) {
+  .checkoutFormWrapper{
+    padding-bottom: 100px;
+  }
+}
