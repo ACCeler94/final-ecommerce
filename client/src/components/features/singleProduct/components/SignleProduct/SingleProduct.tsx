@@ -3,20 +3,24 @@ import { useParams } from 'react-router-dom';
 import {
   fetchById,
   resetCurrentProduct,
-} from '../ProductList/productListSlice';
-import { RootState, useAppDispatch } from '../../../store/store';
+} from '../../../ProductList/productListSlice';
+import { RootState, useAppDispatch } from '../../../../../store/store';
 import { useSelector } from 'react-redux';
 import styles from './SingleProduct.module.css';
-import { IMAGES_URL } from '../../../API/config';
-import Button from '../../common/Button/Button';
-import Error from '../../common/Error/Error';
-import { addToCart, recalculateTotalPrice, storeCart } from '../cart/cartSlice';
+import { IMAGES_URL } from '../../../../../API/config';
+import Button from '../../../../common/Button/Button';
+import Error from '../../../../common/Error/Error';
+import {
+  addToCart,
+  recalculateTotalPrice,
+  storeCart,
+} from '../../../cart/cartSlice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import QuantityField from '../../common/QuantityField/QuantityField';
-import SizeMenu from '../../common/SizeMenu/SizeMenu';
+import QuantityField from '../../../../common/QuantityField/QuantityField';
+import SizeMenu from '../../../../common/SizeMenu/SizeMenu';
 import { nanoid } from 'nanoid';
-import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
+import LoadingSpinner from '../../../../common/LoadingSpinner/LoadingSpinner';
 
 // [TODO] Add spinner while loading
 const SingleProduct = () => {
