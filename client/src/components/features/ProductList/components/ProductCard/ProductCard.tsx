@@ -1,15 +1,19 @@
 import { Link } from 'react-router-dom';
-import { IMAGES_URL } from '../../../API/config';
-import Product from '../../../types/Product';
+import { IMAGES_URL } from '../../../../../API/config';
+import Product from '../../../../../types/Product';
 import styles from './ProductCard.module.css';
 import { useState } from 'react';
-import Button from '../../common/Button/Button';
-import { useAppDispatch } from '../../../store/store';
-import { addToCart, recalculateTotalPrice, storeCart } from '../cart/cartSlice';
+import Button from '../../../../common/Button/Button';
+import { useAppDispatch } from '../../../../../store/store';
+import {
+  addToCart,
+  recalculateTotalPrice,
+  storeCart,
+} from '../../../cart/cartSlice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import QuantityField from '../../common/QuantityField/QuantityField';
-import SizeMenu from '../../common/SizeMenu/SizeMenu';
+import QuantityField from '../../../../common/QuantityField/QuantityField';
+import SizeMenu from '../../../../common/SizeMenu/SizeMenu';
 import { nanoid } from 'nanoid';
 
 const ProductCard = (productData: Product) => {

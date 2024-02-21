@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AccountData } from '../../../../../types/AccountData';
-import styles from './AccountsOrdersList.module.css';
+import styles from './AccountOrdersList.module.css';
 
 interface OrdersListProps {
   orders: AccountData['orders'] | [];

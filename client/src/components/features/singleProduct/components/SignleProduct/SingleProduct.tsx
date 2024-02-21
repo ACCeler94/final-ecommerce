@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import {
   fetchById,
   resetCurrentProduct,
-} from '../../../ProductList/productListSlice';
+} from '../../../productList/productListSlice';
 import { RootState, useAppDispatch } from '../../../../../store/store';
 import { useSelector } from 'react-redux';
 import styles from './SingleProduct.module.css';

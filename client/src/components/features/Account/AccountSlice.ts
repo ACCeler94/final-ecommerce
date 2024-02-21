@@ -3,7 +3,7 @@ import {
   createAsyncThunk,
   createSlice,
 } from '@reduxjs/toolkit';
-import { Statuses } from '../ProductList/productListSlice';
+import { Statuses } from '../productList/productListSlice';
 import usersAPI from '../../../API/usersApi';
 
 type State = {

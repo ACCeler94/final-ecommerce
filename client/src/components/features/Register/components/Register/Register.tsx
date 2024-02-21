@@ -8,7 +8,7 @@ import { RootState, useAppDispatch } from '../../../../../store/store';
 import { useSelector } from 'react-redux';
 import { register, resetState } from '../../registerSlice';
 import Error from '../../../../common/Error/Error';
-import { Statuses } from '../../../ProductList/productListSlice';
+import { Statuses } from '../../../productList/productListSlice';
 import RegisterSuccessPage from '../../../../pages/RegisterSuccessPage/RegisterSuccessPage';
 
 type registerFormData = {

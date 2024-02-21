@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Statuses } from '../ProductList/productListSlice';
+import { Statuses } from '../productList/productListSlice';
 import authAPI from '../../../API/authApi';
 import LoginData from '../../../types/LoginData';
 import { AxiosError } from 'axios';

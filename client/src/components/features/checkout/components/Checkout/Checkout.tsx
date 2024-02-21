@@ -13,7 +13,7 @@ import {
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Error from '../../../../common/Error/Error';
-import { fetchAccountData } from '../../../Account/AccountSlice';
+import { fetchAccountData } from '../../../account/AccountSlice';
 import { AccountData } from '../../../../../types/AccountData';
 import CheckoutForm from '../CheckoutForm/CheckoutForm';
 

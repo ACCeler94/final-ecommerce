@@ -16,7 +16,7 @@ import SignInPage from './components/pages/SignInPage/SignInPage';
 import RegisterPage from './components/pages/RegisterPage/RegisterPage';
 import AccountPage from './components/pages/AccountPage/AccountPage';
 import Cookies from 'js-cookie';
-import { fetchLogJWT } from './components/features/SignIn/SignInSlice';
+import { fetchLogJWT } from './components/features/signIn/SignInSlice';
 
 function App() {
   const dispatch = useAppDispatch();

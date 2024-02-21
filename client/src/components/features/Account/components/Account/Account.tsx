@@ -4,7 +4,7 @@ import { RootState, useAppDispatch } from '../../../../../store/store';
 import { useState } from 'react';
 import { fetchAccountData } from '../../AccountSlice';
 import { useEffect } from 'react';
-import { Statuses } from '../../../ProductList/productListSlice';
+import { Statuses } from '../../../productList/productListSlice';
 import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../../../../common/LoadingSpinner/LoadingSpinner';
 import { AccountData } from '../../../../../types/AccountData';

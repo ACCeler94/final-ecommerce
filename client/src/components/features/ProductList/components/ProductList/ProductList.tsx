@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../../../store/store';
+import { RootState, useAppDispatch } from '../../../../../store/store';
 import { useEffect, useState } from 'react';
-import { fetchAllProducts } from './productListSlice';
+import { fetchAllProducts } from '../../productListSlice';
 import ProductCard from '../ProductCard/ProductCard';
 import styles from './ProductList.module.css';
-import Error from '../../common/Error/Error';
-import Product from '../../../types/Product';
-import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
+import Error from '../../../../common/Error/Error';
+import Product from '../../../../../types/Product';
+import LoadingSpinner from '../../../../common/LoadingSpinner/LoadingSpinner';
 
 interface ProductListProps {
   category?: string;

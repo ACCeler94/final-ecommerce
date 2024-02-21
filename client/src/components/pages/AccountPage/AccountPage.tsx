@@ -1,5 +1,5 @@
 import Container from '../../common/Container/Container';
-import Account from '../../features/Account/components/Account/Account';
+import Account from '../../features/account/components/Account/Account';
 
 const AccountPage = () => {
   return (

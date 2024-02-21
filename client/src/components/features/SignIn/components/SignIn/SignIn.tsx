@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react';
 import styles from './SignIn.module.css';
-import Button from '../../common/Button/Button';
+import Button from '../../../../common/Button/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import { RootState, useAppDispatch } from '../../../store/store';
-import { fetchLogIn } from './SignInSlice';
+import { RootState, useAppDispatch } from '../../../../../store/store';
+import { fetchLogIn } from '../../SignInSlice';
 import { useSelector } from 'react-redux';
-import { Statuses } from '../ProductList/productListSlice';
 
 const SignIn = () => {
   const [userLogin, setUserLogin] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const dispatch = useAppDispatch();
   const error = useSelector((state: RootState) => state.signIn.error);
-  const status = useSelector((state: RootState) => state.signIn.status);
+
   const navigate = useNavigate();
   const userId = useSelector((state: RootState) => state.signIn.userId);
 
