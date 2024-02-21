@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import styles from './Checkout.module.css';
 import { RootState, useAppDispatch } from '../../../../../store/store';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -16,10 +15,12 @@ import Error from '../../../../common/Error/Error';
 import { fetchAccountData } from '../../../account/AccountSlice';
 import { AccountData } from '../../../../../types/AccountData';
 import CheckoutForm from '../CheckoutForm/CheckoutForm';
+import CheckoutSummary from '../CheckoutSummary/CheckoutSummary';
 
 const Checkout = () => {
   const cart = useSelector((state: RootState) => state.cart.shoppingCart);
   const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
+  const userId = useSelector((state: RootState) => state.signIn.userId);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -30,11 +31,14 @@ const Checkout = () => {
   const [shippingCity, setShippingCity] = useState('');
   const [shippingZip, setShippingZip] = useState('');
 
+  // redirect if cart is empty or userId is falsy (user is not signed in)
   useEffect(() => {
     if (cart.length === 0) {
       navigate('/');
+    } else if (!userId) {
+      navigate('/account/sign-in');
     }
-  }, [navigate, cart]);
+  }, [navigate, cart, userId]);
 
   // fetch account data to fill form with default values
   useEffect(() => {
@@ -119,44 +123,15 @@ const Checkout = () => {
     orderSubmitHandler,
   };
 
+  const CheckoutSummaryProps = {
+    cart,
+    totalPrice,
+  };
+
   return (
     <div className="checkout-wrapper">
       <ToastContainer />
-      <section className={styles.orderSummary}>
-        <ul>
-          {cart.map((cartObj) => {
-            return (
-              <li key={cartObj.product.id} className={styles.itemSummary}>
-                <h3 className="cart-product-name">{cartObj.product.name}</h3>
-                <p>
-                  Size:{' '}
-                  <span className={styles.summaryValue}>
-                    {cartObj.size.toUpperCase()}
-                  </span>
-                </p>
-                <p>
-                  Quantity:{' '}
-                  <span className={styles.summaryValue}>
-                    {cartObj.quantity}
-                  </span>
-                </p>
-                {cartObj.comment ? (
-                  <p>
-                    Additional comment:{' '}
-                    <span className={styles.comment}>{cartObj.comment}</span>
-                  </p>
-                ) : null}
-                <p className={styles.subtotal}>
-                  Subtotal price: ${cartObj.quantity * cartObj.product.price}
-                </p>
-              </li>
-            );
-          })}
-        </ul>
-        <div className={styles.priceSummary}>
-          <h3>Total price: ${totalPrice}</h3>
-        </div>
-      </section>
+      <CheckoutSummary {...CheckoutSummaryProps} />
       <CheckoutForm {...CheckoutFormProps} />
     </div>
   );
