@@ -9,7 +9,7 @@ import {
   resetCart,
   resetCartInStorage,
 } from '../../../cart/cartSlice';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Error from '../../../../common/Error/Error';
 import { fetchAccountData } from '../../../account/AccountSlice';
@@ -130,7 +130,6 @@ const Checkout = () => {
 
   return (
     <div className="checkout-wrapper">
-      <ToastContainer />
       <CheckoutSummary {...CheckoutSummaryProps} />
       <CheckoutForm {...CheckoutFormProps} />
     </div>
