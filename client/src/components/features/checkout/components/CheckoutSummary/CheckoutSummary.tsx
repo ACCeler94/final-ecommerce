@@ -15,7 +15,8 @@ interface CheckoutSummaryProps {
 const CheckoutSummary = ({ cart, totalPrice }: CheckoutSummaryProps) => {
   return (
     <section className={styles.orderSummary}>
-      <ul>
+      <h1 className={styles.sectionTitle}>Your items:</h1>
+      <ul className={styles.orderItemsList}>
         {cart.map((cartObj) => {
           return (
             <li key={cartObj.product.id} className={styles.itemSummary}>
