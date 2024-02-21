@@ -62,6 +62,7 @@ model ProductOnOrder {
   productId String
   quantity  Int     @default(1)
   comment   String?
+  size      String
 
   @@id([orderId, productId])
 }
