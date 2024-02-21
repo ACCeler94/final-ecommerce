@@ -1,3 +1,23 @@
+.sectionTitle {
+  margin: 5% 0;
+  font-size: 1.6em;
+  margin-left: 40px;
+}
+
+.userDataFormCheckbox {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.userDataFormCheckbox label {
+  margin-left: 10px;
+}
+
+.userDataFormCheckbox input[type=checkbox] {
+  height: 1.3em;
+  width: 1.3em;
+}
 
 .userDataForm {
   display: flex;
@@ -16,8 +36,8 @@
   padding: 10px;
 }
 
-.userDataForm textarea {
-  resize: none;
+.userDataForm input:disabled {
+  cursor: not-allowed;
 }
 
 .userDataForm button {

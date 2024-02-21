@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Button from '../../../../common/Button/Button';
 import styles from './CheckoutFrom.module.css';
 
@@ -28,9 +29,24 @@ const CheckoutForm = ({
   setShippingZip,
   orderSubmitHandler,
 }: CheckoutFormProps) => {
+  const [isChecked, setIsChecked] = useState(false);
+
   return (
     <section className={styles.checkoutFormWrapper}>
+      <h1 className={styles.sectionTitle}>Shipping Data</h1>
       <form className={styles.userDataForm} onSubmit={orderSubmitHandler}>
+        <div className={styles.userDataFormCheckbox}>
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={() => setIsChecked(!isChecked)}
+            id="customAddressCheckbox"
+            name="customAddressCheckbox"
+          />
+          <label htmlFor="customAddressCheckbox">
+            Ship to a different address
+          </label>
+        </div>
         <label htmlFor="name">First and last name*</label>
         <input
           type="text"
@@ -39,6 +55,7 @@ const CheckoutForm = ({
           required
           value={name}
           onChange={(e) => setName(e.target.value)}
+          disabled={!isChecked}
         />
         <label htmlFor="email">Email address*</label>
         <input
@@ -48,6 +65,7 @@ const CheckoutForm = ({
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          disabled={!isChecked}
         />
         <label htmlFor="shippingStreet">Shipping Street*</label>
         <input
@@ -56,6 +74,7 @@ const CheckoutForm = ({
           required
           value={shippingStreet}
           onChange={(e) => setShippingStreet(e.target.value)}
+          disabled={!isChecked}
         />
         <label htmlFor="shippingCity">Shipping City*</label>
         <input
@@ -64,6 +83,7 @@ const CheckoutForm = ({
           required
           value={shippingCity}
           onChange={(e) => setShippingCity(e.target.value)}
+          disabled={!isChecked}
         />
         <label htmlFor="shippingZip">Shipping Zip*</label>
         <input
@@ -72,6 +92,7 @@ const CheckoutForm = ({
           required
           value={shippingZip}
           onChange={(e) => setShippingZip(e.target.value)}
+          disabled={!isChecked}
         />
         {/* Submit handler is assigned to a form, button is getting type submit by default */}
         <Button buttonText="Place Order" />
