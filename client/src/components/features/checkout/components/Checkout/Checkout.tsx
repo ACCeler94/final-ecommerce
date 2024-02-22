@@ -16,11 +16,13 @@ import { fetchAccountData } from '../../../account/AccountSlice';
 import { AccountData } from '../../../../../types/AccountData';
 import CheckoutForm from '../CheckoutForm/CheckoutForm';
 import CheckoutSummary from '../CheckoutSummary/CheckoutSummary';
+import { Statuses } from '../../../productList/productListSlice';
 
 const Checkout = () => {
   const cart = useSelector((state: RootState) => state.cart.shoppingCart);
   const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
   const userId = useSelector((state: RootState) => state.signIn.userId);
+  const accountStatus = useSelector((state: RootState) => state.account.status);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -31,14 +33,12 @@ const Checkout = () => {
   const [shippingCity, setShippingCity] = useState('');
   const [shippingZip, setShippingZip] = useState('');
 
-  // redirect if cart is empty or userId is falsy (user is not signed in)
+  // redirect if userId is falsy (user is not signed in)
   useEffect(() => {
-    if (cart.length === 0) {
-      navigate('/');
-    } else if (!userId) {
+    if (!userId && accountStatus === Statuses.Failed) {
       navigate('/account/sign-in');
     }
-  }, [navigate, cart, userId]);
+  }, [navigate, userId, accountStatus]);
 
   // fetch account data to fill form with default values
   useEffect(() => {
@@ -90,7 +90,7 @@ const Checkout = () => {
     if (!name || !email || !shippingStreet || !shippingCity || !shippingZip) {
       alert('Please fill all required fields!');
     } else {
-      if (totalPrice) {
+      if (totalPrice && cart.length !== 0) {
         const orderObj: Order = {
           userData: { name, email, shippingCity, shippingStreet, shippingZip },
           products: cart,

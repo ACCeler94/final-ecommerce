@@ -69,7 +69,20 @@ function Register() {
     if (!validatePassword()) return; // return nothing if passwords do not match
 
     if (!isLastStep) return next();
-    dispatch(register(data));
+    // check if all values are present before dispatch
+    if (
+      data.name &&
+      data.street &&
+      data.city &&
+      data.zip &&
+      data.email &&
+      data.password &&
+      data.repeatPassword
+    ) {
+      dispatch(register(data));
+    } else {
+      alert('Please fill all required fields!');
+    }
   };
 
   if (error) return <Error error={error} />;

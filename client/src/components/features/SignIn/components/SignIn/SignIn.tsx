@@ -17,7 +17,11 @@ const SignIn = () => {
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(fetchLogIn({ email: userLogin, password: userPassword }));
+    if (userLogin && userPassword) {
+      dispatch(fetchLogIn({ email: userLogin, password: userPassword }));
+    } else {
+      alert('Please fill all required fields!');
+    }
   };
 
   useEffect(() => {
