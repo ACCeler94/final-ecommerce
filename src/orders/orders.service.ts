@@ -14,7 +14,7 @@ export class OrdersService {
   public getOrderById(id: Order['id']): Promise<Order> {
     return this.prismaService.order.findUnique({
       where: { id },
-      include: { Products: true },
+      include: { products: true },
     });
   }
 
@@ -24,6 +24,7 @@ export class OrdersService {
   ): Promise<Order> | null {
     try {
       const { userData, products, orderTotal } = orderData;
+
       const createdOrder = await this.prismaService.order.create({
         data: {
           name: userData.name,
@@ -36,7 +37,7 @@ export class OrdersService {
         },
       });
 
-      for (const productsElem of products) {
+      const productOnOrderCreations = products.map((productsElem) => {
         const productData: any = {
           orderId: createdOrder.id,
           productId: productsElem.product.id,
@@ -45,14 +46,16 @@ export class OrdersService {
           size: productsElem.size,
         };
 
-        await this.prismaService.productOnOrder.create({
+        return this.prismaService.productOnOrder.create({
           data: productData,
         });
-      }
+      });
+
+      await this.prismaService.$transaction(productOnOrderCreations);
 
       const completeOrder = await this.prismaService.order.findUnique({
         where: { id: createdOrder.id },
-        include: { Products: true },
+        include: { products: true },
       });
 
       return completeOrder;

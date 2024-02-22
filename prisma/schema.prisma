@@ -52,7 +52,7 @@ model Order {
 
   userId   String
   user     User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  Products ProductOnOrder[]
+  products ProductOnOrder[]
 }
 
 model ProductOnOrder {
@@ -64,7 +64,7 @@ model ProductOnOrder {
   comment   String?
   size      String
 
-  @@id([orderId, productId])
+  @@id([orderId, productId, size])
 }
 
 model Session {

@@ -16,7 +16,7 @@ export class UsersService {
       include: {
         orders: {
           include: {
-            Products: true,
+            products: true,
           },
         },
       },
