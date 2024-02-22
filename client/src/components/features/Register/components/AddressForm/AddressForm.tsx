@@ -27,6 +27,7 @@ const AddressForm = ({
         onChange={(e) => updateFields({ name: e.target.value })}
         name="name"
         id="name"
+        className="user-input"
       />
       <label htmlFor="street">Street</label>
       <input
@@ -36,6 +37,7 @@ const AddressForm = ({
         onChange={(e) => updateFields({ street: e.target.value })}
         name="street"
         id="street"
+        className="user-input"
       />
       <label htmlFor="city">City</label>
       <input
@@ -45,6 +47,7 @@ const AddressForm = ({
         onChange={(e) => updateFields({ city: e.target.value })}
         name="city"
         id="city"
+        className="user-input"
       />
       <label htmlFor="zip">Zip</label>
       <input
@@ -54,6 +57,7 @@ const AddressForm = ({
         onChange={(e) => updateFields({ zip: e.target.value })}
         name="zip"
         id="zip"
+        className="user-input"
       />
     </>
   );

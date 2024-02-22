@@ -39,6 +39,7 @@ const SignIn = () => {
             value={userLogin}
             onChange={(e) => setUserLogin(e.target.value)}
             required
+            className="user-input"
           />
           {error && error.statusCode === 401 ? (
             <span className={styles.errorText}>Invalid login or password!</span>
@@ -56,6 +57,7 @@ const SignIn = () => {
             value={userPassword}
             onChange={(e) => setUserPassword(e.target.value)}
             required
+            className="user-input"
           />
           <Button buttonText="Sign In" />
         </form>

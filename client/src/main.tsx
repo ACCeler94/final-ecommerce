@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import 'normalize.css';
+import './styles/global.css';
+import './styles/variables.css';
 import store from './store/store';
 import { Provider } from 'react-redux';
 

@@ -33,6 +33,7 @@ const UserForm = ({
         onChange={(e) => updateFields({ email: e.target.value })}
         id="email"
         name="email"
+        className="user-input"
       />
       <label htmlFor="password">Password</label>
       <div className={styles.inputWithFaIcon}>
@@ -45,6 +46,7 @@ const UserForm = ({
           id="password"
           pattern="^(?=.*[a-z])(?=.*[A-Z]).{6,}$"
           title="Must contain at least one uppercase and lowercase letter, and at least 6 or more characters"
+          className="user-input"
         />
         <FontAwesomeIcon
           icon={showPassword ? faEyeSlash : faEye}
@@ -66,6 +68,7 @@ const UserForm = ({
           id="confirm-password"
           pattern={password}
           title="Passwords do not match"
+          className="user-input"
         />
         <FontAwesomeIcon
           icon={showRepeatPassword ? faEyeSlash : faEye}

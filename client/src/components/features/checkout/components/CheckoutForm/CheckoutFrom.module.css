@@ -32,9 +32,6 @@
   font-weight: var(--main-font-semi-bold);
 }
 
-.userDataForm input {
-  padding: 10px;
-}
 
 .userDataForm input:disabled {
   cursor: not-allowed;

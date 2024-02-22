@@ -56,6 +56,7 @@ const CheckoutForm = ({
           value={name}
           onChange={(e) => setName(e.target.value)}
           disabled={!isChecked}
+          className="user-input"
         />
         <label htmlFor="email">Email address*</label>
         <input
@@ -66,6 +67,7 @@ const CheckoutForm = ({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           disabled={!isChecked}
+          className="user-input"
         />
         <label htmlFor="shippingStreet">Shipping Street*</label>
         <input
@@ -75,6 +77,7 @@ const CheckoutForm = ({
           value={shippingStreet}
           onChange={(e) => setShippingStreet(e.target.value)}
           disabled={!isChecked}
+          className="user-input"
         />
         <label htmlFor="shippingCity">Shipping City*</label>
         <input
@@ -84,6 +87,7 @@ const CheckoutForm = ({
           value={shippingCity}
           onChange={(e) => setShippingCity(e.target.value)}
           disabled={!isChecked}
+          className="user-input"
         />
         <label htmlFor="shippingZip">Shipping Zip*</label>
         <input
@@ -93,6 +97,7 @@ const CheckoutForm = ({
           value={shippingZip}
           onChange={(e) => setShippingZip(e.target.value)}
           disabled={!isChecked}
+          className="user-input"
         />
         {/* Submit handler is assigned to a form, button is getting type submit by default */}
         <Button buttonText="Place Order" />
