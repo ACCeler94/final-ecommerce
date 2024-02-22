@@ -16,13 +16,20 @@ export class UsersService {
       include: {
         orders: {
           include: {
-            products: true,
+            products: {
+              include: {
+                product: {
+                  select: {
+                    name: true, // Only select the 'name' field
+                  },
+                },
+              },
+            },
           },
         },
       },
     });
   }
-
   public getUserByEmail(
     email: User['email'],
   ): Promise<User & { password: Password }> {
