@@ -20,7 +20,9 @@ export class UsersService {
               include: {
                 product: {
                   select: {
-                    name: true, // Only select the 'name' field
+                    // Only select name and id field
+                    name: true,
+                    id: true,
                   },
                 },
               },
