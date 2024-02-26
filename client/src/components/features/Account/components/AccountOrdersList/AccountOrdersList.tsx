@@ -23,11 +23,11 @@ const AccountOrdersList = ({ orders }: OrdersListProps) => {
         {orders.length === 0 ? (
           'You have no orders to show.'
         ) : (
-          <div>
+          <div className={styles.ordersListWrapper}>
             <ul className={styles.ordersList}>
               {orders.slice(0, ordersNumberToShow).map((order) => {
                 return (
-                  <li key={order.id}>
+                  <li key={order.id} className={styles.orderItem}>
                     <details className={styles.orderData}>
                       <summary className={styles.orderSummary}>
                         <span>Order number:</span>
@@ -66,7 +66,7 @@ const AccountOrdersList = ({ orders }: OrdersListProps) => {
             </ul>
             {ordersNumberToShow < orders.length ? (
               <Button
-                buttonText="Show more orders"
+                buttonText="Show more"
                 buttonHandler={() =>
                   setOrdersNumberToShow(ordersNumberToShow + 3)
                 }

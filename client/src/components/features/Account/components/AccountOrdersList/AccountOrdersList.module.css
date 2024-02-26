@@ -1,5 +1,13 @@
+.ordersListWrapper button {
+  margin: 50px 0;
+}
+
 .ordersList {
   list-style: none;
+}
+
+.orderItem {
+  margin: 25px 0;
 }
 
 .orderId {
