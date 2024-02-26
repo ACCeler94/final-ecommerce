@@ -48,9 +48,8 @@ const Account = () => {
           </h1>
           <Button buttonText="Log Out" buttonHandler={() => {}} />
         </div>
-
         <div className={styles.accountWrapper}></div>
-        {<AccountOrdersList orders={userData.orders} />}
+        <AccountOrdersList orders={userData.orders} />
       </div>
     );
   }

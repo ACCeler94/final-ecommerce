@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { AccountData } from '../../../../../types/AccountData';
 import styles from './AccountOrdersList.module.css';
+import { Link } from 'react-router-dom';
+import Button from '../../../../common/Button/Button';
 
 interface OrdersListProps {
   orders: AccountData['orders'] | [];
@@ -21,39 +23,56 @@ const AccountOrdersList = ({ orders }: OrdersListProps) => {
         {orders.length === 0 ? (
           'You have no orders to show.'
         ) : (
-          <ul>
-            {orders.slice(0, ordersNumberToShow).map((order) => {
-              return (
-                <li key={order.id}>
-                  <div className={styles.orderData}>
-                    <h2 className={styles.orderId}>{order.id}</h2>
-                    <ul>
-                      <h3>Products:</h3>
-                      {order.products.map((productItem) => (
-                        <li>
-                          <span className={styles.infoBold}>
-                            {productItem.product.name}
-                          </span>
-                          Size:
-                          <span className={styles.infoBold}>
-                            {productItem.size}
-                          </span>
-                          Quantity:
-                          <span className={styles.infoBold}>
-                            {productItem.quantity}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <p>
-                    Order Total:
-                    <span className={styles.infoBold}>{order.orderTotal}</span>
-                  </p>
-                </li>
-              );
-            })}
-          </ul>
+          <div>
+            <ul className={styles.ordersList}>
+              {orders.slice(0, ordersNumberToShow).map((order) => {
+                return (
+                  <li key={order.id}>
+                    <details className={styles.orderData}>
+                      <summary className={styles.orderSummary}>
+                        <span>Order number:</span>
+                        <h2 className={styles.orderId}>{order.id}</h2>
+                      </summary>
+                      <ul className={styles.orderDetails}>
+                        <h3>Products:</h3>
+                        {order.products.map((productItem, index) => (
+                          <li key={index}>
+                            <span className={styles.productLink}>
+                              <Link to={`/product/${productItem.product.id}`}>
+                                {productItem.product.name}
+                              </Link>
+                            </span>
+                            Size:
+                            <span className={styles.infoSemiBold}>
+                              {productItem.size.toUpperCase()}
+                            </span>
+                            Quantity:
+                            <span className={styles.infoSemiBold}>
+                              {productItem.quantity}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                      <p>
+                        Order Total:
+                        <span className={styles.infoSemiBold}>
+                          ${order.orderTotal}
+                        </span>
+                      </p>
+                    </details>
+                  </li>
+                );
+              })}
+            </ul>
+            {ordersNumberToShow < orders.length ? (
+              <Button
+                buttonText="Show more orders"
+                buttonHandler={() =>
+                  setOrdersNumberToShow(ordersNumberToShow + 3)
+                }
+              />
+            ) : null}
+          </div>
         )}
       </div>
     </>

@@ -1,0 +1,39 @@
+.ordersList {
+  list-style: none;
+}
+
+.orderId {
+  display: inline-block;
+  font-size: 1.25em;
+  font-weight: var(--main-font-semi-bold);
+  margin: 0;
+  margin-left: 5px;
+}
+
+
+.orderDetails {
+  list-style-type: decimal;
+}
+
+.orderDetails h3 {
+  margin: 10px 0;
+  font-weight: var(--main-font-semi-bold);
+  font-size: 1.15em;
+  margin-left: -40px;
+}
+
+.orderDetails li {
+  margin: 10px 0;
+}
+
+.orderDetails .productLink a {
+  color: var(--main-font-color);
+  font-weight: var(--main-font-semi-bold);
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.infoSemiBold {
+  font-weight: var(--main-font-semi-bold);
+  margin: 0 10px;
+}
