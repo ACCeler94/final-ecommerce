@@ -32,6 +32,7 @@ const Checkout = () => {
   const [shippingStreet, setShippingStreet] = useState('');
   const [shippingCity, setShippingCity] = useState('');
   const [shippingZip, setShippingZip] = useState('');
+  const [error, setError] = useState();
 
   // redirect if userId is falsy (user is not signed in)
   useEffect(() => {
@@ -103,7 +104,7 @@ const Checkout = () => {
             redirectOnSuccess();
           })
           .catch((err) => {
-            return <Error error={err} />;
+            setError(err);
           });
       }
     }
@@ -127,6 +128,10 @@ const Checkout = () => {
     cart,
     totalPrice,
   };
+
+  if (error) {
+    return <Error error={error} />;
+  }
 
   return (
     <div className="checkout-wrapper">
