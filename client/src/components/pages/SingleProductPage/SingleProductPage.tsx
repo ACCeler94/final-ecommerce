@@ -1,6 +1,6 @@
 import BackButton from '../../common/BackButton/BackButton';
 import Container from '../../common/Container/Container';
-import SingleProduct from '../../features/singleProduct/components/SignleProduct/SingleProduct';
+import SingleProduct from '../../features/singleProduct/components/SingleProduct/SingleProduct';
 
 const SingleProductPage = () => {
   return (
