@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Navbar from './components/layout/Navbar/Navbar';
 import Home from './components/pages/Home/Home';
 import './App.css';
@@ -18,6 +18,7 @@ import AccountPage from './components/pages/AccountPage/AccountPage';
 import Cookies from 'js-cookie';
 import { fetchLogJWT } from './components/features/signIn/SignInSlice';
 import AccountOrdersList from './components/features/account/components/AccountOrdersList/AccountOrdersList';
+import AccountInfo from './components/features/account/components/AccountInfo/AccountInfo';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -46,7 +47,9 @@ function App() {
         <Route path="/account/sign-in" element={<SignInPage />} />
         <Route path="/account/register" element={<RegisterPage />} />
         <Route path="/account/my-account" element={<AccountPage />}>
+          <Route index element={<Navigate to="orders" />} />
           <Route path="orders" element={<AccountOrdersList />} />
+          <Route path="account-info" element={<AccountInfo />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -34,8 +34,6 @@ const Account = () => {
     if (status === Statuses.Failed || error) {
       navigate('/account/sign-in');
     }
-
-    navigate('orders');
   }, [status, error, navigate]);
 
   if (status === Statuses.Pending)
