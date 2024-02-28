@@ -26,7 +26,7 @@ const SignIn = () => {
 
   useEffect(() => {
     if (userId) {
-      navigate('/account/my-account');
+      navigate('/account/my-account/orders');
     }
   }, [userId, navigate]);
 

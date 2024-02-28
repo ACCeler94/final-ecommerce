@@ -5,11 +5,15 @@ import { useState } from 'react';
 import { fetchAccountData } from '../../AccountSlice';
 import { useEffect } from 'react';
 import { Statuses } from '../../../productList/productListSlice';
-import { useNavigate } from 'react-router-dom';
+import {
+  NavLink,
+  Outlet,
+  useNavigate,
+  useOutletContext,
+} from 'react-router-dom';
 import LoadingSpinner from '../../../../common/LoadingSpinner/LoadingSpinner';
 import { AccountData } from '../../../../../types/AccountData';
 import Button from '../../../../common/Button/Button';
-import AccountOrdersList from '../AccountOrdersList/AccountOrdersList';
 
 const Account = () => {
   const status = useSelector((state: RootState) => state.account.status);
@@ -30,6 +34,8 @@ const Account = () => {
     if (status === Statuses.Failed || error) {
       navigate('/account/sign-in');
     }
+
+    navigate('orders');
   }, [status, error, navigate]);
 
   if (status === Statuses.Pending)
@@ -48,10 +54,33 @@ const Account = () => {
           </h1>
           <Button buttonText="Log Out" buttonHandler={() => {}} />
         </div>
-        <div className={styles.accountWrapper}></div>
-        <AccountOrdersList orders={userData.orders} />
+        <div className={styles.navAndOutlet}>
+          <div className={styles.accountNav}>
+            <NavLink
+              to={'orders'}
+              className={({ isActive }) => (isActive ? styles.active : '')}
+            >
+              Orders
+            </NavLink>
+            <NavLink
+              to={'account-info'}
+              className={({ isActive }) => (isActive ? styles.active : '')}
+            >
+              Account Info
+            </NavLink>
+          </div>
+          <div className={styles.outletWrapper}>
+            <Outlet context={userData} />
+          </div>
+        </div>
       </div>
     );
   }
 };
 export default Account;
+
+type ContextType = AccountData;
+
+export function useUserData() {
+  return useOutletContext<ContextType>();
+}

@@ -17,6 +17,7 @@ import RegisterPage from './components/pages/RegisterPage/RegisterPage';
 import AccountPage from './components/pages/AccountPage/AccountPage';
 import Cookies from 'js-cookie';
 import { fetchLogJWT } from './components/features/signIn/SignInSlice';
+import AccountOrdersList from './components/features/account/components/AccountOrdersList/AccountOrdersList';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -44,7 +45,9 @@ function App() {
         <Route path="/product/:productId" element={<SingleProductPage />} />
         <Route path="/account/sign-in" element={<SignInPage />} />
         <Route path="/account/register" element={<RegisterPage />} />
-        <Route path="/account/my-account" element={<AccountPage />} />
+        <Route path="/account/my-account" element={<AccountPage />}>
+          <Route path="orders" element={<AccountOrdersList />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
 
