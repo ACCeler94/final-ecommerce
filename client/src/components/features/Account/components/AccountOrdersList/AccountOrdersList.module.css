@@ -1,13 +1,17 @@
 .ordersListWrapper button {
-  margin: 50px 0;
+  margin: 0 40px;
+  margin-top: -10px;
+  margin-bottom: 30px
 }
 
 .ordersList {
   list-style: none;
+  padding: 30px 40px;
+  margin: 0;
 }
 
 .orderItem {
-  margin: 25px 0;
+  margin: 5% 0;
 }
 
 .orderId {
