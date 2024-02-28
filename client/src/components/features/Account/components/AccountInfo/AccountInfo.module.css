@@ -1,0 +1,12 @@
+.infoWrapper {
+  padding: 30px 40px;
+}
+
+.infoWrapper p {
+  margin: 2.5% 0;
+}
+
+.infoValue {
+  font-weight: var(--main-font-semi-bold);
+  margin: 0 5px;
+}
