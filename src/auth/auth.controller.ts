@@ -51,6 +51,7 @@ export class AuthController {
   @Delete('/logout')
   async logout(@Request() req, @Response() res) {
     res.clearCookie('auth', { httpOnly: true });
+    res.clearCookie('isLogged');
     res.send({
       message: 'success',
     });

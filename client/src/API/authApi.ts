@@ -12,6 +12,8 @@ const authAPI = {
     axios.post(`${API_URL}/auth/login`, loginData),
 
   loginWithJWT: () => axios.post(`${API_URL}/auth/logJWT`),
+
+  logoutUser: () => axios.delete(`${API_URL}/auth/logout`),
 };
 
 export default authAPI;

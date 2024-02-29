@@ -13,7 +13,7 @@ import {
 } from 'react-router-dom';
 import LoadingSpinner from '../../../../common/LoadingSpinner/LoadingSpinner';
 import { AccountData } from '../../../../../types/AccountData';
-import Button from '../../../../common/Button/Button';
+import LogOutButton from '../../../../common/LogOutButton/LogOutButton';
 
 const Account = () => {
   const status = useSelector((state: RootState) => state.account.status);
@@ -50,7 +50,7 @@ const Account = () => {
           <h1>
             <span className={styles.welcomeMsg}>Welcome</span> {userData.name}
           </h1>
-          <Button buttonText="Log Out" buttonHandler={() => {}} />
+          <LogOutButton />
         </div>
         <div className={styles.navAndOutlet}>
           <div className={styles.accountNav}>
