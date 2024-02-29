@@ -55,13 +55,13 @@ const Account = () => {
         <div className={styles.navAndOutlet}>
           <div className={styles.accountNav}>
             <NavLink
-              to={'orders'}
+              to="orders"
               className={({ isActive }) => (isActive ? styles.active : '')}
             >
               Orders
             </NavLink>
             <NavLink
-              to={'account-info'}
+              to="account-info"
               className={({ isActive }) => (isActive ? styles.active : '')}
             >
               Account Info

@@ -43,9 +43,24 @@
   background-size: 100% 2px;
 }
 
-.navLinksWrapper .cartIcon {
-  margin-left: 20px;
+.navLinksWrapper .navLink.active {
+  background-position: 100% 100%; /*OR bottom right*/
+  background-size: 100% 2px;
+}
+
+.navLinksWrapper .icon {
+  margin-left: 30px;
   display: inline-block;
+}
+
+.navLinksWrapper button {
+  display: inline-block;
+  margin: 0;
+  margin-left: 30px;
+  background-color: transparent;
+  border: 1px solid var(--button-black-color);
+  padding: 10px 20px;
+  font-weight: var(--main-font-normal);
 }
 
 

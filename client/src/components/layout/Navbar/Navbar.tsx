@@ -1,11 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Container from '../../common/Container/Container';
 import styles from './Navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 import CartCounter from '../../features/cart/components/CartCounter/CartCounter';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../store/store';
+import Button from '../../common/Button/Button';
 
 const Navbar = () => {
+  const userId = useSelector((state: RootState) => state.signIn.userId);
+  const navigate = useNavigate();
+
   return (
     <nav className={styles.navbar}>
       <Container>
@@ -14,16 +20,36 @@ const Navbar = () => {
             <Link to="/">Sartorial Selections </Link>
           </div>
           <div className={styles.navLinksWrapper}>
-            <Link to={'/category/female'} className={styles.navLink}>
+            <NavLink
+              to="/category/female"
+              className={({ isActive }) =>
+                isActive ? styles.active + ' ' + styles.navLink : styles.navLink
+              }
+            >
               Female
-            </Link>
-            <Link to={'/category/male'} className={styles.navLink}>
+            </NavLink>
+            <NavLink
+              to="/category/male"
+              className={({ isActive }) =>
+                isActive ? styles.active + ' ' + styles.navLink : styles.navLink
+              }
+            >
               Male
-            </Link>
-            <Link to={'/cart'} className={styles.cartIcon}>
+            </NavLink>
+            <Link to="/cart" className={styles.icon}>
               <FontAwesomeIcon icon={faCartShopping} />
               <CartCounter />
             </Link>
+            {userId ? (
+              <Link to="/account/my-account" className={styles.icon}>
+                <FontAwesomeIcon icon={faUser} />{' '}
+              </Link>
+            ) : (
+              <Button
+                buttonText="Sign In"
+                buttonHandler={() => navigate('/account/sign-in')}
+              />
+            )}
           </div>
         </div>
       </Container>
