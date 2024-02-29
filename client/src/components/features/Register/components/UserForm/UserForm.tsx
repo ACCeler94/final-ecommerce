@@ -34,6 +34,7 @@ const UserForm = ({
         id="email"
         name="email"
         className="user-input"
+        autoComplete="username"
       />
       <label htmlFor="password">Password</label>
       <div className={styles.inputWithFaIcon}>
@@ -47,6 +48,7 @@ const UserForm = ({
           pattern="^(?=.*[a-z])(?=.*[A-Z]).{6,}$"
           title="Must contain at least one uppercase and lowercase letter, and at least 6 or more characters"
           className="user-input"
+          autoComplete="new-password"
         />
         <FontAwesomeIcon
           icon={showPassword ? faEyeSlash : faEye}
@@ -69,6 +71,7 @@ const UserForm = ({
           pattern={password}
           title="Passwords do not match"
           className="user-input"
+          autoComplete="new-password"
         />
         <FontAwesomeIcon
           icon={showRepeatPassword ? faEyeSlash : faEye}

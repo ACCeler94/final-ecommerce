@@ -44,6 +44,7 @@ const SignIn = () => {
             onChange={(e) => setUserLogin(e.target.value)}
             required
             className="user-input"
+            autoComplete="username"
           />
           {error && error.statusCode === 401 ? (
             <span className={styles.errorText}>Invalid login or password!</span>
@@ -62,6 +63,7 @@ const SignIn = () => {
             onChange={(e) => setUserPassword(e.target.value)}
             required
             className="user-input"
+            autoComplete="current-password"
           />
           <Button buttonText="Sign In" />
         </form>
