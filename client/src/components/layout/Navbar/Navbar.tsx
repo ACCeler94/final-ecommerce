@@ -16,7 +16,7 @@ const Navbar = () => {
             <Link to="/">Sartorial Selections </Link>
           </div>
           {/* Conditional rendering, instead of queries, mitigates the issue when the scroll is disabled on the body while the mobile menu is opened. Otherwise, resizing the window would lock the scroll without any way to close the menu */}
-          <div>{windowWidth <= 768 ? <MobileMenu /> : <DesktopMenu />}</div>
+          <div>{windowWidth <= 786 ? <MobileMenu /> : <DesktopMenu />}</div>
         </div>
       </Container>
     </nav>
