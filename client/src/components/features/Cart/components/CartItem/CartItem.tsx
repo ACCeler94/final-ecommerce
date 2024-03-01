@@ -125,7 +125,7 @@ const CartItem = ({ product, quantity, size, cartItemId }: CartItemProps) => {
             buttonHandler={() => {
               if (itemComment.length > 150) {
                 alert('Comment is too long! Use max 150 characters.');
-              } else {
+              } else if (itemComment.length > 0 && itemComment.length <= 150) {
                 dispatch(
                   addProductComment({ cartItemId, comment: itemComment }),
                 );

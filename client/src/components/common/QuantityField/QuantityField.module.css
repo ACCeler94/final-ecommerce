@@ -25,3 +25,15 @@
   width: 2.5em;
 }
 
+
+@media only screen and (max-width: 340px) {
+  .quantityButton {
+    height: 2em;
+    width: 2em;
+  }
+
+  .quantityWrapper input {
+    padding: 5px;
+    max-width: 2em;
+  }
+}

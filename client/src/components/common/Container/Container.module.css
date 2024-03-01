@@ -2,3 +2,9 @@
   padding: 0 5%;
   height: 100%;
 }
+
+ @media only screen and (max-width: 460px) {
+  .container {
+    padding: 0 2.5%;
+  }
+}

@@ -33,7 +33,7 @@
   }
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 768px) {
   .cartProductList ul {
     padding: 0;
   }
