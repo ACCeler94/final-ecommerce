@@ -118,3 +118,17 @@
       margin: 50px -5%;
     }
   }
+
+  @media only screen and (max-width: 420px) {
+    .quantityFieldContainer {
+      flex-direction: column;
+    }
+
+    .quantityFieldContainer > button {
+      width: 100%;
+    }
+
+    .imageWrapper img {
+      max-width: 100%;
+    }
+  }
