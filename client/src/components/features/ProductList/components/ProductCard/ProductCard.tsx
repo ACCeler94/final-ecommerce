@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { IMAGES_URL } from '../../../../../API/config';
+import { THUMBNAILS_URL } from '../../../../../API/config';
 import Product from '../../../../../types/Product';
 import styles from './ProductCard.module.css';
 import { useState } from 'react';
@@ -54,7 +54,7 @@ const ProductCard = (productData: Product) => {
       <Link to={`/product/${productData.id}`}>
         <div className={styles.imageWrapper}>
           <img
-            src={`${IMAGES_URL}/${productData.photo}`}
+            src={`${THUMBNAILS_URL}/${productData.photo}`}
             alt="product-main-photo"
           />
         </div>
