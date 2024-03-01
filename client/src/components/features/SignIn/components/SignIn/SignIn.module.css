@@ -1,9 +1,9 @@
 .formWrapper {
-  margin: 1% auto;
+  margin: 50px auto;
   padding: 25px 75px;
   border: 2px solid rgba(0, 0, 0, 0.15);
   border-radius: 15px;
-  max-width: 35%;
+  max-width: 400px;
 }
 
 .formWrapper h1 {
@@ -36,4 +36,15 @@
 .signInForm button {
   max-width: fit-content;
   margin: 10px 0;
+}
+
+@media only screen and (max-width: 576px) {
+  .formWrapper {
+    padding: 25px 5%;
+  }
+
+  .signInForm {
+    min-width: 200px;
+    max-width: 80%;
+  }
 }
