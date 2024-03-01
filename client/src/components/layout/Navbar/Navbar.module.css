@@ -21,66 +21,14 @@
   font-family: var(--logo-font);
 }
 
-.navLinksWrapper {
-  font-size: var(--nav-links-font-size);
+.mobileMenuWrapper {
+  display: none;
 }
 
-.navLinksWrapper .navLink {
-  margin: 0 20px;
-  display: inline-block;
-  padding-bottom:2px;
-  background-image: linear-gradient(var(--logo-font-color) 0 0);
-  background-position: 0 100%;
-  background-size: 0% 2px;
-  background-repeat: no-repeat;
-  transition:
-    background-size 0.4s,
-    background-position 0s 0.4s;
-}
-
-.navLinksWrapper .navLink:hover {
-  background-position: 100% 100%; /*OR bottom right*/
-  background-size: 100% 2px;
-}
-
-.navLinksWrapper .navLink.active {
-  background-position: 100% 100%; /*OR bottom right*/
-  background-size: 100% 2px;
-}
-
-.navLinksWrapper .icon {
-  margin-left: 30px;
-  display: inline-block;
-}
-
-.navLinksWrapper button {
-  display: inline-block;
-  margin: 0;
-  margin-left: 30px;
-  background-color: transparent;
-  border: 1px solid var(--button-black-color);
-  padding: 10px 20px;
-  font-weight: var(--main-font-normal);
-}
 
 
 @media only screen and (max-width: 768px) {
   .navbarContentWrapper .logo{
     font-size: var(--logo-font-size-mobile);
-  }
-}
-
-@media only screen and (max-width: 576px) {
-  .navbar {
-    height: 100px;
-  }
-  .navLinksWrapper {
-    display: flex;
-  }
-}
-
-@media only screen and (max-width: 400px){
-  .navLinksWrapper {
-    flex-wrap: wrap-reverse;
   }
 }
