@@ -64,7 +64,7 @@ const Checkout = () => {
   // recalculate totalPrice if the component mounts to make sure it is up to date
   useEffect(() => {
     dispatch(recalculateTotalPrice());
-  }, [dispatch]);
+  }, [dispatch, cart]);
 
   const showToast = () =>
     toast.success('Order successfully placed. You will be redirected.', {
