@@ -1,10 +1,4 @@
 .errorWrapper {
-  margin: 5% auto;
-  width: 50%;
-  height: 50%;
-  background-color: var(--card-bg-color);
-  border-radius: 5px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
-  padding: 50px;
+  margin-top: 10%;
 }

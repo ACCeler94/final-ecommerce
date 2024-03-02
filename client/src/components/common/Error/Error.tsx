@@ -16,8 +16,8 @@ const Error = ({ error }: ErrorProps) => {
 
   return (
     <div className={styles.errorWrapper}>
-      <h2>Error</h2>
-      <p>{error.message}</p>
+      <h1>Error</h1>
+      <h2>{error.message}</h2>
       <Button buttonText="Home" buttonHandler={buttonHandler} />
     </div>
   );
