@@ -53,3 +53,36 @@
   font-weight: var(--main-font-semi-bold);
   margin: 0 10px;
 }
+
+@media only screen and (max-width: 600px) {
+  .orderItem {
+    margin-bottom: 50px;
+  }
+
+  .orderDetails li {
+    margin-bottom: 30px;
+  }
+
+  .orderDetails .productLink a {
+    margin-left: 0;
+  }
+
+  .productInfo {
+    margin-bottom: 10px;
+  }
+}
+
+
+@media only screen and (max-width: 300px) {
+  .ordersList {
+    padding: 30px 10px;
+  }
+
+  .orderDetails {
+    padding-inline-start: 20px;
+  }
+
+  .orderDetails h3 {
+    margin-left: -20px;
+  }
+}

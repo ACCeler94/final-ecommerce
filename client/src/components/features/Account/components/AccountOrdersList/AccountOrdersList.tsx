@@ -32,19 +32,23 @@ const AccountOrdersList = () => {
                       <h3>Products:</h3>
                       {order.products.map((productItem, index) => (
                         <li key={index}>
-                          <span className={styles.productLink}>
-                            <Link to={`/product/${productItem.product.id}`}>
-                              {productItem.product.name}
-                            </Link>
-                          </span>
-                          Size:
-                          <span className={styles.infoSemiBold}>
-                            {productItem.size.toUpperCase()}
-                          </span>
-                          Quantity:
-                          <span className={styles.infoSemiBold}>
-                            {productItem.quantity}
-                          </span>
+                          <div className={styles.productInfo}>
+                            <span className={styles.productLink}>
+                              <Link to={`/product/${productItem.product.id}`}>
+                                {productItem.product.name}
+                              </Link>
+                            </span>
+                            Size:
+                            <span className={styles.infoSemiBold}>
+                              {productItem.size.toUpperCase()}
+                            </span>
+                          </div>
+                          <div>
+                            Quantity:
+                            <span className={styles.infoSemiBold}>
+                              {productItem.quantity}
+                            </span>
+                          </div>
                         </li>
                       ))}
                     </ul>

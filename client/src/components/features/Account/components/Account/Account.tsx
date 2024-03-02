@@ -38,14 +38,14 @@ const Account = () => {
 
   if (status === Statuses.Pending)
     return (
-      <div className="account-info">
+      <div className={styles.accountInfo}>
         <LoadingSpinner />
       </div>
     );
 
   if (status === Statuses.Success && userData) {
     return (
-      <div className="account-info">
+      <div className={styles.accountInfo}>
         <div className={styles.welcomeAndLogout}>
           <h1>
             <span className={styles.welcomeMsg}>Welcome</span> {userData.name}
