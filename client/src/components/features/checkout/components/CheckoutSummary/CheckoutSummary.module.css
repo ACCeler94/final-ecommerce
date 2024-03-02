@@ -29,3 +29,32 @@
   border-top: 2px solid rgba(0, 0, 0, 0.25);
   padding-left: 40px;
 }
+
+
+@media only screen and (max-width: 576px) {
+  .sectionTitle {
+    margin-left: 10px;
+  }
+
+  .orderItemsList {
+    margin-left: 0;
+  }
+
+  .priceSummary {
+    padding-left: 10px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .sectionTitle {
+    margin-left: 0;
+  }
+
+  .orderItemsList {
+    padding-inline-start: 20px;
+  }
+
+  .priceSummary {
+    padding-left: 10px;
+  }
+}

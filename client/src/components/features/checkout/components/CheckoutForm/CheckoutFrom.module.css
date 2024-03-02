@@ -50,3 +50,20 @@
     padding-bottom: 100px;
   }
 }
+
+@media only screen and (max-width: 576px) {
+  .sectionTitle {
+    margin-left: 10px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .sectionTitle {
+    margin-left: 0;
+  }
+
+  .userDataForm {
+    min-width: auto;
+    max-width: 95%;
+  }
+}
