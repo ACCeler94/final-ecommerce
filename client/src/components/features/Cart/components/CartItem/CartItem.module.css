@@ -49,6 +49,13 @@
   max-width: 100%;
 }
 
+.removeButton {
+  height: fit-content;
+  width: fit-content;
+  border: none;
+  background-color: transparent;
+}
+
 
 @media only screen and (max-width: 600px) {
   .cartProductFormWrapper {

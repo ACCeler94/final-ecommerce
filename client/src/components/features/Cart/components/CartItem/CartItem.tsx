@@ -136,11 +136,13 @@ const CartItem = ({ product, quantity, size, cartItemId }: CartItemProps) => {
           />
         </form>
       </div>
-      <FontAwesomeIcon
-        icon={faTrash}
-        onClick={removeItemHandler}
-        style={{ cursor: 'pointer' }}
-      />
+      <button className={styles.removeButton}>
+        <FontAwesomeIcon
+          icon={faTrash}
+          onClick={removeItemHandler}
+          style={{ cursor: 'pointer' }}
+        />
+      </button>
     </div>
   );
 };
