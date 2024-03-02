@@ -19,6 +19,7 @@ const SizeMenu = ({
       className={styles.sizeSelect}
       onChange={(e) => changeHandler(e.target.value)}
       value={selectedValue}
+      tabIndex={0}
     >
       {sizes.map((size) => {
         return (

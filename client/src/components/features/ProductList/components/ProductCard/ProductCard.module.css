@@ -109,6 +109,21 @@ input[type=number] {
 }
 
 
+.productCard.focused .productInfoWrapper,
+.productCard:hover .productInfoWrapper {
+  background-color: var(--card-bg-color-transparent);
+  margin-top: -90px;
+  margin-bottom: 90px;
+}
+
+.productCard.focused .cartButtonsWrapper,
+.productCard:hover .cartButtonsWrapper {
+  opacity: 1;
+  z-index: 1;
+  transition-delay: 50ms;
+}
+
+
 @media (hover: none) and (pointer: coarse) {
   .cartButtonsWrapper {
     opacity: 1;

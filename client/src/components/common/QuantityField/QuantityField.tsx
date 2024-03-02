@@ -40,7 +40,11 @@ const QuantityField = ({
 
   return (
     <div className={styles.quantityWrapper}>
-      <button className={styles.quantityButton} onClick={decreaseQuantity}>
+      <button
+        className={styles.quantityButton}
+        onClick={decreaseQuantity}
+        tabIndex={0}
+      >
         -
       </button>
       <input
@@ -52,8 +56,13 @@ const QuantityField = ({
         value={quantity}
         onChange={(e) => changeHandler(e.target.value)}
         onBlur={(e) => blurHandler(e.target.value)}
+        tabIndex={0}
       />
-      <button className={styles.quantityButton} onClick={increaseQuantity}>
+      <button
+        className={styles.quantityButton}
+        onClick={increaseQuantity}
+        tabIndex={0}
+      >
         +
       </button>
     </div>

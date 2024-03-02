@@ -22,6 +22,15 @@ const ProductCard = (productData: Product) => {
   const [productQuantity, setProductQuantity] = useState<number | string>(1);
   const [productSize, setProductSize] = useState<string>(sizesArr[0]);
   const dispatch = useAppDispatch();
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
 
   const showToast = () =>
     toast.success('Item added to cart', {
@@ -50,7 +59,12 @@ const ProductCard = (productData: Product) => {
   };
 
   return (
-    <div className={styles.productCard}>
+    <div
+      className={`${styles.productCard} ${isFocused ? styles.focused : ''}`}
+      tabIndex={0}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+    >
       <Link to={`/product/${productData.id}`}>
         <div className={styles.imageWrapper}>
           <img

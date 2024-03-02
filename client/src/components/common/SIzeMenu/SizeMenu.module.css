@@ -7,7 +7,3 @@
   width: 70px;
   height: 40px;
 }
-
-.sizeSelect:focus {
-  outline: none;
-}
