@@ -8,6 +8,14 @@
   z-index: 99;
 }
 
+.hamburgerButton {
+  border: none;
+  background-color: transparent;
+  height: fit-content;
+  width: fit-content;
+  color: var(--logo-font-color);
+}
+
 
 .mobileMenu {
   height: 100%;

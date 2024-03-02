@@ -27,7 +27,9 @@ const MobileMenu = () => {
 
   return (
     <>
-      <Hamburger toggled={isOpen} toggle={setIsOpen} />
+      <button className={styles.hamburgerButton}>
+        <Hamburger toggled={isOpen} toggle={setIsOpen} />
+      </button>
       {isOpen && (
         <div className={styles.overlay} onClick={() => setIsOpen(false)}></div>
       )}
