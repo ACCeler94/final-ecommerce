@@ -15,12 +15,14 @@
   margin: 0;
 }
 
+
 .ordersList .orderItem:first-child {
   margin-top: 2.5%;
 }
 
 .orderItem {
   margin: 5% 0;
+  cursor: pointer;
 }
 
 .orderId {

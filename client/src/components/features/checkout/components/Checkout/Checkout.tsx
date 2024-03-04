@@ -33,6 +33,7 @@ const Checkout = () => {
   const [shippingCity, setShippingCity] = useState('');
   const [shippingZip, setShippingZip] = useState('');
   const [error, setError] = useState();
+  const [isPending, setIsPending] = useState(false);
 
   // redirect if userId is falsy (user is not signed in)
   useEffect(() => {
@@ -88,10 +89,15 @@ const Checkout = () => {
 
   const orderSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // prevent form submission before getting response from the server
+    if (isPending) {
+      return;
+    }
     if (!name || !email || !shippingStreet || !shippingCity || !shippingZip) {
       alert('Please fill all required fields!');
     } else {
       if (totalPrice && cart.length !== 0) {
+        setIsPending(true);
         const orderObj: Order = {
           userData: { name, email, shippingCity, shippingStreet, shippingZip },
           products: cart,
@@ -105,6 +111,9 @@ const Checkout = () => {
           })
           .catch((err) => {
             setError(err);
+          })
+          .finally(() => {
+            setIsPending(false);
           });
       }
     }
