@@ -8,12 +8,15 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { AdminAuthGuard } from 'src/auth/admin-auth.guard';
 
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
-  // [TODO] Add admin guard to allow only admin to get info about users
+  // use AdminAuthGuard to allow only admin to access this data
+  @UseGuards(AdminAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get('/')
   getAllUsers() {
     return this.usersService.getUsers();

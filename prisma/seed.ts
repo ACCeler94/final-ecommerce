@@ -1,5 +1,6 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, Role } from '@prisma/client';
 const db = new PrismaClient();
+import * as bcrypt from 'bcrypt';
 
 function getProducts() {
   return [
@@ -116,15 +117,24 @@ function getProducts() {
   ];
 }
 
-function getUsers() {
+// create one user with admin role to test admin guards functionality
+async function getUsers() {
+  const password = 'admin12345!';
+  const hashedPassword = await bcrypt.hash(password, 10);
   return [
     {
       id: 'd8f4c9a2-7b7e-4f5e-9c6d-1d7d7d3c8a7f',
-      email: 'johndoe@example.com',
+      email: 'admin@example.com',
       name: 'John Doe',
       street: '123 Main St',
       zip: '10001',
       city: 'NYC',
+      role: Role.ADMIN,
+      password: {
+        create: {
+          hashedPassword,
+        },
+      },
     },
   ];
 }
@@ -137,7 +147,7 @@ async function seed() {
   );
 
   await Promise.all(
-    getUsers().map((user) => {
+    (await getUsers()).map((user) => {
       return db.user.create({ data: user });
     }),
   );

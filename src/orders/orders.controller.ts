@@ -15,20 +15,23 @@ import { OrdersService } from './orders.service';
 import validateProductId from 'src/utils/validateProductId';
 import { CreateOrderDto } from './dtos/CreateOrder.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { AdminAuthGuard } from 'src/auth/admin-auth.guard';
 
 @Controller('orders')
 export class OrdersController {
   constructor(private ordersService: OrdersService) {}
 
-  //[TODO] check if user is admin to access this data
-
+  // use AdminAuthGuard to allow only admin to access this data
+  @UseGuards(AdminAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get('/')
   getOrders() {
     return this.ordersService.getAllOrders();
   }
 
-  // [TODO] check if user is an author or admin to access this data
-
+  // use AdminAuthGuard to allow only admin to access this data
+  @UseGuards(AdminAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get('/:id')
   async getOrderById(@Param('id', new ParseUUIDPipe()) id: 'string') {
     const order = await this.ordersService.getOrderById(id);
