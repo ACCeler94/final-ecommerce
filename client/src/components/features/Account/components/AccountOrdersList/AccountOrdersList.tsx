@@ -16,7 +16,7 @@ const AccountOrdersList = () => {
   return (
     <>
       {orders.length === 0 ? (
-        'You have no orders to show.'
+        <div className={styles.noOrdersText}>You have no orders to show.</div>
       ) : (
         <div className={styles.ordersListWrapper}>
           <ul className={styles.ordersList}>

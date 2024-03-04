@@ -1,3 +1,8 @@
+.noOrdersText {
+  padding: 20px 10px;
+  font-weight: var(--main-font-semi-bold);
+}
+
 .ordersListWrapper button {
   margin: 0 40px;
   margin-top: -10px;
