@@ -10,7 +10,10 @@ const RegisterSuccessPage = () => {
     <main className={styles.registerSuccess}>
       <Container>
         <h1>You have been successfully registered!</h1>
-        <Button buttonText="Login" buttonHandler={() => navigate('/login')} />
+        <Button
+          buttonText="Login"
+          buttonHandler={() => navigate('/account/sign-in')}
+        />
       </Container>
     </main>
   );
