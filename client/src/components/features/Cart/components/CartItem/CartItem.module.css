@@ -50,8 +50,9 @@
 }
 
 .removeButton {
-  height: fit-content;
-  width: fit-content;
+  color: var(--main-font-color);
+  height: 2em;
+  width: 2em;
   border: none;
   background-color: transparent;
 }
