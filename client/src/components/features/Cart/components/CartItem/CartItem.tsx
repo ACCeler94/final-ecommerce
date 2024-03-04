@@ -24,17 +24,43 @@ interface CartItemProps {
   quantity: number;
   size: string;
   cartItemId: string;
+  cart: {
+    quantity: number;
+    product: Product;
+    comment: string;
+    size: string;
+    cartItemId: string;
+  }[];
 }
 
-const CartItem = ({ product, quantity, size, cartItemId }: CartItemProps) => {
+const CartItem = ({
+  product,
+  quantity,
+  size,
+  cartItemId,
+  cart,
+}: CartItemProps) => {
   const [itemQuantity, setItemQuantity] = useState<number | string>(quantity);
   const [itemComment, setItemComment] = useState('');
   const [itemTotalPrice, setItemTotalPrice] = useState(
     quantity * product.price,
   );
   const [productSize, setProductSize] = useState<string>(size);
+  const [sizesArr, setSizesArr] = useState(product.sizes.split(', '));
   const dispatch = useAppDispatch();
-  const sizesArr = product.sizes.split(', ');
+
+  // check if the same item exists in the cart, if it does modify sizesArr so the same size cannot be selected ----- does not work! Possibly alert if 2 items are identical?
+  useEffect(() => {
+    const sameProduct = cart.find(
+      (item) =>
+        item.product.id === product.id && item.cartItemId !== cartItemId,
+    );
+    if (sameProduct) {
+      setSizesArr((prevSizesArr) =>
+        prevSizesArr.filter((size) => size !== sameProduct.size),
+      );
+    }
+  }, [cart, product.id, cartItemId]);
 
   const showToast = () =>
     toast.success('Comment saved.', {
@@ -70,8 +96,8 @@ const CartItem = ({ product, quantity, size, cartItemId }: CartItemProps) => {
   }, [dispatch, itemQuantity, cartItemId, quantity]);
 
   useEffect(() => {
+    // check for change to prevent unnecessary dispatches
     if (productSize !== size) {
-      // check for change to prevent unnecessary dispatches
       dispatch(changeProductSize({ cartItemId, newSize: productSize }));
       dispatch(storeCart());
     }

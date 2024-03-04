@@ -33,7 +33,7 @@ const Cart = () => {
         {cart.map((cartObj, index) => {
           return (
             <li key={index} className={styles.cartItemWrapper}>
-              <CartItem key={index} {...cartObj} />
+              <CartItem key={index} {...cartObj} cart={cart} />
             </li>
           );
         })}
