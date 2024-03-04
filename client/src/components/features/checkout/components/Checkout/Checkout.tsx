@@ -67,6 +67,13 @@ const Checkout = () => {
     dispatch(recalculateTotalPrice());
   }, [dispatch, cart]);
 
+  // disable form submission after one attempt until component dismounts (after attempt user will be redirected anyway)
+  useEffect(() => {
+    return () => {
+      setIsPending(false);
+    };
+  }, []);
+
   const showToast = () =>
     toast.success('Order successfully placed. You will be redirected.', {
       position: 'top-center',
@@ -111,9 +118,6 @@ const Checkout = () => {
           })
           .catch((err) => {
             setError(err);
-          })
-          .finally(() => {
-            setIsPending(false);
           });
       }
     }
