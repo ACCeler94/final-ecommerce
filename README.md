@@ -1,34 +1,27 @@
 # Sartorial Selections
 
-This project is an e-commerce application built using Nest.js, React and Redux.
-It is a culmination of my FullStack Web Development Kodilla course. It shows integration of Nest.js backend, supported by Prisma and MySQL database, and React frontend with Redux.
+This project is an e-commerce application built using **Nest.js**, **React**, and **Redux**. It represents the culmination of my FullStack Web Development Kodilla course. The application demonstrates the integration of a Nest.js backend, supported by a Prisma and MySQL database, with a React frontend utilizing Redux.
 
 Live Demo: https://final-e-commerce-project.onrender.com/
 
 ## Features
 
 - MySQL and Prisma based database
-- Pages to view products as a list or as single product
-- Cart functionality with option to modify or comment product
-- Non editable order summary with a form to fill customer informations
+- Pages to view products as a list or individually
+- Cart functionality with an option to modify or comment product
+- Non-editable order summary with a form to fill in customer information, whenever it differs from the data saved in the database
 - Orders saved in database
 - Cart saved in local storage
 - Responsive design for desktop and mobile
+- Register and Login functionality
+- Session management using JWT tokens
 
 ## Tech stack
 
-- Prisma
-- MySQL
-- Nest.js
-- React
-- Redux
-- Node
-- Vite
-
-## Things to do
-
-- User login and user creation
-- Functionality to place orders for signed in users and for guests
-- Session management
-- Search Bar
-- Product variations (sizes, colors etc.)
+- **Prisma**
+- **MySQL**
+- **Nest.js**
+- **React**
+- **Redux**
+- **Node**
+- **Vite**
