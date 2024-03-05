@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import * as cookieParser from 'cookie-parser';
 import { ConfigService } from '@nestjs/config';
+import helmet from 'helmet';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,6 +13,10 @@ async function bootstrap() {
 
   if (process.env.NODE_ENV !== 'production') {
     app.enableCors();
+  }
+
+  if (process.env.NODE_ENV === 'production') {
+    app.use(helmet());
   }
 
   app.use(cookieParser());
