@@ -1,6 +1,6 @@
 import BackButton from '../../common/BackButton/BackButton';
 import Container from '../../common/Container/Container';
-import Register from '../../features/register/components/Register/Register';
+import Register from '../../features/Register/components/Register/Register';
 
 const RegisterPage = () => {
   return (

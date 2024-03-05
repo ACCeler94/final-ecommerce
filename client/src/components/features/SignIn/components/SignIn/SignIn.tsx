@@ -3,7 +3,7 @@ import styles from './SignIn.module.css';
 import Button from '../../../../common/Button/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../../../../store/store';
-import { fetchLogIn } from '../../SignInSlice';
+import { fetchLogIn } from '../../signInSlice';
 import { useSelector } from 'react-redux';
 
 const SignIn = () => {

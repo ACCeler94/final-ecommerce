@@ -6,10 +6,10 @@ import { useDispatch } from 'react-redux';
 import cartReducer, { CartState } from '../components/features/cart/cartSlice';
 import registerReducer, {
   RegisterState,
-} from '../components/features/register/registerSlice';
+} from '../components/features/Register/registerSlice';
 import signInReducer, {
   SignInState,
-} from '../components/features/signIn/SignInSlice';
+} from '../components/features/SignIn/signInSlice';
 import accountReducer, {
   AccountState,
 } from '../components/features/account/AccountSlice';

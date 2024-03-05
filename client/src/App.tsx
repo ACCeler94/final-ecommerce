@@ -16,7 +16,7 @@ import SignInPage from './components/pages/SignInPage/SignInPage';
 import RegisterPage from './components/pages/RegisterPage/RegisterPage';
 import AccountPage from './components/pages/AccountPage/AccountPage';
 import Cookies from 'js-cookie';
-import { fetchLogJWT } from './components/features/signIn/SignInSlice';
+import { fetchLogJWT } from './components/features/SignIn/signInSlice';
 import AccountOrdersList from './components/features/account/components/AccountOrdersList/AccountOrdersList';
 import AccountInfo from './components/features/account/components/AccountInfo/AccountInfo';
 

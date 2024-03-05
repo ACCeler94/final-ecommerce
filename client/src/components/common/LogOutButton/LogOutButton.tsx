@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import authAPI from '../../../API/authApi';
 import { useAppDispatch } from '../../../store/store';
-import { resetState } from '../../features/signIn/SignInSlice';
+import { resetState } from '../../features/SignIn/signInSlice';
 import Button from '../Button/Button';
 
 const LogOutButton = () => {

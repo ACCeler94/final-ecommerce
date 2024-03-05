@@ -1,6 +1,6 @@
 import BackButton from '../../common/BackButton/BackButton';
 import Container from '../../common/Container/Container';
-import SignIn from '../../features/signIn/components/SignIn/SignIn';
+import SignIn from '../../features/SignIn/components/SignIn/SignIn';
 
 const SignInPage = () => {
   return (
