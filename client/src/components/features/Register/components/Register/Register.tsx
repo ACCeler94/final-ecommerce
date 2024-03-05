@@ -79,6 +79,8 @@ function Register() {
       data.password &&
       data.repeatPassword
     ) {
+      // convert email to lower case before sending the request
+      data.email = data.email.toLowerCase();
       dispatch(register(data));
     } else {
       alert('Please fill all required fields!');
