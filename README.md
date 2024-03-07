@@ -2,7 +2,7 @@
 
 This project is an e-commerce application built using **Nest.js**, **React**, and **Redux**. It represents the culmination of my FullStack Web Development Kodilla course. The application demonstrates the integration of a Nest.js backend, supported by a Prisma and MySQL database, with a React frontend utilizing Redux.
 
-Live Demo: https://final-e-commerce-project.onrender.com/
+Live Demo: https://final-ecommerce-vngz.onrender.com
 
 ## Features
 
