@@ -1,0 +1,1 @@
+{"version":3,"file":"usersApi.js","sourceRoot":"","sources":["../../../../client/src/API/usersApi.ts"],"names":[],"mappings":";;AAAA,iCAA0B;AAC1B,qCAAmC;AAEnC,MAAM,QAAQ,GAAG;IACf,aAAa,EAAE,GAAG,EAAE,CAAC,eAAK,CAAC,GAAG,CAAC,GAAG,gBAAO,iBAAiB,CAAC;CAC5D,CAAC;AAEF,kBAAe,QAAQ,CAAC"}

@@ -1,0 +1,8 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const jsx_runtime_1 = require("react/jsx-runtime");
+const AddressForm = ({ name, street, city, zip, updateFields, }) => {
+    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("label", { htmlFor: "name", children: "Name" }), (0, jsx_runtime_1.jsx)("input", { autoFocus: true, required: true, type: "text", value: name, onChange: (e) => updateFields({ name: e.target.value }), name: "name", id: "name", className: "user-input" }), (0, jsx_runtime_1.jsx)("label", { htmlFor: "street", children: "Street" }), (0, jsx_runtime_1.jsx)("input", { required: true, type: "text", value: street, onChange: (e) => updateFields({ street: e.target.value }), name: "street", id: "street", className: "user-input" }), (0, jsx_runtime_1.jsx)("label", { htmlFor: "city", children: "City" }), (0, jsx_runtime_1.jsx)("input", { required: true, type: "text", value: city, onChange: (e) => updateFields({ city: e.target.value }), name: "city", id: "city", className: "user-input" }), (0, jsx_runtime_1.jsx)("label", { htmlFor: "zip", children: "Zip" }), (0, jsx_runtime_1.jsx)("input", { required: true, type: "text", value: zip, onChange: (e) => updateFields({ zip: e.target.value }), name: "zip", id: "zip", className: "user-input" })] }));
+};
+exports.default = AddressForm;
+//# sourceMappingURL=AddressForm.js.map

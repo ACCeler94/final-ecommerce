@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const jsx_runtime_1 = require("react/jsx-runtime");
+const react_fontawesome_1 = require("@fortawesome/react-fontawesome");
+const UserForm_module_css_1 = require("./UserForm.module.css");
+const free_solid_svg_icons_1 = require("@fortawesome/free-solid-svg-icons");
+const react_1 = require("react");
+const UserForm = ({ email, password, repeatPassword, updateFields, }) => {
+    const [showPassword, setShowPassword] = (0, react_1.useState)(false);
+    const [showRepeatPassword, setShowRepeatPassword] = (0, react_1.useState)(false);
+    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("label", { htmlFor: "email", children: "Email" }), (0, jsx_runtime_1.jsx)("input", { autoFocus: true, required: true, type: "email", value: email, onChange: (e) => updateFields({ email: e.target.value }), id: "email", name: "email", className: "user-input", autoComplete: "username" }), (0, jsx_runtime_1.jsx)("label", { htmlFor: "password", children: "Password" }), (0, jsx_runtime_1.jsxs)("div", { className: UserForm_module_css_1.default.inputWithFaIcon, children: [(0, jsx_runtime_1.jsx)("input", { required: true, type: showPassword ? 'text' : 'password', value: password, onChange: (e) => updateFields({ password: e.target.value }), name: "password", id: "password", pattern: "^(?=.*[a-z])(?=.*[A-Z]).{6,}$", title: "Must contain at least one uppercase and lowercase letter, and at least 6 or more characters", className: "user-input", autoComplete: "new-password" }), (0, jsx_runtime_1.jsx)(react_fontawesome_1.FontAwesomeIcon, { icon: showPassword ? free_solid_svg_icons_1.faEyeSlash : free_solid_svg_icons_1.faEye, className: UserForm_module_css_1.default.faEye, onClick: () => setShowPassword(!showPassword) })] }), (0, jsx_runtime_1.jsx)("span", { className: UserForm_module_css_1.default.info, children: "Min 6 letters, at least one uppercase and lowercase letter" }), (0, jsx_runtime_1.jsx)("label", { htmlFor: "confirm-password", children: "Confirm Password" }), (0, jsx_runtime_1.jsxs)("div", { className: UserForm_module_css_1.default.inputWithFaIcon, children: [(0, jsx_runtime_1.jsx)("input", { required: true, type: showRepeatPassword ? 'text' : 'password', value: repeatPassword, onChange: (e) => updateFields({ repeatPassword: e.target.value }), name: "password", id: "confirm-password", pattern: password, title: "Passwords do not match", className: "user-input", autoComplete: "new-password" }), (0, jsx_runtime_1.jsx)(react_fontawesome_1.FontAwesomeIcon, { icon: showRepeatPassword ? free_solid_svg_icons_1.faEyeSlash : free_solid_svg_icons_1.faEye, className: UserForm_module_css_1.default.faEye, onClick: () => setShowRepeatPassword(!showRepeatPassword) })] })] }));
+};
+exports.default = UserForm;
+//# sourceMappingURL=UserForm.js.map
