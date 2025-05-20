@@ -1,22 +1,22 @@
-import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../../../../../store/store';
-import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import Order from '../../../../../types/Order';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ordersAPI from '../../../../../API/ordersApi';
+import { RootState, useAppDispatch } from '../../../../../store/store';
+import { AccountData } from '../../../../../types/AccountData';
+import Order from '../../../../../types/Order';
+import Error from '../../../../common/Error/Error';
+import { fetchAccountData } from '../../../Account/AccountSlice';
 import {
   recalculateTotalPrice,
   resetCart,
   resetCartInStorage,
-} from '../../../cart/cartSlice';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Error from '../../../../common/Error/Error';
-import { fetchAccountData } from '../../../account/AccountSlice';
-import { AccountData } from '../../../../../types/AccountData';
+} from '../../../Cart/cartSlice';
+import { Statuses } from '../../../ProductList/productListSlice';
 import CheckoutForm from '../CheckoutForm/CheckoutForm';
 import CheckoutSummary from '../CheckoutSummary/CheckoutSummary';
-import { Statuses } from '../../../productList/productListSlice';
 
 const Checkout = () => {
   const cart = useSelector((state: RootState) => state.cart.shoppingCart);

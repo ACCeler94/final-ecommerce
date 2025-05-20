@@ -1,11 +1,11 @@
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import styles from './DesktopMenu.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import CartCounter from '../../features/cart/components/CartCounter/CartCounter';
 import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
-import Button from '../../common/Button/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'react-redux';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { RootState } from '../../../store/store';
+import Button from '../../common/Button/Button';
+import CartCounter from '../../features/Cart/components/CartCounter/CartCounter';
+import styles from './DesktopMenu.module.css';
 
 const DesktopMenu = () => {
   const navigate = useNavigate();

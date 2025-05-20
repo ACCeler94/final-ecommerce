@@ -3,9 +3,9 @@ import {
   createAsyncThunk,
   createSlice,
 } from '@reduxjs/toolkit';
-import { Statuses } from '../productList/productListSlice';
 import authAPI from '../../../API/authApi';
 import User from '../../../types/User';
+import { Statuses } from '../ProductList/productListSlice';
 
 type State = {
   status: Statuses;
