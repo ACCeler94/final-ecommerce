@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Statuses } from '../productList/productListSlice';
+import { AxiosError } from 'axios';
 import authAPI from '../../../API/authApi';
 import LoginData from '../../../types/LoginData';
-import { AxiosError } from 'axios';
+import { Statuses } from '../ProductList/productListSlice';
 
 type State = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

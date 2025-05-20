@@ -1,18 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
+import accountReducer, {
+  AccountState,
+} from '../components/features/Account/AccountSlice';
+import cartReducer, { CartState } from '../components/features/Cart/cartSlice';
 import productListReducer, {
   ProductListState,
-} from '../components/features/productList/productListSlice';
-import { useDispatch } from 'react-redux';
-import cartReducer, { CartState } from '../components/features/cart/cartSlice';
+} from '../components/features/ProductList/productListSlice';
 import registerReducer, {
   RegisterState,
 } from '../components/features/Register/registerSlice';
 import signInReducer, {
   SignInState,
 } from '../components/features/SignIn/signInSlice';
-import accountReducer, {
-  AccountState,
-} from '../components/features/account/AccountSlice';
 
 export type RootState = {
   products: ProductListState;

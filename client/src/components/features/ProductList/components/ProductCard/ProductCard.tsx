@@ -1,20 +1,20 @@
-import { Link } from 'react-router-dom';
-import { THUMBNAILS_URL } from '../../../../../API/config';
-import Product from '../../../../../types/Product';
-import styles from './ProductCard.module.css';
+import { nanoid } from 'nanoid';
 import { useState } from 'react';
-import Button from '../../../../common/Button/Button';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { THUMBNAILS_URL } from '../../../../../API/config';
 import { useAppDispatch } from '../../../../../store/store';
+import Product from '../../../../../types/Product';
+import Button from '../../../../common/Button/Button';
+import QuantityField from '../../../../common/QuantityField/QuantityField';
+import SizeMenu from '../../../../common/SizeMenu/SizeMenu';
 import {
   addToCart,
   recalculateTotalPrice,
   storeCart,
-} from '../../../cart/cartSlice';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import QuantityField from '../../../../common/QuantityField/QuantityField';
-import SizeMenu from '../../../../common/SizeMenu/SizeMenu';
-import { nanoid } from 'nanoid';
+} from '../../../Cart/cartSlice';
+import styles from './ProductCard.module.css';
 
 const ProductCard = (productData: Product) => {
   const sizesArr = productData.sizes.split(', ');

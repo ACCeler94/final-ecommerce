@@ -1,19 +1,18 @@
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import styles from './Account.module.css';
-import { RootState, useAppDispatch } from '../../../../../store/store';
-import { useState } from 'react';
-import { fetchAccountData } from '../../AccountSlice';
-import { useEffect } from 'react';
-import { Statuses } from '../../../productList/productListSlice';
 import {
   NavLink,
   Outlet,
   useNavigate,
   useOutletContext,
 } from 'react-router-dom';
-import LoadingSpinner from '../../../../common/LoadingSpinner/LoadingSpinner';
+import { RootState, useAppDispatch } from '../../../../../store/store';
 import { AccountData } from '../../../../../types/AccountData';
+import LoadingSpinner from '../../../../common/LoadingSpinner/LoadingSpinner';
 import LogOutButton from '../../../../common/LogOutButton/LogOutButton';
+import { Statuses } from '../../../ProductList/productListSlice';
+import { fetchAccountData } from '../../AccountSlice';
+import styles from './Account.module.css';
 
 const Account = () => {
   const status = useSelector((state: RootState) => state.account.status);

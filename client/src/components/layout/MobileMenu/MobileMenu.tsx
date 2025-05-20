@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import Hamburger from 'hamburger-react';
-import styles from './MobileMenu.module.css';
-import { Link, NavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
-import CartCounter from '../../features/cart/components/CartCounter/CartCounter';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Hamburger from 'hamburger-react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link, NavLink } from 'react-router-dom';
 import { RootState } from '../../../store/store';
+import CartCounter from '../../features/Cart/components/CartCounter/CartCounter';
+import styles from './MobileMenu.module.css';
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);

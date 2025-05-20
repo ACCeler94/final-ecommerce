@@ -1,5 +1,5 @@
 import Container from '../../common/Container/Container';
-import ProductList from '../../features/productList/components/ProductList/ProductList';
+import ProductList from '../../features/ProductList/components/ProductList/ProductList';
 
 interface CategoryPageProps {
   category: string;
