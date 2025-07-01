@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
-const react_router_dom_1 = require("react-router-dom");
-const DesktopMenu_module_css_1 = require("./DesktopMenu.module.css");
-const react_fontawesome_1 = require("@fortawesome/react-fontawesome");
-const CartCounter_1 = require("../../features/cart/components/CartCounter/CartCounter");
 const free_solid_svg_icons_1 = require("@fortawesome/free-solid-svg-icons");
-const Button_1 = require("../../common/Button/Button");
+const react_fontawesome_1 = require("@fortawesome/react-fontawesome");
 const react_redux_1 = require("react-redux");
+const react_router_dom_1 = require("react-router-dom");
+const Button_1 = require("../../common/Button/Button");
+const CartCounter_1 = require("../../features/Cart/components/CartCounter/CartCounter");
+const DesktopMenu_module_css_1 = require("./DesktopMenu.module.css");
 const DesktopMenu = () => {
     const navigate = (0, react_router_dom_1.useNavigate)();
     const userId = (0, react_redux_1.useSelector)((state) => state.signIn.userId);

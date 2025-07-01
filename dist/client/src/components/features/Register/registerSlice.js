@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.resetState = exports.register = void 0;
 const toolkit_1 = require("@reduxjs/toolkit");
-const productListSlice_1 = require("../productList/productListSlice");
 const authApi_1 = require("../../../API/authApi");
+const productListSlice_1 = require("../ProductList/productListSlice");
 const initialState = {
     status: productListSlice_1.Statuses.Idle,
     error: null,

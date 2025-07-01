@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useAppDispatch = void 0;
 const toolkit_1 = require("@reduxjs/toolkit");
-const productListSlice_1 = require("../components/features/productList/productListSlice");
 const react_redux_1 = require("react-redux");
-const cartSlice_1 = require("../components/features/cart/cartSlice");
+const AccountSlice_1 = require("../components/features/Account/AccountSlice");
+const cartSlice_1 = require("../components/features/Cart/cartSlice");
+const productListSlice_1 = require("../components/features/ProductList/productListSlice");
 const registerSlice_1 = require("../components/features/Register/registerSlice");
 const signInSlice_1 = require("../components/features/SignIn/signInSlice");
-const AccountSlice_1 = require("../components/features/account/AccountSlice");
 const store = (0, toolkit_1.configureStore)({
     reducer: {
         products: productListSlice_1.default,

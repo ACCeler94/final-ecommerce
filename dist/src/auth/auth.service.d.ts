@@ -6,23 +6,15 @@ export declare class AuthService {
     private jwtService;
     private configService;
     constructor(usersService: UsersService, jwtService: JwtService, configService: ConfigService);
-    register(registrationData: any): Promise<import("@prisma/client/runtime").GetResult<{
-        id: string;
-        email: string;
-        name: string;
-        street: string;
-        zip: string;
-        city: string;
-        role: import(".prisma/client").Role;
-    }, unknown> & {}>;
+    register(registrationData: any): Promise<import(".prisma/client").User>;
     validateUser(email: string, password: string): Promise<{
         id: string;
-        name: string;
-        role: import(".prisma/client").Role;
-        city: string;
         email: string;
+        name: string;
         street: string;
         zip: string;
+        city: string;
+        role: import(".prisma/client").Role;
     }>;
     createSession(user: any): Promise<{
         access_token: string;

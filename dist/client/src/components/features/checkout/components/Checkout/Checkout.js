@@ -1,19 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
-const react_redux_1 = require("react-redux");
-const store_1 = require("../../../../../store/store");
-const react_router_dom_1 = require("react-router-dom");
 const react_1 = require("react");
-const ordersApi_1 = require("../../../../../API/ordersApi");
-const cartSlice_1 = require("../../../cart/cartSlice");
+const react_redux_1 = require("react-redux");
+const react_router_dom_1 = require("react-router-dom");
 const react_toastify_1 = require("react-toastify");
 require("react-toastify/dist/ReactToastify.css");
+const ordersApi_1 = require("../../../../../API/ordersApi");
+const store_1 = require("../../../../../store/store");
 const Error_1 = require("../../../../common/Error/Error");
-const AccountSlice_1 = require("../../../account/AccountSlice");
+const AccountSlice_1 = require("../../../Account/AccountSlice");
+const cartSlice_1 = require("../../../Cart/cartSlice");
+const productListSlice_1 = require("../../../ProductList/productListSlice");
 const CheckoutForm_1 = require("../CheckoutForm/CheckoutForm");
 const CheckoutSummary_1 = require("../CheckoutSummary/CheckoutSummary");
-const productListSlice_1 = require("../../../productList/productListSlice");
 const Checkout = () => {
     const cart = (0, react_redux_1.useSelector)((state) => state.cart.shoppingCart);
     const totalPrice = (0, react_redux_1.useSelector)((state) => state.cart.totalPrice);

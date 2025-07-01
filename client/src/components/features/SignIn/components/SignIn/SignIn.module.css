@@ -38,6 +38,10 @@
   margin: 10px 0;
 }
 
+.bold {
+  font-weight: 700;
+}
+
 @media only screen and (max-width: 576px) {
   .formWrapper {
     padding: 25px 5%;

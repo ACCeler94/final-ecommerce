@@ -36,6 +36,11 @@ const SignIn = () => {
     <section>
       <div className={styles.formWrapper}>
         <h1>Sign In</h1>
+        <p>
+          For a test account use:{' '}
+          <span className={styles.bold}>user@user.com</span>, password:{' '}
+          <span className={styles.bold}>User1234!</span>
+        </p>
         <form className={styles.signInForm} onSubmit={submitHandler}>
           <label htmlFor="login">Login</label>
           <input

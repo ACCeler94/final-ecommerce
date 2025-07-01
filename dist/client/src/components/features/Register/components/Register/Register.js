@@ -2,17 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
-const Register_module_css_1 = require("./Register.module.css");
+const react_redux_1 = require("react-redux");
+const store_1 = require("../../../../../store/store");
 const useMultistepForm_1 = require("../../../../../utils/useMultistepForm");
 const Button_1 = require("../../../../common/Button/Button");
-const UserForm_1 = require("../UserForm/UserForm");
-const AddressForm_1 = require("../AddressForm/AddressForm");
-const store_1 = require("../../../../../store/store");
-const react_redux_1 = require("react-redux");
-const registerSlice_1 = require("../../registerSlice");
 const Error_1 = require("../../../../common/Error/Error");
-const productListSlice_1 = require("../../../productList/productListSlice");
 const RegisterSuccessPage_1 = require("../../../../pages/RegisterSuccessPage/RegisterSuccessPage");
+const productListSlice_1 = require("../../../ProductList/productListSlice");
+const registerSlice_1 = require("../../registerSlice");
+const AddressForm_1 = require("../AddressForm/AddressForm");
+const UserForm_1 = require("../UserForm/UserForm");
+const Register_module_css_1 = require("./Register.module.css");
 const INITIAL_DATA = {
     name: '',
     street: '',

@@ -1,18 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
-const react_router_dom_1 = require("react-router-dom");
-const config_1 = require("../../../../../API/config");
-const ProductCard_module_css_1 = require("./ProductCard.module.css");
+const nanoid_1 = require("nanoid");
 const react_1 = require("react");
-const Button_1 = require("../../../../common/Button/Button");
-const store_1 = require("../../../../../store/store");
-const cartSlice_1 = require("../../../cart/cartSlice");
+const react_router_dom_1 = require("react-router-dom");
 const react_toastify_1 = require("react-toastify");
 require("react-toastify/dist/ReactToastify.css");
+const config_1 = require("../../../../../API/config");
+const store_1 = require("../../../../../store/store");
+const Button_1 = require("../../../../common/Button/Button");
 const QuantityField_1 = require("../../../../common/QuantityField/QuantityField");
 const SizeMenu_1 = require("../../../../common/SizeMenu/SizeMenu");
-const nanoid_1 = require("nanoid");
+const cartSlice_1 = require("../../../Cart/cartSlice");
+const ProductCard_module_css_1 = require("./ProductCard.module.css");
 const ProductCard = (productData) => {
     const sizesArr = productData.sizes.split(', ');
     const [productQuantity, setProductQuantity] = (0, react_1.useState)(1);

@@ -1,5 +1,5 @@
-import { Statuses } from '../productList/productListSlice';
 import LoginData from '../../../types/LoginData';
+import { Statuses } from '../ProductList/productListSlice';
 type State = {
     error: any;
     userId: string;

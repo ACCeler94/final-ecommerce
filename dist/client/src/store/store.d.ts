@@ -1,8 +1,8 @@
-import { ProductListState } from '../components/features/productList/productListSlice';
-import { CartState } from '../components/features/cart/cartSlice';
+import { AccountState } from '../components/features/Account/AccountSlice';
+import { CartState } from '../components/features/Cart/cartSlice';
+import { ProductListState } from '../components/features/ProductList/productListSlice';
 import { RegisterState } from '../components/features/Register/registerSlice';
 import { SignInState } from '../components/features/SignIn/signInSlice';
-import { AccountState } from '../components/features/account/AccountSlice';
 export type RootState = {
     products: ProductListState;
     cart: CartState;
@@ -22,7 +22,7 @@ declare const store: import("@reduxjs/toolkit").EnhancedStore<{
             description: string;
             sizes: string;
         }[];
-        status: import("../components/features/productList/productListSlice").Statuses;
+        status: import("../components/features/ProductList/productListSlice").Statuses;
         error: {
             name?: string;
             message?: string;
@@ -60,7 +60,7 @@ declare const store: import("@reduxjs/toolkit").EnhancedStore<{
         totalPrice: number;
     };
     register: {
-        status: import("../components/features/productList/productListSlice").Statuses;
+        status: import("../components/features/ProductList/productListSlice").Statuses;
         error: {
             name?: string;
             message?: string;
@@ -71,10 +71,10 @@ declare const store: import("@reduxjs/toolkit").EnhancedStore<{
     signIn: {
         error: any;
         userId: string;
-        status: import("../components/features/productList/productListSlice").Statuses;
+        status: import("../components/features/ProductList/productListSlice").Statuses;
     };
     account: {
-        status: import("../components/features/productList/productListSlice").Statuses;
+        status: import("../components/features/ProductList/productListSlice").Statuses;
         error: {
             name?: string;
             message?: string;
@@ -95,7 +95,7 @@ declare const store: import("@reduxjs/toolkit").EnhancedStore<{
                 description: string;
                 sizes: string;
             }[];
-            status: import("../components/features/productList/productListSlice").Statuses;
+            status: import("../components/features/ProductList/productListSlice").Statuses;
             error: {
                 name?: string;
                 message?: string;
@@ -133,7 +133,7 @@ declare const store: import("@reduxjs/toolkit").EnhancedStore<{
             totalPrice: number;
         };
         register: {
-            status: import("../components/features/productList/productListSlice").Statuses;
+            status: import("../components/features/ProductList/productListSlice").Statuses;
             error: {
                 name?: string;
                 message?: string;
@@ -144,10 +144,10 @@ declare const store: import("@reduxjs/toolkit").EnhancedStore<{
         signIn: {
             error: any;
             userId: string;
-            status: import("../components/features/productList/productListSlice").Statuses;
+            status: import("../components/features/ProductList/productListSlice").Statuses;
         };
         account: {
-            status: import("../components/features/productList/productListSlice").Statuses;
+            status: import("../components/features/ProductList/productListSlice").Statuses;
             error: {
                 name?: string;
                 message?: string;
@@ -170,7 +170,7 @@ export declare const useAppDispatch: () => import("redux-thunk").ThunkDispatch<{
             description: string;
             sizes: string;
         }[];
-        status: import("../components/features/productList/productListSlice").Statuses;
+        status: import("../components/features/ProductList/productListSlice").Statuses;
         error: {
             name?: string;
             message?: string;
@@ -208,7 +208,7 @@ export declare const useAppDispatch: () => import("redux-thunk").ThunkDispatch<{
         totalPrice: number;
     };
     register: {
-        status: import("../components/features/productList/productListSlice").Statuses;
+        status: import("../components/features/ProductList/productListSlice").Statuses;
         error: {
             name?: string;
             message?: string;
@@ -219,10 +219,10 @@ export declare const useAppDispatch: () => import("redux-thunk").ThunkDispatch<{
     signIn: {
         error: any;
         userId: string;
-        status: import("../components/features/productList/productListSlice").Statuses;
+        status: import("../components/features/ProductList/productListSlice").Statuses;
     };
     account: {
-        status: import("../components/features/productList/productListSlice").Statuses;
+        status: import("../components/features/ProductList/productListSlice").Statuses;
         error: {
             name?: string;
             message?: string;

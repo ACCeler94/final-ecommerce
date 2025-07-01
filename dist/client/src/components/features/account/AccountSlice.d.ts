@@ -1,5 +1,5 @@
 import { SerializedError } from '@reduxjs/toolkit';
-import { Statuses } from '../productList/productListSlice';
+import { Statuses } from '../ProductList/productListSlice';
 type State = {
     status: Statuses;
     error: null | SerializedError;

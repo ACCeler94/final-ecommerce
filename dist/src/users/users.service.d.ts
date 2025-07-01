@@ -8,23 +8,7 @@ export declare class UsersService {
     getUserByEmail(email: User['email']): Promise<User & {
         password: Password;
     }>;
-    createUser(userData: any, password: any): Promise<import("@prisma/client/runtime").GetResult<{
-        id: string;
-        email: string;
-        name: string;
-        street: string;
-        zip: string;
-        city: string;
-        role: import(".prisma/client").Role;
-    }, unknown> & {}>;
-    editUser(id: User['id'], userData: any, password: string | undefined): Promise<import("@prisma/client/runtime").GetResult<{
-        id: string;
-        email: string;
-        name: string;
-        street: string;
-        zip: string;
-        city: string;
-        role: import(".prisma/client").Role;
-    }, unknown> & {}>;
+    createUser(userData: any, password: any): Promise<User>;
+    editUser(id: User['id'], userData: any, password: string | undefined): Promise<User>;
     deleteUser(id: User['id']): Promise<User>;
 }
